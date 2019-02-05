@@ -34,6 +34,5 @@ module.exports = {
             hash: true,
             template: "./index.html"
         })
-        // other plugins ...
     ]
 };
