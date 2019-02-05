@@ -1,9 +1,9 @@
-import _ from 'lodash';
+import join from 'lodash-es/join';
 
 function component() {
     let element = document.createElement('div');
 
-    element.innerHTML = _.join(['Hello', 'Roman'], ' ');
+    element.innerHTML = join(['Hello', 'Roman'], ' ');
 
     return element;
 }
