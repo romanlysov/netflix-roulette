@@ -25,12 +25,14 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.1",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-dev": "webpack --config webpack.dev.js",
-    "build-prod": "webpack --config webpack.prod.js"
+    "build-dev": "webpack --mode=development",
+    "build-prod": "webpack --config webpack.prod.js --mode=production",
+    "dev-server": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
