@@ -4,10 +4,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const pathToClean = path.resolve(__dirname, 'dist');
+const srcPath = path.join(__dirname, 'src');
+const distPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
-    context: path.join(__dirname, 'src'),
+    context: srcPath,
     mode: 'development',
     devtool: 'source-map',
     resolve: {
@@ -17,17 +18,12 @@ module.exports = {
     entry: './index.js',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        path: distPath
     },
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            },
-            {
-                test: /\.jsx$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
@@ -58,6 +54,6 @@ module.exports = {
             filename: "[name].css",
             chunkFilename: "[id].css"
         }),
-        new CleanWebpackPlugin(pathToClean)
+        new CleanWebpackPlugin(distPath)
     ]
 };
