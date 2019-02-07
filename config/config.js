@@ -1,10 +1,14 @@
-const path = require('path');
+import {paths} from "../settings";
+
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = {
-    context: path.join(__dirname, 'src'),
+const pathToClean = paths.dist;
+
+export const config = {
+    context: paths.src,
     resolve: {
         extensions: [".js", ".jsx"]
     },
@@ -12,7 +16,7 @@ module.exports = {
     entry: './index.js',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        path: paths.dist
     },
     module: {
         rules: [
@@ -25,12 +29,6 @@ module.exports = {
                 test: /\.jsx$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"
-                ]
             },
             {
                 test: /\.(ttf|eot|svg|woff|png)$/,
@@ -50,10 +48,9 @@ module.exports = {
             template: "./index.html"
         }),
         new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional
             filename: "[name].css",
             chunkFilename: "[id].css"
-        })
+        }),
+        new CleanWebpackPlugin(pathToClean)
     ]
 };
