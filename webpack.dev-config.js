@@ -1,14 +1,15 @@
-import {paths} from "../settings";
-
+const path = require('path');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const pathToClean = paths.dist;
+const pathToClean = path.resolve(__dirname, 'dist');
 
-export const config = {
-    context: paths.src,
+module.exports = {
+    context: path.join(__dirname, 'src'),
+    mode: 'development',
+    devtool: 'source-map',
     resolve: {
         extensions: [".js", ".jsx"]
     },
@@ -16,7 +17,7 @@ export const config = {
     entry: './index.js',
     output: {
         filename: 'main.js',
-        path: paths.dist
+        path: path.resolve(__dirname, 'dist')
     },
     module: {
         rules: [
@@ -31,10 +32,16 @@ export const config = {
                 loader: "babel-loader"
             },
             {
+                test: /\.scss$/,
+                use: [
+                    "css-loader", "sass-loader"
+                ]
+            },
+            {
                 test: /\.(ttf|eot|svg|woff|png)$/,
                 loader: "file-loader",
                 options: {
-                    name: "[path][name].[ext]?[hash]"
+                    name: "[path][name][hash].[ext]"
                 }
             }
 

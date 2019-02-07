@@ -33,8 +33,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-dev": "babel-node ./config/development/dev-config.js",
-    "build-prod": "babel-node ./config/prod/prod-config.js",
+    "build-dev": "webpack --config webpack.dev-config.js",
+    "build-prod": "webpack --config webpack.prod-config.js",
     "dev-server": "webpack-dev-server"
   },
   "repository": {
