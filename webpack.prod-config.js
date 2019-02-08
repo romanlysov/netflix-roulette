@@ -14,7 +14,7 @@ module.exports = {
         extensions: [".js", ".jsx"]
     },
 
-    entry: './index.js',
+    entry: './index.jsx',
     output: {
         filename: 'main.js',
         path: distPath
