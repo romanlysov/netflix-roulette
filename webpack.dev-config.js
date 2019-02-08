@@ -15,7 +15,7 @@ module.exports = {
         extensions: [".js", ".jsx"]
     },
 
-    entry: './index.js',
+    entry: './index.jsx',
     output: {
         filename: 'main.js',
         path: distPath
@@ -30,7 +30,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    "css-loader", "sass-loader"
+                    "style-loader", "css-loader", "sass-loader"
                 ]
             },
             {
@@ -50,10 +50,10 @@ module.exports = {
             hash: true,
             template: "./index.html"
         }),
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
-        }),
+        // new MiniCssExtractPlugin({
+        //     filename: "[name].css",
+        //     chunkFilename: "[id].css"
+        // }),
         new CleanWebpackPlugin(distPath)
     ]
 };
