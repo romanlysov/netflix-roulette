@@ -1,0 +1,37 @@
+.search-settings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  min-height: 50px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 50px;
+  font-weight: 500;
+  background-color: #8080805c;
+  margin: 0 auto;
+
+  &__counter {
+    padding-left: 100px;
+  }
+  &__controls {
+    padding-right: 100px;
+  }
+  &__controls > button {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 50px;
+    font-weight: 500;
+    background-color: transparent;
+    border: none;
+  }
+  &__controls > button.active {
+    color: red;
+  }
+
+  &__controls > span {
+    margin-right: 60px;
+  }
+
+}
+

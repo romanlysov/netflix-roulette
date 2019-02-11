@@ -1,0 +1,16 @@
+$blockHeight: 400px;
+.main-screen {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: $blockHeight;
+}
+
+.no-results {
+  &__h2{
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    max-width: 200px;
+    margin: 150px auto 0;
+  }
+}

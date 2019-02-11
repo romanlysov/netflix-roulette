@@ -1,11 +1,8 @@
-.app_header {
-  font-size: 20px;
-}
-
 .header {
   max-width: 1200px;
   margin: 0 auto;
-  &__static {
-    border: 1px solid red;
-  }
+  padding-bottom: 45px;
+  background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../../src/images/netflix.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

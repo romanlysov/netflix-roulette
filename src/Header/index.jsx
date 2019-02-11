@@ -7,5 +7,6 @@ export const Header = () => {
     return <header className = 'header' >
         <Nav className = {'navigation'}/>
         <SearchForm className = "header__form"/>
+
     </header>
 };
