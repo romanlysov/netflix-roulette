@@ -1,0 +1,36 @@
+.info-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 50px;
+
+  &__description {
+    width: 50%;
+    margin-left: 100px;
+    margin-right: auto;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+  }
+
+  &__title {
+    font-family: Arial, sans-serif;
+    color: red;
+  }
+
+  &__sub-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-top: 20px;
+    width: 25%;
+
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+
+}

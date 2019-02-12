@@ -2,7 +2,42 @@
   max-width: 1200px;
   margin: 0 auto;
   padding-bottom: 45px;
-  background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../../src/images/netflix.jpg");
+  background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../../assets/images/netflix.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+.navigation{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 100px;
+
+  &__logo {
+    margin: 10px 0;
+    width: 100px;
+  }
+  &__search {
+    height: 25px;
+    width: 100px;
+    margin: auto 0;
+
+    background-color: #ffffff;
+    border: none;
+    border-radius: 2px;
+
+    text-transform: uppercase;
+    color: red;
+    font-weight: 700;
+
+  }
+}
+
+.movie-card > form {
+  display: none;
+}
+
+.search-result > .info-block {
+  display: none;
 }

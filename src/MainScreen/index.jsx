@@ -1,11 +1,16 @@
 import React from 'react';
-import './style.scss';
 
-export const MainScreen = (props) => {
+import { Switcher } from "./Switcher";
+import {SearchResultLayout} from "./SearchResult";
+import './style.scss';
+import {NoResults} from "./NoResults";
+
+
+
+
+export const MainScreen = () => {
     return (<div className={"main-screen"}>
-                <div className={props.className}>
-                <h2 className={"no-results__h2"}>No films found</h2>
-            </div>
+                    <Switcher/>
         </div>
     )
 };
