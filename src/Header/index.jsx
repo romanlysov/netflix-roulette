@@ -1,11 +1,12 @@
 import React from 'react';
-import './style.scss';
-import { Nav } from './Nav-static/index';
+
+import { HeaderStatic } from './HeaderStatic';
 import { SearchForm } from "./Form";
+import './style.scss';
 
 export const Header = () => {
     return <header className = 'header' >
-        <Nav className = {'navigation'}/>
+        <HeaderStatic className = {'navigation'}/>
         <SearchForm className = "header__form"/>
 
     </header>

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Header } from '../Header';
 import { SearchSettings} from '../SearchSettings'
 import {MainScreen} from "../MainScreen";
@@ -9,8 +10,8 @@ export class App extends React.Component {
         return (
             <>
             <Header className={'navigation'}/>
-            < SearchSettings counter={7}/>
-            <MainScreen className={"no-results"}/>
+            <SearchSettings counter="7"/>
+            <MainScreen />
             <Footer/>
             </>
         )
