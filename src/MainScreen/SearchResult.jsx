@@ -17,7 +17,7 @@ export const SearchResultLayout = ({films}) => {
     return ( <ul className={"film-layout"}>{filmsList}</ul>);
 };
 SearchResultLayout.propTypes = {
-    films: PropTypes.array,
+    films: PropTypes.array
 };
 
 

@@ -2,9 +2,9 @@ import React from 'react';
 
 import { HeaderStatic } from './HeaderStatic';
 import { SearchForm } from "./Form";
-import './style.scss';
 import {MovieCard} from "../MovieCard";
 import {filmsArray} from "../MainScreen/data";
+import './style.scss';
 
 const film = filmsArray[0];
 
@@ -13,6 +13,5 @@ export const Header = ({className}) => {
         <HeaderStatic className = {'navigation'}/>
         <MovieCard film={film}/>
         <SearchForm className = "header__form"/>
-
     </header>
 };

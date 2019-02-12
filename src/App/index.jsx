@@ -12,7 +12,7 @@ export class App extends React.Component {
     render() {
         return (
             <>
-            <Header className="movie-card"/>
+            <Header className="search-result"/>
             <SearchSettings counter="7"/>
             <MainScreen />
             <Footer/>
