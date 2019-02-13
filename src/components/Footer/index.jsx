@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {MainLogo} from '../MainLogo'
+import {MainLogo} from 'components/MainLogo'
 import './style.scss'
 
 export const Footer = () => {

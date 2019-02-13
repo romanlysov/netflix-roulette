@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { SearchResultLayoutItem } from './FilmItem'
+import {SearchResultLayoutItem} from 'components/MainScreen/SearchResult/FilmItem'
 import './style.scss'
 
 export const SearchResultLayout = ({films}) => {

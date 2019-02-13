@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { SearchResultLayout } from '../SearchResult'
-import { NoResults } from '../NoResults'
-import {filmsArray} from '../../../assets/data'
+import {SearchResultLayout} from 'components/MainScreen/SearchResult'
+import {NoResults} from 'components/MainScreen/NoResults'
+import {filmsArray} from '../../../../assets/data'
 
 const ButtonSwitcher = (props) => {
     const isResultShown = props.isResultShown

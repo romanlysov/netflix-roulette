@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Switcher } from './Switcher/index'
-import { ErrorBoundary } from '../ErrorBoundary'
+import {Switcher} from 'components/MainScreen/Switcher'
+import {ErrorBoundary} from 'components/ErrorBoundary'
 import './style.scss'
 
 export const MainScreen = () => {

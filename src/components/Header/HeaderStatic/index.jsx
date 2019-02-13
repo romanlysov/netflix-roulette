@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { MainLogo } from '../../MainLogo'
-import { SearchButton } from './SearchButton/index'
+import {MainLogo} from 'components/MainLogo'
+import {SearchButton} from 'components/Header/HeaderStatic/SearchButton'
 import './style.scss'
 
 export const HeaderStatic = ({className}) => {

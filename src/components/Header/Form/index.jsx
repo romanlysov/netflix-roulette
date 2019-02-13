@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Input } from './Input/index'
-import {SearchBy} from '../SearchBy/index'
+import {Input} from 'components/Header/Form/Input'
+import {SearchBy} from 'components/Header/SearchBy'
 import './style.scss'
 
 export const SearchForm = ({className}) => {
