@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { HeaderStatic } from './HeaderStatic';
-import { SearchForm } from "./Form";
-import {MovieCard} from "../MovieCard";
-import {filmsArray} from "../MainScreen/data";
-import './style.scss';
+import { HeaderStatic } from './HeaderStatic/index'
+import { SearchForm } from './Form'
+import {MovieCard} from '../MovieCard'
+import {filmsArray} from '../../assets/data'
+import './style.scss'
 
-const film = filmsArray[0];
+const film = filmsArray[0]
 
 export const Header = ({className}) => {
     return <header className = {`header ${className}`} >
@@ -14,4 +14,4 @@ export const Header = ({className}) => {
         <MovieCard film={film}/>
         <SearchForm className = "header__form"/>
     </header>
-};
+}

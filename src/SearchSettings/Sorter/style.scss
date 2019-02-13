@@ -1,0 +1,43 @@
+%search-settings-button-shared {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 3.125rem;
+  font-weight: 500;
+  background-color: transparent;
+  border: 0;
+}
+
+.search-settings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 75rem;
+  min-height: 3.125rem;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 3.125rem;
+  font-weight: 500;
+  background-color: #8080805c;
+  margin: 0 auto 1.56rem;
+
+  &__counter {
+    padding-left: 6.25rem;
+  }
+
+  &__controls {
+    padding-right: 6.25rem;
+  }
+
+  &__release-button,
+  &__rating-button {
+    @extend %search-settings-button-shared
+  }
+
+  &__sort-by {
+    margin-right: 3.75rem;
+  }
+}
+
+.active {
+  color: red;
+}

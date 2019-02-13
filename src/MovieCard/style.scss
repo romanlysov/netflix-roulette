@@ -1,16 +1,21 @@
+%info-block-child-shared {
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+}
+
 .info-block {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0 50px;
+  padding: 0 3.125rem;
 
   &__description {
     width: 50%;
-    margin-left: 100px;
+    margin-left: 6.25rem;
     margin-right: auto;
-    font-family: Arial, sans-serif;
-    color: #ffffff;
+
+    @extend %info-block-child-shared;
   }
 
   &__title {
@@ -23,13 +28,11 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-
-    margin-top: 20px;
+    margin-top: 1.25rem;
     width: 25%;
-
-    font-family: Arial, sans-serif;
-    color: #ffffff;
     font-weight: 600;
+
+    @extend %info-block-child-shared;
   }
 
 

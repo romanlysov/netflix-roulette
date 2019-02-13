@@ -4,13 +4,14 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
   background-color: #696969;
-  min-height: 50px;
+  min-height: 3.125rem;
+
   &__logo {
-    width: 100px;
+    width: 6.25rem;
     margin: auto 0;
-    padding-left: 100px;
+    padding-left: 6.25rem;
   }
 }

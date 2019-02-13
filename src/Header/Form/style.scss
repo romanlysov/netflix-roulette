@@ -1,80 +1,32 @@
+%main-search-text-shared {
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
 .main-search {
-  padding: 0 100px;
+  padding: 0 6.25rem;
+
   &__h1 {
-    font-family: Arial, sans-serif ;
-    text-transform: uppercase;
-    font-size: 28px;
+    font-size: 2rem;
     font-weight: 600;
-    color: #ffffff;
-  }
-  &__input {
-    margin-bottom: 20px;
-    position: relative;
-    width: 100%;
-    background-color: #000000;
-    border: none;
-    border-bottom: 2px solid red;
-    height: 35px;
 
-    color: #ffffff;
-    font-size: 20px;
-  }
-  &__input::after{
-    //content: "&#8629;";
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    top: 10px;
-    left: 50px;
-    background-color: white;
-  }
-  &__input::placeholder {
-
-    font-size: 20px;
-    padding-left: 20px;
-    line-height: 35px;
+    @extend %main-search-text-shared;
   }
 
   &__button {
-    font-family: Arial,sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
-    padding: 5px 35px;
-    border: none;
+    padding: .3125rem 2.1875rem;
+    border: 0;
     background-color: red;
-    color: #ffffff;
-    text-transform: uppercase;
+
+    @extend %main-search-text-shared;
   }
+
   &__container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-  &__search-by span {
-    font-family: Arial, sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: #ffffff;
-    margin-right: 15px;
-  }
-
-  &__search-by label {
-    padding: 5px 15px;
-    margin-right: 15px;
-    font-family: Arial, sans-serif;
-    font-weight: 500;
-    color: #ffffff;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 2px;
-    background-color: gray;
-  }
-  &__search-by input[type="radio"] {
-    display:none;
-  }
-
-  &__search-by input:checked + label {
-    background-color: red;
   }
 }

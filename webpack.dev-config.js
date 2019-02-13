@@ -3,6 +3,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const srcPath = path.join(__dirname, 'src');
 const distPath = path.resolve(__dirname, 'dist');
@@ -39,9 +40,16 @@ module.exports = {
                 options: {
                     name: "[path][name][hash].[ext]"
                 }
+            },
+            {
+                test: /\.(jsx?|js)$/,
+                loaders: ['eslint-loader'],
+                include: srcPath,
+                exclude: /node_modules/
             }
 
         ]
+
     },
     plugins: [
         new CaseSensitivePathsPlugin(),
@@ -54,6 +62,7 @@ module.exports = {
         //     filename: "[name].css",
         //     chunkFilename: "[id].css"
         // }),
-        new CleanWebpackPlugin(distPath)
+        new CleanWebpackPlugin(distPath),
+        new StyleLintPlugin()
     ]
 };

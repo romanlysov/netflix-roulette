@@ -1,16 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { Switcher } from "./Switcher";
-import {SearchResultLayout} from "./SearchResult";
-import './style.scss';
-import {NoResults} from "./NoResults";
-
-
-
+import { Switcher } from './Switcher/index'
+import { ErrorBoundary } from '../ErrorBoundary'
+import './style.scss'
 
 export const MainScreen = () => {
-    return (<div className={"main-screen"}>
-                    <Switcher/>
+    return (
+        <div className={'main-screen'}>
+            <ErrorBoundary>
+            <Switcher/>
+            </ErrorBoundary>
         </div>
     )
-};
+}
