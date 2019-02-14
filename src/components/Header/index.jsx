@@ -1,9 +1,9 @@
 import React from 'react'
 
-import {HeaderStatic} from 'components/Header/HeaderStatic'
-import {SearchForm} from 'components/Header/Form'
-import {MovieCard} from 'components/MovieCard'
-import {filmsArray} from '../../../assets/data'
+import { HeaderStatic } from 'components/Header/HeaderStatic'
+import { SearchForm } from 'components/Header/Form'
+import { MovieCard } from 'components/MovieCard'
+import { filmsArray } from '../../../assets/data'
 import './style.scss'
 
 const film = filmsArray[0]

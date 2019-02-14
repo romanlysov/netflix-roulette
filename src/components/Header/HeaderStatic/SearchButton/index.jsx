@@ -1,6 +1,7 @@
 import React from 'react'
+
 import './style.scss'
 
-export const SearchButton = ({className, value}) => {
-    return <button className={className}>{value}</button>
+export const SearchButton = ({classAttribute, value}) => {
+    return <button className={classAttribute}>{value}</button>
 }
