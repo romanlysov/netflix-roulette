@@ -4,6 +4,7 @@ import { Header } from 'components/Header'
 import { SearchSettings } from 'components/SearchSettings'
 import { MainScreen } from 'components/MainScreen'
 import { Footer } from 'components/Footer'
+import { AsyncAppContainer } from '../../containers/AsyncApp'
 
 // Header className="movie-card" - for movie card markup
 // Header className="search-result" - for search result markup
@@ -15,6 +16,7 @@ export class App extends React.Component {
                 <Header className="search-result"/>
                 <SearchSettings counter="7"/>
                 <MainScreen />
+                <AsyncAppContainer/>
                 <Footer/>
             </>
         )
