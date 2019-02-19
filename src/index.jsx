@@ -4,12 +4,12 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { reducer } from './reducers'
-import { setMainView } from './actions'
+// import { setMainView } from './actions'
 
 import { App } from 'components/App'
 
 const store = createStore(reducer, composeWithDevTools())
-store.dispatch(setMainView('SHOW_REQUESTED'))
+// store.dispatch(setMainView('showRequested'))
 
 render(
     <Provider store={store}>

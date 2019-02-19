@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { setMainView, NO_RESULTS, SHOW_REQUESTED } from '../../actions'
+import { setMainView, noResults, showRequested } from '../../actions'
 
 // import {filmsArray} from '../../../assets/data'
 
-const showNoResults = () => (setMainView(NO_RESULTS))
-const showMovies = () => (setMainView(SHOW_REQUESTED))
+const showNoResults = () => (setMainView(noResults))
+const showMovies = () => (setMainView(showRequested))
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -31,7 +31,7 @@ export const Switcher = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        main_view_switch: state.MAIN_VIEW_SWITCH
+        main_view_switch: state.mainViewsSwitch
     }
 }
 

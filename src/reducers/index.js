@@ -1,28 +1,33 @@
-import { MAIN_VIEW_SWITCH, NO_RESULTS } from '../actions'
-import {FILMS_ARE_LOADED, FILMS_ARRAY} from '../action_names'
+import { mainViewSwitch, noResults } from '../actions'
+import {filmsAreLoaded, filmsArray, getSearchRequest} from '../actionNames'
 
 const initialState = {
-    MAIN_VIEW_SWITCH: NO_RESULTS,
-    FILMS_ARE_LOADED: false,
-    FILMS_ARRAY: 'NO_DATA'
+    mainViewsSwitch: noResults,
+    filmsAreLoaded: false,
+    filmsArray: 'NO_DATA'
 }
 
 export function reducer(state = initialState, action) {
     switch (action.type) {
-        case MAIN_VIEW_SWITCH :
+        case mainViewSwitch :
             return {
                 ...state,
-                MAIN_VIEW_SWITCH: action.payload
+                mainViewsSwitch: action.payload
             }
-        case FILMS_ARRAY :
+        case filmsArray :
             return {
                 ...state,
-                FILMS_ARRAY: action.payload
+                filmsArray: action.payload
             }
-        case FILMS_ARE_LOADED :
+        case filmsAreLoaded :
             return {
                 ...state,
-                FILMS_ARE_LOADED: action.payload
+                filmsAreLoaded: action.payload
+            }
+        case getSearchRequest :
+            return {
+                ...state,
+                getSearchRequest: action.payload
             }
         default:
             return state

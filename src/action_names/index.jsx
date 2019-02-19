@@ -1,2 +1,0 @@
-export const FILMS_ARE_LOADED = 'FILMS_ARE_LOADED'
-export const FILMS_ARRAY = 'FILMS_ARRAY'

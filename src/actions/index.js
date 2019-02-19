@@ -1,30 +1,33 @@
-import { FILMS_ARRAY, FILMS_ARE_LOADED } from '../action_names'
+import { filmsArray, filmsAreLoaded, getSearchRequest } from '../actionNames'
 
-export const MAIN_VIEW_SWITCH = 'MAIN_VIEW_SWITCH'
-export const NO_RESULTS = 'NO_RESULTS'
-export const SHOW_REQUESTED = 'SHOW_REQUESTED'
-
-// testing action creators
+export const mainViewSwitch = 'mainViewSwitch'
+export const noResults = 'noResults'
+export const showRequested = 'showRequested'
 
 export function setMainView(status) {
     return {
-        type: MAIN_VIEW_SWITCH,
+        type: mainViewSwitch,
         payload: status
     }
 }
 
-// search-form action creators
-
 export const setFilmsLoadingStatus = status => {
     return {
-        type: FILMS_ARE_LOADED,
+        type: filmsAreLoaded,
         payload: status
     }
 }
 
 export const getFilmsData = data => {
     return {
-        type: FILMS_ARRAY,
+        type: filmsArray,
+        payload: data
+    }
+}
+
+export const getSearchData = data => {
+    return {
+        type: getSearchRequest,
         payload: data
     }
 }
