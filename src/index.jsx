@@ -8,7 +8,7 @@ import { reducer } from './reducers'
 
 import { App } from 'components/App'
 
-const store = createStore(reducer, composeWithDevTools())
+export const store = createStore(reducer, composeWithDevTools())
 // store.dispatch(setMainView('showRequested'))
 
 render(

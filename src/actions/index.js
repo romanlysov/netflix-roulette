@@ -38,11 +38,19 @@ const setSearchByFilter = filter => {
     }
 }
 
+const updateMoviesFoundQuantity = quantity => {
+    return {
+        type: actions.moviesFoundQuantityUpdate,
+        payload: quantity
+    }
+}
+
 export const  actionCreator = {
     setMainView: setMainView,
     setFilmsLoadingStatus: setFilmsLoadingStatus,
     getFilmsData: getFilmsData,
     getSearchData: getSearchData,
-    setSearchByFilter: setSearchByFilter
+    setSearchByFilter: setSearchByFilter,
+    updateMoviesFoundQuantity: updateMoviesFoundQuantity
 }
 

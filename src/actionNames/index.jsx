@@ -3,6 +3,7 @@ export const actions = {
     filmsDataAction: 'filmsDataAction',
     searchDataAction: 'searchDataAction',
     mainViewSwitchAction: 'mainViewSwitchAction',
-    searchBySwitchAction: 'searchBySwitchAction'
+    searchBySwitchAction: 'searchBySwitchAction',
+    moviesFoundQuantityUpdate: 'moviesFoundQuantityUpdate'
 }
 

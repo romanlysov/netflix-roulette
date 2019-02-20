@@ -3,8 +3,8 @@ import React from 'react'
 import { SearchForm } from '../../components/Header/Form'
 import { connect } from 'react-redux'
 import { actionCreator } from '../../actions'
-import { getFilms } from '../../components/MainScreen'
-import {filterSwitcher} from '../../components/Header/SearchByPanel/SearchByFilterSwitcher'
+import { getFilms } from '../../components/GetFilms'
+import { filterSwitcher } from '../../components/Header/SearchByPanel/SearchByFilterSwitcher'
 
 export class FormContainerUnwrapped extends React.Component {
     state = {
@@ -18,7 +18,6 @@ export class FormContainerUnwrapped extends React.Component {
     handleSubmit = (event) => {
         this.props.dispatch(actionCreator.getSearchData(this.state.value))
         getFilms(this.props, `http://react-cdp-api.herokuapp.com/movies?search=${this.state.value}&${this.props.searchByFilter}`)
-        console.log(this.props.searchByFilter)
         event.preventDefault()
     }
     handleSearchBySwitcher = (event) => {
