@@ -2,6 +2,7 @@ import { actions } from '../actionNames'
 
 export const noResults = 'noResults'
 export const showRequested = 'showRequested'
+export const showMovieInfo = 'showMovieInfo'
 
 const setMainView = status => {
     return {
@@ -38,11 +39,27 @@ const setSearchByFilter = filter => {
     }
 }
 
+const updateMoviesFoundQuantity = quantity => {
+    return {
+        type: actions.moviesFoundQuantityUpdate,
+        payload: quantity
+    }
+}
+
+const getMovieInfo = film => {
+    return {
+        type: actions.showFilmInfoAction,
+        payload: film
+    }
+}
+
 export const  actionCreator = {
     setMainView: setMainView,
     setFilmsLoadingStatus: setFilmsLoadingStatus,
     getFilmsData: getFilmsData,
     getSearchData: getSearchData,
-    setSearchByFilter: setSearchByFilter
+    setSearchByFilter: setSearchByFilter,
+    updateMoviesFoundQuantity: updateMoviesFoundQuantity,
+    getMovieInfo: getMovieInfo
 }
 

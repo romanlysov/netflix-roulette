@@ -12,7 +12,7 @@
 
 .search-by {
 
-  .search-by span {
+  &__header {
     font-family: Arial, sans-serif;
     font-weight: 500;
     text-transform: uppercase;
@@ -28,6 +28,11 @@
   &__title-input,
   &__genre-input {
     display: none;
+  }
+
+  &__header {
+
+    text-transform: uppercase;
   }
 }
 

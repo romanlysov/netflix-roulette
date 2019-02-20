@@ -5,7 +5,7 @@ const initialState = {
     mainViewsSwitch: noResults,
     filmsAreLoaded: false,
     filmsArray: 'NO_DATA',
-    searchByFilter: 'searchBy=genre'
+    searchByFilter: 'searchBy=title'
 }
 
 export function reducer(state = initialState, action) {
@@ -34,6 +34,16 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 searchByFilter: action.payload
+            }
+        case actions.moviesFoundQuantityUpdate :
+            return {
+                ...state,
+                filmsFoundQuantity: action.payload
+            }
+        case actions.showFilmInfoAction :
+            return {
+                ...state,
+                filmInfo: action.payload
             }
         default:
             return state

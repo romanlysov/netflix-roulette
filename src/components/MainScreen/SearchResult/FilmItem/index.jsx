@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const SearchResultLayoutItem = ({item}) => {
-    return (<div className={'film-layout__item'}>
+export const SearchResultLayoutItem = ({item, onClick}) => {
+    return (<div className={'film-layout__item'} onClick={onClick}>
         <img className={'film-layout__cover'} src={item.poster_path} alt={''}/>
         <div className={'film-layout__title-container'}>
             <span className={'film-layout__title'}>{item.title}</span>

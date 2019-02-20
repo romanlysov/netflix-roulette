@@ -1,4 +1,4 @@
-import {actionCreator} from '../../../actions'
+import { actionCreator } from '../../../actions'
 
 export const filterSwitcher = (event, props) => {
     const titleLabelElement = document.querySelector('.search-by__title-label')

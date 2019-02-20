@@ -1,47 +1,43 @@
 import React from 'react'
 
 import { ErrorBoundary } from 'components/ErrorBoundary'
-import { actionCreator, showRequested } from '../../actions'
 import { connect } from 'react-redux'
 import { SearchResultLayout } from './SearchResult'
 import { NoResults } from './NoResults'
-
-import axios  from 'axios'
-
+import { getFilms } from '../GetFilms'
 import './style.scss'
+import { actionCreator, showMovieInfo } from '../../actions'
+// import {MovieCard} from '../MovieCard'
 
-export const getFilms = (props, url) => {
-    axios.get(url).then((response) => {
-        props.dispatch(actionCreator.setFilmsLoadingStatus(true))
-        props.dispatch(actionCreator.getFilmsData(response.data.data))
-        props.dispatch(actionCreator.setMainView(showRequested))
-    })
-    console.log(url)
-}
-
-export class MainScreen extends React.Component {
+export class MainScreenUnwrapped extends React.Component {
+    onClickHandle = (event) => {
+        const currentFilm = event.currentTarget
+        const filmTitle = currentFilm.querySelector('.film-layout__title').innerHTML
+        this.props.dispatch(actionCreator.setMainView(showMovieInfo))
+        this.props.dispatch(actionCreator.getMovieInfo(filmTitle))
+        console.log(filmTitle)
+    }
     componentDidMount() {
         getFilms(this.props, `http://react-cdp-api.herokuapp.com/movies?searchBy=title`)
     }
     render() {
-        if (this.props.filmsLoadingStatus && (this.props.main_view_switch === 'showRequested')) {
+        if (this.props.filmsLoadingStatus && (this.props.mainViewsSwitch === 'showRequested')) {
             return (
                 <div className={'main-screen'}>
                     <ErrorBoundary>
-                         <SearchResultLayout films={this.props.filmsArray}/>
+                         <SearchResultLayout films={this.props.filmsArray} onClick={this.onClickHandle}/>
                     </ErrorBoundary>
                 </div>
             )
-        } else {
-            return <NoResults/>
-        }
+        } return <NoResults/>
     }
 }
 const mapStateToProps = (state) => {
     return {
-        main_view_switch: state.mainViewsSwitch,
+        mainViewsSwitch: state.mainViewsSwitch,
         filmsLoadingStatus: state.filmsAreLoaded,
-        filmsArray: state.filmsArray
+        filmsArray: state.filmsArray,
+        filmInfoChosen: state.filmInfo
     }
 }
-export const MainScreenContainer1 = connect(mapStateToProps)(MainScreen)
+export const MainScreen = connect(mapStateToProps)(MainScreenUnwrapped)
