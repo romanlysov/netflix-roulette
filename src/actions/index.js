@@ -1,34 +1,48 @@
-import { filmsArray, filmsAreLoaded, getSearchRequest } from '../actionNames'
+import { actions } from '../actionNames'
 
-export const mainViewSwitch = 'mainViewSwitch'
 export const noResults = 'noResults'
 export const showRequested = 'showRequested'
 
-export function setMainView(status) {
+const setMainView = status => {
     return {
-        type: mainViewSwitch,
+        type: actions.mainViewSwitchAction,
         payload: status
     }
 }
 
-export const setFilmsLoadingStatus = status => {
+const setFilmsLoadingStatus = status => {
     return {
-        type: filmsAreLoaded,
+        type: actions.loadingStatusUpdate,
         payload: status
     }
 }
 
-export const getFilmsData = data => {
+const getFilmsData = data => {
     return {
-        type: filmsArray,
+        type: actions.filmsDataAction,
         payload: data
     }
 }
 
-export const getSearchData = data => {
+const getSearchData = data => {
     return {
-        type: getSearchRequest,
+        type: actions.searchDataAction,
         payload: data
     }
+}
+
+const setSearchByFilter = filter => {
+    return {
+        type: actions.searchBySwitchAction,
+        payload: filter
+    }
+}
+
+export const  actionCreator = {
+    setMainView: setMainView,
+    setFilmsLoadingStatus: setFilmsLoadingStatus,
+    getFilmsData: getFilmsData,
+    getSearchData: getSearchData,
+    setSearchByFilter: setSearchByFilter
 }
 

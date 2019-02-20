@@ -1,20 +1,22 @@
 import React from 'react'
 
 import { ErrorBoundary } from 'components/ErrorBoundary'
-import {setFilmsLoadingStatus, setMainView, getFilmsData, showRequested} from '../../actions'
+import { actionCreator, showRequested } from '../../actions'
 import { connect } from 'react-redux'
 import { SearchResultLayout } from './SearchResult'
 import { NoResults } from './NoResults'
+
 import axios  from 'axios'
 
 import './style.scss'
 
 export const getFilms = (props, url) => {
     axios.get(url).then((response) => {
-        props.dispatch(setFilmsLoadingStatus(true))
-        props.dispatch(getFilmsData(response.data.data))
-        props.dispatch(setMainView(showRequested))
+        props.dispatch(actionCreator.setFilmsLoadingStatus(true))
+        props.dispatch(actionCreator.getFilmsData(response.data.data))
+        props.dispatch(actionCreator.setMainView(showRequested))
     })
+    console.log(url)
 }
 
 export class MainScreen extends React.Component {

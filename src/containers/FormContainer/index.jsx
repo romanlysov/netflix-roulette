@@ -2,30 +2,30 @@ import React from 'react'
 
 import { SearchForm } from '../../components/Header/Form'
 import { connect } from 'react-redux'
-import { getSearchData } from '../../actions'
+import { actionCreator } from '../../actions'
 import { getFilms } from '../../components/MainScreen'
+import {filterSwitcher} from '../../components/Header/SearchByPanel/SearchByFilterSwitcher'
 
-export class Index extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {value: ''}
-
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+export class FormContainerUnwrapped extends React.Component {
+    state = {
+        value: ''
     }
 
     handleChange = (event) => {
         this.setState({value: event.target.value})
     }
 
-    handleSubmit(event) {
-        console.log(this.state.value)
-        this.props.dispatch(getSearchData(this.state.value))
-        getFilms(this.props, `http://react-cdp-api.herokuapp.com/movies?search=${this.state.value}&searchBy=title`)
+    handleSubmit = (event) => {
+        this.props.dispatch(actionCreator.getSearchData(this.state.value))
+        getFilms(this.props, `http://react-cdp-api.herokuapp.com/movies?search=${this.state.value}&${this.props.searchByFilter}`)
+        console.log(this.props.searchByFilter)
         event.preventDefault()
     }
+    handleSearchBySwitcher = (event) => {
+       filterSwitcher(event, this.props)
+    }
     render() {
-        return <SearchForm className={'header__form'} onChange={this.handleChange} onSubmit={this.handleSubmit} value={this.state.value}/>
+        return <SearchForm className={'header__form'} onChange={this.handleChange} onSubmit={this.handleSubmit} value={this.state.value} searchBy={this.handleSearchBySwitcher}/>
     }
 }
 
@@ -34,8 +34,9 @@ const mapStateToProps = (state) => {
         getSearchRequest: state.value,
         main_view_switch: state.mainViewsSwitch,
         filmsLoadingStatus: state.filmsAreLoaded,
-        filmsArray: state.filmsArray
+        filmsArray: state.filmsArray,
+        searchByFilter: state.searchByFilter
     }
 }
 
-export const FormContainerWrapped = connect(mapStateToProps)(Index)
+export const FormContainer = connect(mapStateToProps)(FormContainerUnwrapped)

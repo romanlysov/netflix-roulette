@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { MainLogo } from 'components/MainLogo'
-import { SearchButton } from 'components/Header/HeaderStatic/SearchButton'
+import { SearchButton } from 'components/Header/StaticHeader/SearchButton'
 import './style.scss'
 
-export const HeaderStatic = ({className}) => {
+export const StaticHeader = ({className}) => {
     return (
         <nav className= {`header__static ${className}`} >
             <MainLogo className={'navigation__logo'}/>

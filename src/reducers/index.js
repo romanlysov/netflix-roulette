@@ -1,33 +1,39 @@
-import { mainViewSwitch, noResults } from '../actions'
-import {filmsAreLoaded, filmsArray, getSearchRequest} from '../actionNames'
+import { noResults } from '../actions'
+import { actions } from '../actionNames'
 
 const initialState = {
     mainViewsSwitch: noResults,
     filmsAreLoaded: false,
-    filmsArray: 'NO_DATA'
+    filmsArray: 'NO_DATA',
+    searchByFilter: 'searchBy=genre'
 }
 
 export function reducer(state = initialState, action) {
     switch (action.type) {
-        case mainViewSwitch :
+        case actions.mainViewSwitchAction :
             return {
                 ...state,
                 mainViewsSwitch: action.payload
             }
-        case filmsArray :
+        case actions.filmsDataAction :
             return {
                 ...state,
                 filmsArray: action.payload
             }
-        case filmsAreLoaded :
+        case actions.loadingStatusUpdate :
             return {
                 ...state,
                 filmsAreLoaded: action.payload
             }
-        case getSearchRequest :
+        case actions.searchDataAction :
             return {
                 ...state,
                 getSearchRequest: action.payload
+            }
+        case actions.searchBySwitchAction :
+            return {
+                ...state,
+                searchByFilter: action.payload
             }
         default:
             return state

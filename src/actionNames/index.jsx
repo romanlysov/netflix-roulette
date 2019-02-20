@@ -1,3 +1,8 @@
-export const filmsAreLoaded = 'filmsAreLoaded'
-export const filmsArray = 'filmsArray'
-export const getSearchRequest = 'getSearchRequest'
+export const actions = {
+    loadingStatusUpdate: 'loadingStatusUpdate',
+    filmsDataAction: 'filmsDataAction',
+    searchDataAction: 'searchDataAction',
+    mainViewSwitchAction: 'mainViewSwitchAction',
+    searchBySwitchAction: 'searchBySwitchAction'
+}
+
