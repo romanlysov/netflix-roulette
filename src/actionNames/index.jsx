@@ -4,7 +4,8 @@ export const actions = {
     searchDataAction: 'searchDataAction',
     mainViewSwitchAction: 'mainViewSwitchAction',
     searchBySwitchAction: 'searchBySwitchAction',
-    moviesFoundQuantityUpdate: 'moviesFoundQuantityUpdate',
-    showFilmInfoAction: 'showFilmInfoAction'
+    showFilmInfoAction: 'showFilmInfoAction',
+    moviesFoundQuantityUpdate: 'moviesFoundQuantityUpdate'
+
 }
 

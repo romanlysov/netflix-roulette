@@ -40,6 +40,7 @@ export function reducer(state = initialState, action) {
                 ...state,
                 filmsFoundQuantity: action.payload
             }
+
         case actions.showFilmInfoAction :
             return {
                 ...state,

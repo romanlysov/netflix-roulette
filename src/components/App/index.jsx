@@ -5,6 +5,7 @@ import { SearchSettings } from 'components/SearchSettings'
 import { Footer } from 'components/Footer'
 import { MainScreen } from '../MainScreen'
 import { connect } from 'react-redux'
+
 import { showMovieInfo } from '../../actions'
 
 // Header className="movie-card" - for movie card markup

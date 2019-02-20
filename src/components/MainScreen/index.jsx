@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { SearchResultLayout } from './SearchResult'
 import { NoResults } from './NoResults'
 import { getFilms } from '../GetFilms'
+
 import './style.scss'
 import { actionCreator, showMovieInfo } from '../../actions'
 // import {MovieCard} from '../MovieCard'
