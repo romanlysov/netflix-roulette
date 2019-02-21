@@ -1,44 +1,34 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
 import { Header } from 'components/Header'
 import { SearchSettings } from 'components/SearchSettings'
 import { Footer } from 'components/Footer'
 import { MainScreen } from '../MainScreen'
-import { connect } from 'react-redux'
+import { MovieInfoScreen } from '../MovieInfoScreen'
+import { SearchStatus } from '../../constants'
 
-import { showMovieInfo } from '../../actions'
-
-// Header className="movie-card" - for movie card markup
-// Header className="search-result" - for search result markup
-
-export class AppUnwrapped extends React.Component {
-    render() {
-            if (this.props.mainViewsSwitch === showMovieInfo) {
-            return (
-                <>
-                    <Header className="movie-card"/>
-                    <SearchSettings counter={this.props.filmsFoundQuantity} />
-                    <MainScreen/>
-                    <Footer/>
-                </>
-            )
+const AppUnwrapped = ({ mainViewsSwitch, filmsArray, filmKey, filmsFoundQuantity }) => {
+    if (mainViewsSwitch === SearchStatus.showMovieInfo) {
+            return <MovieInfoScreen genre={filmsArray[filmKey].genres[0]}/>
             } else {
                 return (
                     <>
                         <Header className="search-result"/>
-                        <SearchSettings counter={this.props.filmsFoundQuantity} />
+                        <SearchSettings counter={filmsFoundQuantity} />
                         <MainScreen/>
                         <Footer/>
                     </>
                 )
                 }
-            }
 }
 
 const mapStateToProps = state => {
     return {
         filmsFoundQuantity: state.filmsFoundQuantity,
-        mainViewsSwitch: state.mainViewsSwitch
+        mainViewsSwitch: state.mainViewsSwitch,
+        filmsArray: state.loadedFilmsInfo.filmsArray,
+        filmKey: state.filmKey
     }
 }
 

@@ -1,11 +1,19 @@
-import { noResults } from '../actions'
+import { SearchStatus } from '../constants'
 import { actions } from '../actionNames'
 
 const initialState = {
-    mainViewsSwitch: noResults,
-    filmsAreLoaded: false,
-    filmsArray: 'NO_DATA',
-    searchByFilter: 'searchBy=title'
+    mainViewsSwitch: SearchStatus.noResults,
+    loadedFilmsInfo: {
+        filmsAreLoaded: false,
+        filmsArray: 'NO_DATA',
+    },
+    searchRequest: {
+        searchByFilter: 'searchBy=title'
+    },
+    sameGenreFilms: {
+        sameGenreFilmsData: [],
+        isSameGenreFilmLoaded: false
+    }
 }
 
 export function reducer(state = initialState, action) {
@@ -18,33 +26,63 @@ export function reducer(state = initialState, action) {
         case actions.filmsDataAction :
             return {
                 ...state,
-                filmsArray: action.payload
+                loadedFilmsInfo: {
+                    filmsArray: action.payload
+                }
             }
         case actions.loadingStatusUpdate :
             return {
                 ...state,
-                filmsAreLoaded: action.payload
+                loadedFilmsInfo: {
+                    filmsAreLoaded: action.payload
+                }
             }
         case actions.searchDataAction :
             return {
                 ...state,
-                getSearchRequest: action.payload
+                searchRequest:{
+                    getSearchRequest: action.payload
+                }
+
             }
         case actions.searchBySwitchAction :
             return {
                 ...state,
-                searchByFilter: action.payload
+                loadedFilmsInfo: {
+                    searchByFilter: action.payload
+                }
             }
         case actions.moviesFoundQuantityUpdate :
             return {
                 ...state,
-                filmsFoundQuantity: action.payload
+                loadedFilmsInfo: {
+                    filmsFoundQuantity: action.payload
+                }
             }
 
         case actions.showFilmInfoAction :
             return {
                 ...state,
-                filmInfo: action.payload
+                sameGenreFilms: {
+                    filmInfo: action.payload,
+                    sameGenreFilms: [],
+                    isSameGenreFilmLoaded: false
+                }
+            }
+        case actions.filmKeyAction :
+            return {
+                ...state,
+                loadedFilmsInfo: {
+                    filmKey: action.payload
+                }
+            }
+        case actions.sameGenreFilmsAction :
+            return {
+                ...state,
+                sameGenreFilms: {
+                    sameGenreFilmsData: action.payload,
+                    isSameGenreFilmLoaded: true
+                }
             }
         default:
             return state
