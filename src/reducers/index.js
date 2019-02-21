@@ -46,6 +46,16 @@ export function reducer(state = initialState, action) {
                 ...state,
                 filmInfo: action.payload
             }
+        case actions.filmKeyAction :
+            return {
+                ...state,
+                filmKey: action.payload
+            }
+        case actions.sameGenreFilmsAction :
+            return {
+                ...state,
+                sameGenreFilms: action.payload
+            }
         default:
             return state
     }

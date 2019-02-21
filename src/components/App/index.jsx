@@ -5,8 +5,10 @@ import { SearchSettings } from 'components/SearchSettings'
 import { Footer } from 'components/Footer'
 import { MainScreen } from '../MainScreen'
 import { connect } from 'react-redux'
+// import { MovieInfoScreen } from '../MovieInfoScreen'
 
 import { showMovieInfo } from '../../actions'
+import {MovieInfoScreen} from '../MovieInfoScreen'
 
 // Header className="movie-card" - for movie card markup
 // Header className="search-result" - for search result markup
@@ -14,14 +16,7 @@ import { showMovieInfo } from '../../actions'
 export class AppUnwrapped extends React.Component {
     render() {
             if (this.props.mainViewsSwitch === showMovieInfo) {
-            return (
-                <>
-                    <Header className="movie-card"/>
-                    <SearchSettings counter={this.props.filmsFoundQuantity} />
-                    <MainScreen/>
-                    <Footer/>
-                </>
-            )
+            return <MovieInfoScreen genre={this.props.filmsArray[this.props.filmKey].genres[0]}/>
             } else {
                 return (
                     <>
@@ -38,7 +33,9 @@ export class AppUnwrapped extends React.Component {
 const mapStateToProps = state => {
     return {
         filmsFoundQuantity: state.filmsFoundQuantity,
-        mainViewsSwitch: state.mainViewsSwitch
+        mainViewsSwitch: state.mainViewsSwitch,
+        filmsArray: state.filmsArray,
+        filmKey: state.filmKey
     }
 }
 

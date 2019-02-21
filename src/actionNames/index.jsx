@@ -5,7 +5,9 @@ export const actions = {
     mainViewSwitchAction: 'mainViewSwitchAction',
     searchBySwitchAction: 'searchBySwitchAction',
     showFilmInfoAction: 'showFilmInfoAction',
-    moviesFoundQuantityUpdate: 'moviesFoundQuantityUpdate'
+    moviesFoundQuantityUpdate: 'moviesFoundQuantityUpdate',
+    filmKeyAction: 'filmKeyAction',
+    sameGenreFilmsAction: 'sameGenreFilmsAction'
 
 }
 

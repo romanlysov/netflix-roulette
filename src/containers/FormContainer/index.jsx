@@ -1,7 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import { SearchForm } from '../../components/Header/Form'
-import { connect } from 'react-redux'
 import { actionCreator } from '../../actions'
 import { getFilms } from '../../components/GetFilms'
 import { filterSwitcher } from '../../components/Header/SearchByPanel/SearchByFilterSwitcher'

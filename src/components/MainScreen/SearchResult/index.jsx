@@ -6,7 +6,7 @@ import './style.scss'
 
 export const SearchResultLayout = ({films, onClick}) => {
     const filmsList = films.map((film, index) =>
-        <SearchResultLayoutItem item={film} key={index} onClick={onClick}/>
+        <SearchResultLayoutItem item={film} key={index} onClick={onClick} dataKey={index}/>
     )
     return (<ul className={'film-layout'}>{filmsList}</ul>)
 }
