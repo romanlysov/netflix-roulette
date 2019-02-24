@@ -1,14 +1,5 @@
 import { actions } from '../actionNames'
 
-export const SearchStatus = {
-    noResults: 'noResults',
-    showRequested: 'showRequested'
-}
-
-export const noResults = 'noResults'
-export const showRequested = 'showRequested'
-export const showMovieInfo = 'showMovieInfo'
-
 const setMainView = status => {
     return {
         type: actions.mainViewSwitchAction,
@@ -50,7 +41,8 @@ const updateMoviesFoundQuantity = quantity => {
         payload: quantity
     }
 }
-const setFilmkey = key => {
+
+const setFilmKey = key => {
     return {
         type: actions.filmKeyAction,
         payload: key
@@ -79,7 +71,7 @@ export const  actionCreator = {
     setSearchByFilter: setSearchByFilter,
     updateMoviesFoundQuantity: updateMoviesFoundQuantity,
     getMovieInfo: getMovieInfo,
-    setFilmkey: setFilmkey,
+    setFilmKey: setFilmKey,
     getSameGenreFilms: getSameGenreFilms
 }
 
