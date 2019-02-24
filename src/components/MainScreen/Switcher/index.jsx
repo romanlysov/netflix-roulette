@@ -5,7 +5,7 @@ import { NoResults } from 'components/MainScreen/NoResults'
 import { filmsArray } from '../../../../assets/data'
 
 const ButtonSwitcher = (props) => {
-    const isResultShown = props.isResultShown
+    const { isResultShown } = props
     if (isResultShown) {
         return <SearchResultLayout films={filmsArray}/>
     }
@@ -13,12 +13,14 @@ const ButtonSwitcher = (props) => {
 }
 
 const NoFilmsButton = (props) => {
-    return <button onClick={props.onClick}>
+    const { onClick } = props
+    return <button onClick={onClick}>
         remove results
     </button>
 }
 const ShowFilmsButton = (props) => {
-    return <button onClick={props.onClick}>
+    const { onClick } = props
+    return <button onClick={onClick}>
         show results
     </button>
 }
@@ -37,7 +39,7 @@ export class Switcher extends React.Component {
         this.setState({isResultShown: true})
     }
     render() {
-        const isResultShown = this.state.isResultShown
+        const { isResultShown } = this.state
 
         let button = null
         if (isResultShown) {
@@ -46,7 +48,7 @@ export class Switcher extends React.Component {
             button = <ShowFilmsButton onClick={this.handleShowFilmsClick}/>
         }
         return (
-            <div className={'main-screen__content'}>
+            <div className='main-screen__content'>
                 {button}
                 <ButtonSwitcher isResultShown={isResultShown}/>
 

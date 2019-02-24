@@ -4,10 +4,13 @@ export const actions = {
     searchDataAction: 'searchDataAction',
     mainViewSwitchAction: 'mainViewSwitchAction',
     searchBySwitchAction: 'searchBySwitchAction',
+    sortBySwitchAction: 'sortBySwitchAction',
     showFilmInfoAction: 'showFilmInfoAction',
     moviesFoundQuantityUpdate: 'moviesFoundQuantityUpdate',
     filmKeyAction: 'filmKeyAction',
-    sameGenreFilmsAction: 'sameGenreFilmsAction'
+    sameGenreFilmsAction: 'sameGenreFilmsAction',
+    defineZoneClick: 'defineZoneClick',
+    clickedFilm: 'clickedFilm'
 
 }
 

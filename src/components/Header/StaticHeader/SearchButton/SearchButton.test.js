@@ -7,4 +7,3 @@ test('<SearchButton/>', () => {
     const wrapper = shallow(<SearchButton classAttribute="testing"/>)
     expect(wrapper.find('button').hasClass('testing')).toEqual(true)
 })
-

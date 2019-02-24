@@ -30,7 +30,7 @@
 
   &__release-button,
   &__rating-button {
-    @extend %search-settings-button-shared
+    @extend %search-settings-button-shared;
   }
 
   &__sort-by {
@@ -39,5 +39,5 @@
 }
 
 .active {
-  color: red;
+  color: #f00;
 }

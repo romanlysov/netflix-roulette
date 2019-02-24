@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import {getFilms} from 'components/AsyncApp'
 import { SearchForm } from '../../components/Header/Form'
 import { actionCreator } from '../../actions'
-import { getFilms } from '../../components/GetFilms'
-// import { filterSwitcher } from '../../components/Header/SearchByPanel/SearchByFilterSwitcher'
+import { fetchFilms } from '../../components/FetchFilms'
 
 export class FormContainerUnwrapped extends React.Component {
     state = {
@@ -20,27 +20,38 @@ export class FormContainerUnwrapped extends React.Component {
         this.setState({value: event.target.value})
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         const {value} = this.state
-        const {searchByFilter, dispatch} = this.props
+        const {searchByFilter, dispatch, sortBy} = this.props
         event.preventDefault()
         dispatch(actionCreator.getSearchData(value))
-        getFilms(this.props, `http://react-cdp-api.herokuapp.com/movies?search=${value}&${searchByFilter}`)
+        await fetchFilms(dispatch, async () => await getFilms({ sortBy, value, searchByFilter }))
     }
-    // handleSearchBySwitcher = (event) => {
-    //     filterSwitcher(event, this.props)
-    // }
 
     handleSearchByClick = (event) => {
         const { dispatch } = this.props
         switch (event.target.textContent) {
             case 'Title' :
-                dispatch(actionCreator.setSearchByFilter('searchBy=title'))
-                this.setState({titleChecked: true, genreChecked: false, chosenTitle: 'label-chosen',chosenGenre: ''  })
+                dispatch(actionCreator.setSearchByFilter('title'))
+                this.setState(
+                    {
+                        titleChecked: true,
+                        genreChecked: false,
+                        chosenTitle: 'label-chosen',
+                        chosenGenre: ''
+                    }
+                        )
                 break
             case 'Genre' :
-                dispatch(actionCreator.setSearchByFilter('searchBy=genre'))
-                this.setState({titleChecked: false, genreChecked: true, chosenTitle: '',chosenGenre: 'label-chosen' })
+                dispatch(actionCreator.setSearchByFilter('genres'))
+                this.setState(
+                    {
+                        titleChecked: false,
+                        genreChecked: true,
+                        chosenTitle: '',
+                        chosenGenre: 'label-chosen'
+                    }
+                    )
                 break
             default: break
         }
@@ -63,11 +74,12 @@ export class FormContainerUnwrapped extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        getSearchRequest: state.value,
+        getSearchRequest: state.searchRequest.getSearchRequest,
         main_view_switch: state.mainViewsSwitch,
         filmsLoadingStatus: state.loadedFilmsInfo.filmsAreLoaded,
         filmsArray: state.loadedFilmsInfo.filmsArray,
-        searchByFilter: state.searchRequest.searchByFilter
+        searchByFilter: state.searchRequest.searchByFilter,
+        sortBy: state.searchRequest.sortByFilter
     }
 }
 

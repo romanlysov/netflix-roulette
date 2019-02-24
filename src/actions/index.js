@@ -35,6 +35,13 @@ const setSearchByFilter = filter => {
     }
 }
 
+const setSortByFilter = filter => {
+    return {
+        type: actions.sortBySwitchAction,
+        payload: filter
+    }
+}
+
 const updateMoviesFoundQuantity = quantity => {
     return {
         type: actions.moviesFoundQuantityUpdate,
@@ -63,6 +70,20 @@ const getSameGenreFilms = data => {
     }
 }
 
+const setClickFromZoneFlag = zone => {
+    return {
+        type: actions.defineZoneClick,
+        payload: zone
+    }
+}
+
+const getClickedFilmInStore = film => {
+    return {
+        type: actions.clickedFilm,
+        payload: film
+    }
+}
+
 export const  actionCreator = {
     setMainView: setMainView,
     setFilmsLoadingStatus: setFilmsLoadingStatus,
@@ -72,6 +93,9 @@ export const  actionCreator = {
     updateMoviesFoundQuantity: updateMoviesFoundQuantity,
     getMovieInfo: getMovieInfo,
     setFilmKey: setFilmKey,
-    getSameGenreFilms: getSameGenreFilms
+    getSameGenreFilms: getSameGenreFilms,
+    setClickFromZoneFlag: setClickFromZoneFlag,
+    getClickedFilmInStore: getClickedFilmInStore,
+    setSortByFilter: setSortByFilter
 }
 

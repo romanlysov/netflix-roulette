@@ -1,12 +1,12 @@
 .footer {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: flex-start;
-  max-width: 75rem;
-  margin: 0 auto;
   background-color: #696969;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 75rem;
   min-height: 3.125rem;
 
   &__logo {

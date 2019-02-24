@@ -2,31 +2,42 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { SearchResultLayout } from 'components/MainScreen/SearchResult'
-import { getSameFilms } from 'components/GetSameFilms'
-import { MovieInfoHandler } from 'components/MovieInfoHandler';
+import { fetchSameFilms } from 'components/FetchSameFilms'
+import {sameFilmInfoHandler} from '../../../../handlers/SameFilmInfoHandler';
 
 export class MoreMoviesByGenreUnwrapped extends React.Component {
-    componentDidMount() {
-        const { genre } = this.props
-        const url = `http://react-cdp-api.herokuapp.com/movies?search=${genre}&searchBy=genres`
-        getSameFilms(this.props, url)
+  async componentDidMount() {
+    const { genre, dispatch } = this.props
+    await fetchSameFilms(dispatch, genre)
+  }
+
+  onClickHandler = async event => {
+    sameFilmInfoHandler(event, this.props)
+  }
+
+  render() {
+    const { isSameGenreFilmLoaded, sameGenreFilms } = this.props
+    if (isSameGenreFilmLoaded) {
+      return (
+        <SearchResultLayout
+          films={sameGenreFilms}
+          onClick={this.onClickHandler}
+        />
+      )
     }
-    onClickHandler = (event) => {
-        MovieInfoHandler(this.props, event)
-    }
-    render() {
-        const { isSameGenreFilmLoaded, sameGenreFilms } = this.props
-        if (isSameGenreFilmLoaded) {
-            return <SearchResultLayout films={sameGenreFilms} onClick={this.onClickHandler}/>
-        } return <p>загрузка...</p>
-    }
+    return <p>загрузка...</p>
+  }
 }
 
 const mapStateToProps = state => {
-    return {
-        sameGenreFilms: state.sameGenreFilms.sameGenreFilmsData,
-        isSameGenreFilmLoaded: state.sameGenreFilms.isSameGenreFilmLoaded
-    }
+  return {
+    sameGenreFilms: state.sameGenreFilms.sameGenreFilmsData,
+    isSameGenreFilmLoaded: state.sameGenreFilms.isSameGenreFilmLoaded,
+    filmInfo: state.sameGenreFilms.filmInfo,
+    filmKey: state.loadedFilmsInfo.filmKey
+  }
 }
 
-export const MoreMoviesByGenre = connect(mapStateToProps)(MoreMoviesByGenreUnwrapped)
+export const MoreMoviesByGenre = connect(mapStateToProps)(
+  MoreMoviesByGenreUnwrapped
+)

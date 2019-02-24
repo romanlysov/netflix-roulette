@@ -1,27 +1,27 @@
 %main-search-text-shared {
   font-family: Arial, sans-serif;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #fff;
 }
 
 .main-search {
   padding: 0 6.25rem;
 
   &__h1 {
+    @extend %main-search-text-shared;
     font-size: 2rem;
     font-weight: 600;
-
-    @extend %main-search-text-shared;
   }
 
   &__button {
+    @extend %main-search-text-shared;
     font-size: 1.25rem;
     font-weight: 500;
     padding: .3125rem 2.1875rem;
     border: 0;
-    background-color: red;
+    background-color: #f00;
 
-    @extend %main-search-text-shared;
+
   }
 
   &__container {

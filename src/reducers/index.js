@@ -1,18 +1,22 @@
 import { SearchStatus } from '../constants'
 import { actions } from '../actionNames'
 
-const initialState = {
+export const initialState = {
     mainViewsSwitch: SearchStatus.noResults,
     loadedFilmsInfo: {
         filmsAreLoaded: false,
         filmsArray: 'NO_DATA',
     },
     searchRequest: {
-        searchByFilter: 'searchBy=title'
+        searchByFilter: 'title',
+        sortByFilter: 'vote_average'
     },
     sameGenreFilms: {
         sameGenreFilmsData: [],
         isSameGenreFilmLoaded: false
+    },
+    chosenFilm: {
+        film: {}
     }
 }
 
@@ -27,6 +31,7 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 loadedFilmsInfo: {
+                    ...state.loadedFilmsInfo,
                     filmsArray: action.payload
                 }
             }
@@ -34,6 +39,7 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 loadedFilmsInfo: {
+                    ...state.loadedFilmsInfo,
                     filmsAreLoaded: action.payload
                 }
             }
@@ -41,6 +47,7 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 searchRequest:{
+                    ...state.searchRequest,
                     getSearchRequest: action.payload
                 }
 
@@ -48,14 +55,24 @@ export function reducer(state = initialState, action) {
         case actions.searchBySwitchAction :
             return {
                 ...state,
-                loadedFilmsInfo: {
+                searchRequest: {
+                    ...state.searchRequest,
                     searchByFilter: action.payload
                 }
             }
+        case actions.sortBySwitchAction :
+            return {
+                ...state,
+                searchRequest: {
+                    ...state.searchRequest,
+                    sortByFilter: action.payload
+                }
+             }
         case actions.moviesFoundQuantityUpdate :
             return {
                 ...state,
                 loadedFilmsInfo: {
+                    ...state.loadedFilmsInfo,
                     filmsFoundQuantity: action.payload
                 }
             }
@@ -64,6 +81,7 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 sameGenreFilms: {
+                    ...state.sameGenreFilms,
                     filmInfo: action.payload,
                     sameGenreFilms: [],
                     isSameGenreFilmLoaded: false
@@ -73,6 +91,7 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 loadedFilmsInfo: {
+                    ...state.loadedFilmsInfo,
                     filmKey: action.payload
                 }
             }
@@ -80,19 +99,26 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 sameGenreFilms: {
+                    ...state.sameGenreFilms,
                     sameGenreFilmsData: action.payload,
-                    isSameGenreFilmLoaded: true
+                    isSameGenreFilmLoaded: true,
                 }
             }
-        case actions.filmKeyAction :
+        case actions.defineZoneClick :
             return {
                 ...state,
-                filmKey: action.payload
+                sameGenreFilms: {
+                    ...state.sameGenreFilms,
+                    isClickFromSameFilms: action.payload
+                }
             }
-        case actions.sameGenreFilmsAction :
+        case actions.clickedFilm :
             return {
                 ...state,
-                sameGenreFilms: action.payload
+                chosenFilm: {
+                    ...state.chosenFilm,
+                    film: action.payload
+                }
             }
         default:
             return state

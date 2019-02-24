@@ -1,7 +1,7 @@
 %film-layout-child-shared {
   font-family: Arial, sans-serif;
   font-size: .75rem;
-  color: gray;
+  color: #808080;
 }
 
 .film-layout {
@@ -42,18 +42,16 @@
   }
 
   &__year {
+    @extend %film-layout-child-shared;
     display: block;
-    border: .0625rem solid gray;
+    border: .0625rem solid #808080;
     margin-right: .625rem;
     padding: .0625rem .3125rem;
-
-    @extend %film-layout-child-shared;
   }
 
   &__genre {
-    margin-left: .625rem;
-
     @extend %film-layout-child-shared;
+    margin-left: .625rem;
   }
 
   &__item {

@@ -1,27 +1,26 @@
 .main-search {
-
   &__input {
     margin-bottom: 1.25rem;
     position: relative;
     width: 100%;
-    background-color: #000000;
+    background-color: #000;
     border: 0;
-    border-bottom: .125rem solid red;
+    border-bottom: .125rem solid #f00;
     height: 2.19rem;
 
-    color: #ffffff;
+    color: #fff;
     font-size: 1.25rem;
   }
 
   &__input::after {
     //content: "&#8629;";
-    content: "";
+    content: '';
     position: absolute;
     width: .625rem;
     height: .625rem;
     top: .625rem;
     left: 3.125rem;
-    background-color: white;
+    background-color: #fff;
   }
 
   &__input::placeholder {

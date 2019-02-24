@@ -3,39 +3,33 @@
   margin-right: .9375rem;
   font-family: Arial, sans-serif;
   font-weight: 500;
-  color: #ffffff;
+  color: #fff;
   text-transform: uppercase;
   border: 0;
   border-radius: .125rem;
-  background-color: gray;
+  background-color: #808080;
 }
 
 .search-by {
-
   &__header {
     font-family: Arial, sans-serif;
     font-weight: 500;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #fff;
     margin-right: .9375rem;
   }
 
   &__title-label,
   &__genre-label {
-    @extend %label-shared
+    @extend %label-shared;
   }
 
   &__title-input,
   &__genre-input {
     display: none;
   }
-
-  &__header {
-
-    text-transform: uppercase;
-  }
 }
 
 .label-chosen {
-  background-color: red;
+  background-color: #f00;
 }

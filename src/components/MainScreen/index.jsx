@@ -2,41 +2,55 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { ErrorBoundary } from 'components/ErrorBoundary'
-import { getFilms } from 'components/GetFilms'
+import { fetchFilms } from 'components/FetchFilms'
 import { NoResults } from 'components/MainScreen/NoResults'
 import { SearchResultLayout } from 'components/MainScreen/SearchResult'
 
 import './style.scss'
-import {MovieInfoHandler} from 'components/MovieInfoHandler';
+import { getAllFilms } from 'components/AsyncApp'
+import { MovieInfoHandler } from '../../handlers/MovieInfoHandler'
+import { actionCreator } from '../../actions'
 
 export class MainScreenUnwrapped extends React.Component {
-    componentDidMount() {
-        getFilms(this.props, `http://react-cdp-api.herokuapp.com/movies?searchBy=title`)
+
+  async componentDidMount() {
+    const { sortBy, dispatch } = this.props
+    await fetchFilms(dispatch, async () => await getAllFilms(sortBy))
+  }
+
+  onClickHandle = ({dataKey}) => {
+    const { dispatch, filmsArray } = this.props
+    MovieInfoHandler(dispatch)(dataKey, filmsArray)
+    dispatch(actionCreator.setClickFromZoneFlag(false))
+  }
+
+  render() {
+    const { filmsLoadingStatus, mainViewsSwitch, filmsArray } = this.props
+    if (filmsLoadingStatus && mainViewsSwitch === 'showRequested') {
+      return (
+        <div className="main-screen">
+          <ErrorBoundary>
+            <SearchResultLayout
+              films={filmsArray}
+              onClick={this.onClickHandle}
+            />
+          </ErrorBoundary>
+        </div>
+      )
     }
-    onClickHandle = (event) => {
-        MovieInfoHandler(this.props, event)
-    }
-    render() {
-        const { filmsLoadingStatus, mainViewsSwitch, filmsArray } = this.props
-        if (filmsLoadingStatus && (mainViewsSwitch === 'showRequested')) {
-            return (
-                <div className='main-screen'>
-                    <ErrorBoundary>
-                         <SearchResultLayout films={filmsArray} onClick={this.onClickHandle}/>
-                    </ErrorBoundary>
-                </div>
-            )
-        } return <NoResults/>
-    }
+    return <NoResults />
+  }
 }
-const mapStateToProps = (state) => {
-    return {
-        mainViewsSwitch: state.mainViewsSwitch,
-        filmsLoadingStatus: state.loadedFilmsInfo.filmsAreLoaded,
-        filmsArray: state.loadedFilmsInfo.filmsArray,
-        filmInfoChosen: state.filmInfo,
-        filmKey: state.filmKey
-    }
+const mapStateToProps = state => {
+  return {
+    mainViewsSwitch: state.mainViewsSwitch,
+    filmsLoadingStatus: state.loadedFilmsInfo.filmsAreLoaded,
+    filmsArray: state.loadedFilmsInfo.filmsArray,
+    filmInfoChosen: state.filmInfo,
+    filmKey: state.sameGenreFilms.filmKey,
+    isClickFromSameFilms: state.sameGenreFilms.isClickFromSameFilms,
+    sortBy: state.searchRequest.sortByFilter
+  }
 }
 
 export const MainScreen = connect(mapStateToProps)(MainScreenUnwrapped)
