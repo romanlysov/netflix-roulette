@@ -20,9 +20,8 @@ export class MainScreenUnwrapped extends React.Component {
 
   onClickHandle = ({dataKey}) => {
     const { dispatch, filmsArray } = this.props
-    const film1 = filmsArray[dataKey]
-    dispatch(actionCreator.getClickedFilmInStore(film1))
-    MovieInfoHandler(dispatch)(film1)
+    dispatch(actionCreator.getClickedFilmInStore(filmsArray[dataKey]))
+    MovieInfoHandler(dispatch)(filmsArray[dataKey])
     dispatch(actionCreator.setClickFromZoneFlag(false))
   }
 
