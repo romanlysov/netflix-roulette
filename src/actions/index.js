@@ -1,4 +1,5 @@
 import { actions } from '../actionNames'
+import { SearchStatus } from '../constants'
 
 const setMainView = status => {
     return {
@@ -84,18 +85,29 @@ const getClickedFilmInStore = film => {
     }
 }
 
+const setMainFilmInfo = film => {
+    return {
+        type: actions.filmObject,
+        film: film,
+        status: SearchStatus.showMovieInfo,
+        title: film.title,
+        genre: film.genres[0]
+    }
+}
+
 export const  actionCreator = {
-    setMainView: setMainView,
-    setFilmsLoadingStatus: setFilmsLoadingStatus,
-    getFilmsData: getFilmsData,
-    getSearchData: getSearchData,
-    setSearchByFilter: setSearchByFilter,
-    updateMoviesFoundQuantity: updateMoviesFoundQuantity,
-    getMovieInfo: getMovieInfo,
-    setFilmKey: setFilmKey,
-    getSameGenreFilms: getSameGenreFilms,
-    setClickFromZoneFlag: setClickFromZoneFlag,
-    getClickedFilmInStore: getClickedFilmInStore,
-    setSortByFilter: setSortByFilter
+    setMainView,
+    setFilmsLoadingStatus,
+    getFilmsData,
+    getSearchData,
+    setSearchByFilter,
+    updateMoviesFoundQuantity,
+    getMovieInfo,
+    setFilmKey,
+    getSameGenreFilms,
+    setClickFromZoneFlag,
+    getClickedFilmInStore,
+    setSortByFilter,
+    setMainFilmInfo
 }
 

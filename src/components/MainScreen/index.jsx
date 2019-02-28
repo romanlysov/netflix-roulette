@@ -20,7 +20,9 @@ export class MainScreenUnwrapped extends React.Component {
 
   onClickHandle = ({dataKey}) => {
     const { dispatch, filmsArray } = this.props
-    MovieInfoHandler(dispatch)(dataKey, filmsArray)
+    const film1 = filmsArray[dataKey]
+    dispatch(actionCreator.getClickedFilmInStore(film1))
+    MovieInfoHandler(dispatch)(film1)
     dispatch(actionCreator.setClickFromZoneFlag(false))
   }
 
@@ -49,7 +51,8 @@ const mapStateToProps = state => {
     filmInfoChosen: state.filmInfo,
     filmKey: state.sameGenreFilms.filmKey,
     isClickFromSameFilms: state.sameGenreFilms.isClickFromSameFilms,
-    sortBy: state.searchRequest.sortByFilter
+    sortBy: state.searchRequest.sortByFilter,
+    film: state.chosenFilm.film
   }
 }
 

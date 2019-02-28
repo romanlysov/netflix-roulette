@@ -32,13 +32,11 @@ class AppUnwrapped extends React.Component {
   render() {
     const {
       mainViewsSwitch,
-      filmsArray,
-      filmKey,
       isClickFromSameFilms,
-      sameGenreFilmsArray,
       filmsFoundQuantity,
       film,
-      sortBy
+      sortBy,
+        genre
     } = this.props
 
     if (
@@ -49,12 +47,12 @@ class AppUnwrapped extends React.Component {
         <>
           <header className="header movie-card">
             <StaticHeader className="navigation" onclick={this.handleClick} />
-            <MovieCard film={filmsArray[filmKey]} />
+            <MovieCard film={film} />
             <FormContainer />
           </header>
-          <SubHeader genre={filmsArray[filmKey].genres[0]} />
+          <SubHeader genre={genre} />
           <div className="main-screen">
-            <MoreMoviesByGenre genre={filmsArray[filmKey].genres[0]} />
+            <MoreMoviesByGenre genre={genre} />
           </div>
           <Footer />
         </>
@@ -70,9 +68,9 @@ class AppUnwrapped extends React.Component {
             <MovieCard film={film} />
             <FormContainer />
           </header>
-          <SubHeader genre={sameGenreFilmsArray[filmKey].genres[0]} />
+          <SubHeader genre={genre} />
           <div className="main-screen">
-            <MoreMoviesByGenre genre={sameGenreFilmsArray[filmKey].genres[0]} />
+            <MoreMoviesByGenre genre={genre} />
           </div>
           <Footer />
         </>
@@ -109,7 +107,8 @@ const mapStateToProps = state => {
     film: state.chosenFilm.film,
     sortBy: state.searchRequest.sortByFilter,
     searchByFilter: state.searchRequest.searchByFilter,
-    value: state.searchRequest.getSearchRequest
+    value: state.searchRequest.getSearchRequest,
+      genre: state.chosenFilm.genre
   }
 }
 

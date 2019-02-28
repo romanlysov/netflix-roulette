@@ -16,9 +16,9 @@ fetchFilms.mockImplementation((dispatch, fetch) => {
 
 test('SortByRatingClickHandler', async () => {
   const dispatched = []
-  const dispatchMock = action => {
+  const dispatchMock = jest.fn((action) => {
     dispatched.push(action)
-  }
+  })
   const paramsMock = {
     dispatch: dispatchMock,
     searchByFilter: SortByParam.byRating,

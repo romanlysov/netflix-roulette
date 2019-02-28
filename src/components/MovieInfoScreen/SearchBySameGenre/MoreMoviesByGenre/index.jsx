@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { SearchResultLayout } from 'components/MainScreen/SearchResult'
 import { fetchSameFilms } from 'components/FetchSameFilms'
-import {sameFilmInfoHandler} from '../../../../handlers/SameFilmInfoHandler';
+import { sameFilmInfoHandler } from '../../../../handlers/SameFilmInfoHandler';
 
 export class MoreMoviesByGenreUnwrapped extends React.Component {
   async componentDidMount() {

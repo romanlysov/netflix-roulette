@@ -10,7 +10,8 @@ export const actions = {
     filmKeyAction: 'filmKeyAction',
     sameGenreFilmsAction: 'sameGenreFilmsAction',
     defineZoneClick: 'defineZoneClick',
-    clickedFilm: 'clickedFilm'
+    clickedFilm: 'clickedFilm',
+    filmObject: 'filmObject'
 
 }
 

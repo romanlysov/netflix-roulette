@@ -120,6 +120,20 @@ export function reducer(state = initialState, action) {
                     film: action.payload
                 }
             }
+        case actions.filmObject :
+            return {
+                ...state,
+                mainViewsSwitch: action.status,
+                chosenFilm: {
+                    ...state.chosenFilm,
+                    film: action.film,
+                    title: action.title,
+                    genre: action.genre
+
+                }
+
+
+            }
         default:
             return state
     }
