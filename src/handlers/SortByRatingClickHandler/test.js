@@ -27,4 +27,5 @@ test('SortByRatingClickHandler', async () => {
   await sortByRatingClickHandler(paramsMock)
   expect(dispatched[0].type).toEqual(actions.sortBySwitchAction)
   expect(fetchFilms).toHaveBeenCalledWith(dispatchMock, expect.anything())
+
 })
