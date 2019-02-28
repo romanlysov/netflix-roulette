@@ -3,9 +3,8 @@ import { getFilms } from 'components/AsyncApp';
 import { actionCreator } from '../../actions';
 import { SortByParam } from '../../constants';
 
-export const sortByDateClickHandler = async (params) => {
-    const { dispatch, searchByFilter, value } = params
-    dispatch(actionCreator.setSortByFilter(SortByParam.byDate))
+export const sortByDateClickHandler = dispatch => async (searchByFilter, value) => {
     const sortBy = SortByParam.byDate
+    dispatch(actionCreator.setSortByFilter(sortBy))
     await fetchFilms(dispatch, async () => await getFilms({sortBy, value, searchByFilter }) )
 }

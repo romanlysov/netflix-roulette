@@ -26,7 +26,8 @@ class AppUnwrapped extends React.Component {
   }
 
   handleSortByDateClick = async () => {
-    sortByDateClickHandler(this.props)
+    const { dispatch, searchByFilter, value } = this.props
+      sortByDateClickHandler(dispatch)(searchByFilter, value)
   }
 
   render() {

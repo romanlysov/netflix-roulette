@@ -25,5 +25,4 @@ test('sameFilmInfoHandler calls MovieInfoHandler', () => {
   expect(fetchSameFilms).toHaveBeenCalledWith(dispatchMock, expect.anything())
   expect(dispatched[1].type).toEqual(actions.defineZoneClick)
   expect(dispatched[0].data).toEqual(1)
-
 })
