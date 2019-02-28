@@ -95,6 +95,16 @@ const setMainFilmInfo = film => {
     }
 }
 
+const setAllFilmsInfo = films => {
+    return {
+        type: actions.filmsDataAllInfo,
+        films: films,
+        mainScreen: SearchStatus.showRequested,
+        quantity: films.length
+
+    }
+}
+
 export const  actionCreator = {
     setMainView,
     setFilmsLoadingStatus,
@@ -108,6 +118,7 @@ export const  actionCreator = {
     setClickFromZoneFlag,
     getClickedFilmInStore,
     setSortByFilter,
-    setMainFilmInfo
+    setMainFilmInfo,
+    setAllFilmsInfo
 }
 

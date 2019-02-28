@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { SearchResultLayout } from 'components/MainScreen/SearchResult'
-import { fetchSameFilms } from 'components/FetchSameFilms'
-import { sameFilmInfoHandler } from '../../../../handlers/SameFilmInfoHandler';
-import {actionCreator} from '../../../../actions'
+import { fetchSameFilms } from '../../../../handlers/FetchSameFilms'
+import { sameFilmInfoHandler } from '../../../../handlers/SameFilmInfoHandler'
+import { actionCreator } from '../../../../actions'
 
 export class MoreMoviesByGenreUnwrapped extends React.Component {
   async componentDidMount() {
@@ -12,7 +12,7 @@ export class MoreMoviesByGenreUnwrapped extends React.Component {
     await fetchSameFilms(dispatch, genre)
   }
 
-  onClickHandler = async ({dataKey}) => {
+  onClickHandler = async ({ dataKey }) => {
     const { dispatch, sameGenreFilms } = this.props
     dispatch(actionCreator.getClickedFilmInStore(sameGenreFilms[dataKey]))
     sameFilmInfoHandler(dispatch)(sameGenreFilms[dataKey])

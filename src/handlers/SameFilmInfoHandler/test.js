@@ -1,4 +1,4 @@
-import { fetchSameFilms } from 'components/FetchSameFilms'
+import { fetchSameFilms } from '../FetchSameFilms'
 import { sameFilmInfoHandler } from './index'
 import { actions } from '../../actionNames'
 import { MovieInfoHandler } from '../MovieInfoHandler'
@@ -8,7 +8,7 @@ MovieInfoHandler.mockImplementation(dispatch => film => {
   dispatch(film)
 })
 
-jest.mock('components/FetchSameFilms')
+jest.mock('../../utils/FetchSameFilms')
 fetchSameFilms.mockImplementation(async (dispatch, genre) => {
   return
 })

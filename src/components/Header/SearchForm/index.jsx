@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Input } from 'components/Header/Form/Input'
+import { Input } from 'components/Header/SearchForm/Input'
 import { SearchByPanel } from 'components/Header/SearchByPanel'
 import './style.scss'
 

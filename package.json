@@ -72,7 +72,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --testPathPattern=test\\.js$",
     "spec": "jest --testPathPattern=spec\\.js$",
     "test-coverage": "jest --coverage",
     "test-watch": "jest --watch",

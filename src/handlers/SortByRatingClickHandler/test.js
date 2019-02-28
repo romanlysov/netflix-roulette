@@ -1,15 +1,14 @@
-import { getFilms } from 'components/AsyncApp'
-import { fetchFilms } from 'components/FetchFilms'
-import { SortByParam } from '../../constants'
+import { fetchFilms } from '../FetchFilms'
+import { getFilms } from '../../services/getFilms/getFilms'
 import { sortByRatingClickHandler } from './index'
 import { actions } from '../../actionNames'
 
-jest.mock('components/AsyncApp')
+jest.mock('../../utils/getFilms')
 getFilms.mockImplementation(async () => {
   return [{}, {}]
 })
 
-jest.mock('components/FetchFilms')
+jest.mock('../../utils/FetchFilms')
 fetchFilms.mockImplementation((dispatch, fetch) => {
   return
 })

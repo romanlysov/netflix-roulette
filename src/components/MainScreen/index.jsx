@@ -1,15 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { ErrorBoundary } from 'components/ErrorBoundary'
-import { fetchFilms } from 'components/FetchFilms'
 import { NoResults } from 'components/MainScreen/NoResults'
 import { SearchResultLayout } from 'components/MainScreen/SearchResult'
-
-import './style.scss'
-import { getAllFilms } from 'components/AsyncApp'
+import { fetchFilms } from '../../handlers/FetchFilms'
+import { ErrorBoundary } from '../../containers/ErrorBoundary'
+import { getAllFilms } from '../../services/getFilms/getAllFilms'
 import { MovieInfoHandler } from '../../handlers/MovieInfoHandler'
 import { actionCreator } from '../../actions'
+
+import './style.scss'
 
 export class MainScreenUnwrapped extends React.Component {
 

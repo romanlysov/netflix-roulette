@@ -131,8 +131,18 @@ export function reducer(state = initialState, action) {
                     genre: action.genre
 
                 }
+            }
+        case actions.filmsDataAllInfo :
+            return {
+                ...state,
+                mainViewsSwitch: action.mainScreen,
+                loadedFilmsInfo: {
+                    ...state.loadedFilmsInfo,
+                    filmsAreLoaded: true,
+                    filmsArray: action.films,
+                    filmsFoundQuantity: action.quantity
 
-
+                }
             }
         default:
             return state

@@ -1,4 +1,4 @@
-import { getFilms } from 'components/AsyncApp'
+import { getFilms } from '../../services/getFilms/getFilms'
 import { actionCreator } from '../../actions'
 
 export const fetchSameFilms = async (dispatch, genre) => {

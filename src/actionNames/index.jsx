@@ -11,7 +11,8 @@ export const actions = {
     sameGenreFilmsAction: 'sameGenreFilmsAction',
     defineZoneClick: 'defineZoneClick',
     clickedFilm: 'clickedFilm',
-    filmObject: 'filmObject'
+    filmObject: 'filmObject',
+    filmsDataAllInfo: 'filmsDataAllInfo'
 
 }
 

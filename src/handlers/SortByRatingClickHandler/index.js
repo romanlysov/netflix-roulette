@@ -1,5 +1,5 @@
-import { fetchFilms } from 'components/FetchFilms'
-import { getFilms } from 'components/AsyncApp'
+import { fetchFilms } from '../FetchFilms'
+import { getFilms } from '../../services/getFilms/getFilms'
 import { actionCreator } from '../../actions'
 import { SortByParam } from '../../constants'
 
