@@ -14,18 +14,23 @@ fetchFilms.mockImplementation((dispatch, fetch) => {
   return
 })
 
-test('SortByRatingClickHandler', async () => {
-  const dispatched = []
-  const dispatchMock = jest.fn((action) => {
-    dispatched.push(action)
-  })
-  const paramsMock = {
-    dispatch: dispatchMock,
-    searchByFilter: SortByParam.byRating,
-    value: 'terminator'
-  }
-  await sortByRatingClickHandler(paramsMock)
-  expect(dispatched[0].type).toEqual(actions.sortBySwitchAction)
-  expect(fetchFilms).toHaveBeenCalledWith(dispatchMock, expect.anything())
-
+const dispatched = []
+const dispatchMock = jest.fn((action) => {
+  dispatched.push(action)
 })
+
+describe('SortByRatingClickHandler', ()=> {
+  test('SortByRatingClickHandler calls fetchFilms', async () => {
+    await sortByRatingClickHandler(dispatchMock)()
+    expect(fetchFilms).toHaveBeenCalledWith(dispatchMock, expect.anything())
+
+  })
+
+  test('SortByRatingClickHandler dispatches sortBySwitchAction', async ()=> {
+    await sortByRatingClickHandler(dispatchMock)()
+    expect(dispatched[0].type).toEqual(actions.sortBySwitchAction)
+
+  })
+})
+
+

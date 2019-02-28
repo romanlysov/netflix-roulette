@@ -19,10 +19,21 @@ const dispatchMock = jest.fn(film => {
     dispatched.push(film)
 })
 
-test('sameFilmInfoHandler calls MovieInfoHandler', () => {
-  sameFilmInfoHandler(dispatchMock)(film)
-  expect(MovieInfoHandler).toHaveBeenCalled()
-  expect(fetchSameFilms).toHaveBeenCalledWith(dispatchMock, expect.anything())
-  expect(dispatched[1].type).toEqual(actions.defineZoneClick)
-  expect(dispatched[0].data).toEqual(1)
+describe('sameFilmInfoHandler test', ()=>{
+  test('sameFilmInfoHandler calls MovieInfoHandler', async() => {
+    await sameFilmInfoHandler(dispatchMock)(film)
+    expect(MovieInfoHandler).toHaveBeenCalled()
+  })
+
+  test('sameFilmInfoHandler calls fetchSameFilms', async()=> {
+    await sameFilmInfoHandler(dispatchMock)(film)
+    expect(fetchSameFilms).toHaveBeenCalledWith(dispatchMock, expect.anything())
+  })
+
+  test('sameFilmInfoHandler dispatches zoneClick and transferred payload', async()=> {
+    await sameFilmInfoHandler(dispatchMock)(film)
+    expect(dispatched[1].type).toEqual(actions.defineZoneClick)
+    expect(dispatched[0].data).toEqual(1)
+  })
 })
+

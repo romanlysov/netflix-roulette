@@ -22,12 +22,13 @@ class AppUnwrapped extends React.Component {
   }
 
   handleSortByRatingClick = () => {
-    sortByRatingClickHandler(this.props)
+    const { dispatch, searchByFilter, value } = this.props
+    sortByRatingClickHandler(dispatch)(searchByFilter, value)
   }
 
   handleSortByDateClick = async () => {
     const { dispatch, searchByFilter, value } = this.props
-      sortByDateClickHandler(dispatch)(searchByFilter, value)
+    sortByDateClickHandler(dispatch)(searchByFilter, value)
   }
 
   render() {
@@ -37,7 +38,7 @@ class AppUnwrapped extends React.Component {
       filmsFoundQuantity,
       film,
       sortBy,
-        genre
+      genre
     } = this.props
 
     if (
@@ -109,7 +110,7 @@ const mapStateToProps = state => {
     sortBy: state.searchRequest.sortByFilter,
     searchByFilter: state.searchRequest.searchByFilter,
     value: state.searchRequest.getSearchRequest,
-      genre: state.chosenFilm.genre
+    genre: state.chosenFilm.genre
   }
 }
 
