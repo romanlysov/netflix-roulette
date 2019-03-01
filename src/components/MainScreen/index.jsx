@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SearchResultLayout } from 'components/MainScreen/SearchResultLayout'
+import { SearchResultLayout } from './SearchResultLayout'
 import { ErrorBoundary } from '../../containers/ErrorBoundary'
 
 export const MainScreen = ({films, onclick} )=> {

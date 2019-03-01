@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Header } from 'components/Header'
+import { Header } from '../../components/Header'
 import { actionCreator } from '../../actions'
 import { SearchStatus } from '../../constants'
 
@@ -24,16 +24,22 @@ const mapStateToProps = state => {
   const filmsArray = state.FilmsInfo.Array
   const sameGenreFilmsArray = state.SameGenreFilms.Array
   const filmKey = state.FilmsInfo.filmKey
+
   return {
     mainViewsSwitch: state.ScreenType,
     filmInfo: state.SameGenreFilms.filmInfo,
-    film:
+    film: state.ScreenType === SearchStatus.showRequested ? filmsArray[filmKey] : sameGenreFilmsArray[filmKey],
+    film1:
       state.ScreenType !== SearchStatus.showMovieInfo
         ? undefined
         : isClickFromSameFilms
         ? sameGenreFilmsArray[filmKey]
-        : filmsArray[filmKey]
+        : filmsArray[filmKey],
+    className: state.ScreenType === SearchStatus.showMovieInfo ?
+        'header movie-card':
+        'header search-result',
   }
-}
+  }
 
-export const HeaderSwitcher = connect(mapStateToProps)(HeaderUnwrapped)
+
+export const HeaderContainer = connect(mapStateToProps)(HeaderUnwrapped)

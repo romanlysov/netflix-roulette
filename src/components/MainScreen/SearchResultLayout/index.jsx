@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SearchResultLayoutItem } from 'components/MainScreen/SearchResultLayout/SearchResultLayoutItem'
+import { SearchResultLayoutItem } from './SearchResultLayoutItem'
 
 import './style.scss'
 

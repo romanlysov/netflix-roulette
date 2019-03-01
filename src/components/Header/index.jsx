@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { StaticHeader } from 'components/Header/StaticHeader'
-import { MovieCard } from 'components/MovieCard'
+import { StaticHeader } from './StaticHeader'
+import { MovieCard } from '../MovieCard'
 import { FormContainer } from '../../containers/FormContainer'
 
 import './style.scss'
 
-export const Header = (film, className, onclick) => {
+export const Header = ({film, className, onclick}) => {
     return (
-        <header className={`header ${className}`}>
+        <header className={className}>
             <StaticHeader className="navigation" onclick={onclick} />
-            film && <MovieCard film={film} />
+            {film && <MovieCard film={film} />}
             <FormContainer />
         </header>
     )

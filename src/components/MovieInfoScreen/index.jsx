@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Footer } from 'components/Footer'
-import { SubHeader } from 'components/MovieInfoScreen/SearchBySameGenre/SubHeader'
-import { MoreMoviesByGenre } from 'components/MovieInfoScreen/SearchBySameGenre/MoreMoviesByGenre'
+import { Footer } from '../Footer'
+import { SubHeader } from './SearchBySameGenre/SubHeader'
+import { MoreMoviesByGenreContainer } from '../../containers/MoreMoviesByGenreContainer'
 import { FormContainer } from '../../containers/FormContainer';
 
 export const MovieInfoScreen = ({genre}) => {
@@ -12,7 +12,7 @@ export const MovieInfoScreen = ({genre}) => {
         </header>
             <SubHeader genre={genre}/>
             <div className='main-screen'>
-                <MoreMoviesByGenre genre={genre}/>
+                <MoreMoviesByGenreContainer genre={genre}/>
             </div>
             <Footer/>
     </>

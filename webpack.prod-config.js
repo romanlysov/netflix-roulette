@@ -12,9 +12,9 @@ module.exports = {
     mode: 'production',
     resolve: {
         extensions: ['.js', '.jsx'],
-        alias: {
-            components: path.join(srcPath, 'components')
-        }
+        // alias: {
+        //     components: path.join(srcPath, 'components')
+        // }
     },
 
     entry: './index.jsx',

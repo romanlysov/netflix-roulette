@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MainLogo } from 'components/MainLogo'
+import { MainLogo } from '../MainLogo'
 
 import './style.scss'
 

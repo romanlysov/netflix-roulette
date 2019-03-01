@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Input } from 'components/Header/SearchForm/Input'
-import { SearchByPanel } from 'components/Header/SearchByPanel'
+import { Input } from './Input'
+import { SearchByPanel } from '../SearchByPanel'
 
 import './style.scss'
 

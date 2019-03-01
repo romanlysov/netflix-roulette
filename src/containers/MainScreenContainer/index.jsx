@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { NoResults } from 'components/MainScreen/NoResults'
-import { MainScreen } from 'components/MainScreen'
+import { NoResults } from '../../components/MainScreen/NoResults'
+import { MainScreen } from '../../components/MainScreen'
 import { fetchFilms } from '../../handlers/FetchFilms'
 import { getAllFilms } from '../../services/getFilms/getAllFilms'
 import { FilmInfoHandler } from '../../handlers/FilmInfoHandler'
 
 import '../../components/MainScreen/style.scss'
+import { actionCreator } from '../../actions'
 
 class MainScreenUnwrapped extends React.Component {
 
@@ -18,6 +19,7 @@ class MainScreenUnwrapped extends React.Component {
 
   onClickHandle = ({dataKey}) => {
     const { dispatch, filmsArray } = this.props
+    dispatch(actionCreator.setFilmKey(dataKey))
     FilmInfoHandler(dispatch)(filmsArray[dataKey], false)
   }
 

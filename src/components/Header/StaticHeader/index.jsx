@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { MainLogo } from 'components/MainLogo'
-import { SearchButton } from 'components/Header/StaticHeader/SearchButton'
+import { MainLogo } from '../../MainLogo'
+import { SearchButton } from './SearchButton'
 
 import './style.scss'
 

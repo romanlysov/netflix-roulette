@@ -12,7 +12,5 @@ export const actions = {
     defineZoneClick: 'defineZoneClick',
     clickedFilm: 'clickedFilm',
     filmObject: 'filmObject',
-    filmsDataAllInfo: 'filmsDataAllInfo'
-
+    filmsDataAllInfo: 'filmsDataAllInfo',
 }
-

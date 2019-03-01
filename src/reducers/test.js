@@ -7,7 +7,7 @@ test(('mainViewSwitchAction'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        mainViewsSwitch: action.payload
+        ScreenType: action.payload
     })
 })
 
@@ -19,7 +19,7 @@ test(('filmsDataAction'), () => {
         ...initialState,
         FilmsInfo: {
             ...initialState.FilmsInfo,
-            filmsArray: action.payload
+            Array: action.payload
         }
     })
 })
@@ -43,9 +43,9 @@ test(('searchDataAction'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        searchRequest:{
-            ...initialState.searchRequest,
-            getSearchRequest: action.payload
+        SearchRequest:{
+            ...initialState.SearchRequest,
+            Text: action.payload
         }
     })
 })
@@ -56,9 +56,9 @@ test(('searchBySwitchAction'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        searchRequest: {
-            ...initialState.searchRequest,
-            searchByFilter: action.payload
+        SearchRequest: {
+            ...initialState.SearchRequest,
+            SearchBy: action.payload
         }
     })
 })
@@ -69,9 +69,9 @@ test(('sortBySwitchAction'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        searchRequest: {
-            ...initialState.searchRequest,
-            sortByFilter: action.payload
+        SearchRequest: {
+            ...initialState.SearchRequest,
+            SortBy: action.payload
         }
     })
 })
@@ -84,7 +84,7 @@ test(('moviesFoundQuantityUpdate'), () => {
         ...initialState,
         FilmsInfo: {
             ...initialState.FilmsInfo,
-            filmsFoundQuantity: action.payload
+            Quantity: action.payload
         }
     })
 })
@@ -95,11 +95,11 @@ test(('showFilmInfoAction'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        sameGenreFilms: {
-            ...initialstate.SameGenreFilms,
+        SameGenreFilms: {
+            ...initialState.SameGenreFilms,
             filmInfo: action.payload,
-            sameGenreFilms: [],
-            isSameGenreFilmLoaded: false
+            Array: [],
+            AreLoaded: false
         }
     })
 })
@@ -123,10 +123,10 @@ test(('sameGenreFilmsAction'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        sameGenreFilms: {
-            ...initialstate.SameGenreFilms,
+        SameGenreFilms: {
+            ...initialState.SameGenreFilms,
             Array: action.payload,
-            isSameGenreFilmLoaded: true,
+            AreLoaded: true,
         }
     })
 })
@@ -137,9 +137,9 @@ test(('defineZoneClick'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        sameGenreFilms: {
-            ...initialstate.SameGenreFilms,
-            isClickFromSameFilms: action.payload
+        SameGenreFilms: {
+            ...initialState.SameGenreFilms,
+            IsTrigger: action.payload
         }
     })
 })
@@ -150,9 +150,9 @@ test(('clickedFilm'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        chosenFilm: {
-            ...initialstate.ChosenFilm,
-            film: action.payload
+        ChosenFilm: {
+            ...initialState.ChosenFilm,
+            Film: action.payload
         }
     })
 })

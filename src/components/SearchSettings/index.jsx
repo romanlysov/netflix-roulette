@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Sorter } from 'components/SearchSettings/Sorter'
+import { Sorter } from './Sorter'
 
 export const SearchSettings = ({counter, sortByRatingHandler, sortByDateHandler, filter}) => {
     return (

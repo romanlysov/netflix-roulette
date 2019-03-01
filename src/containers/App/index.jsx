@@ -1,19 +1,21 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { SearchSettings} from 'components/SearchSettings'
-import { Footer } from 'components/Footer'
-import { SubHeader } from 'components/MovieInfoScreen/SearchBySameGenre/SubHeader'
-import { MoreMoviesByGenre } from 'components/MovieInfoScreen/SearchBySameGenre/MoreMoviesByGenre'
+import { Footer } from '../../components/Footer'
+import { SubHeader } from '../../components/MovieInfoScreen/SearchBySameGenre/SubHeader'
+import { MoreMoviesByGenreContainer } from '../MoreMoviesByGenreContainer'
+import { SearchSettings } from '../../components/SearchSettings'
 import { MainScreenContainer } from '../MainScreenContainer'
 import { SearchStatus } from '../../constants'
-import { StaticHeader } from '../../components/Header/StaticHeader'
-import { MovieCard } from '../../components/MovieCard'
-import { FormContainer } from '../FormContainer'
+// import { StaticHeader } from '../../components/Header/StaticHeader'
+// import { MovieCard } from '../../components/MovieCard'
+// import { FormContainer } from '../FormContainer'
 import { actionCreator } from '../../actions'
-import '../../components/Header/style.scss'
 import { sortByRatingClickHandler } from '../../handlers/SortByRatingClickHandler'
 import { sortByDateClickHandler } from '../../handlers/SortByDateClickHandler'
+import { HeaderContainer } from '../HeaderContainer'
+
+import '../../components/Header/style.scss'
 
 class AppUnwrapped extends React.Component {
   handleClick = () => {
@@ -36,7 +38,6 @@ class AppUnwrapped extends React.Component {
       mainViewsSwitch,
       isClickFromSameFilms,
       filmsFoundQuantity,
-      film,
       sortBy,
       genre
     } = this.props
@@ -47,14 +48,15 @@ class AppUnwrapped extends React.Component {
     ) {
       return (
         <>
-          <header className="header movie-card">
-            <StaticHeader className="navigation" onclick={this.handleClick} />
-            <MovieCard film={film} />
-            <FormContainer />
-          </header>
+          {/*<header className="header movie-card">*/}
+            {/*<StaticHeader className="navigation" onclick={this.handleClick} />*/}
+            {/*<MovieCard film={film} />*/}
+            {/*<FormContainer />*/}
+          {/*</header>*/}
+          <HeaderContainer/>
           <SubHeader genre={genre} />
           <div className="main-screen">
-            <MoreMoviesByGenre genre={genre} />
+            <MoreMoviesByGenreContainer genre={genre} />
           </div>
           <Footer />
         </>
@@ -65,14 +67,15 @@ class AppUnwrapped extends React.Component {
     ) {
       return (
         <>
-          <header className="header movie-card">
-            <StaticHeader className="navigation" onclick={this.handleClick} />
-            <MovieCard film={film} />
-            <FormContainer />
-          </header>
+          {/*<header className="header movie-card">*/}
+            {/*<StaticHeader className="navigation" onclick={this.handleClick} />*/}
+            {/*<MovieCard film={film} />*/}
+            {/*<FormContainer />*/}
+          {/*</header>*/}
+            <HeaderContainer/>
           <SubHeader genre={genre} />
           <div className="main-screen">
-            <MoreMoviesByGenre genre={genre} />
+            <MoreMoviesByGenreContainer genre={genre} />
           </div>
           <Footer />
         </>
@@ -80,10 +83,11 @@ class AppUnwrapped extends React.Component {
     } else {
       return (
         <>
-          <header className="header search-result">
-            <StaticHeader className="navigation" onclick={this.handleClick} />
-            <FormContainer />
-          </header>
+          {/*<header className="header search-result">*/}
+            {/*<StaticHeader className="navigation" onclick={this.handleClick} />*/}
+            {/*<FormContainer />*/}
+          {/*</header>*/}
+            <HeaderContainer/>
           <SearchSettings
             counter={filmsFoundQuantity}
             sortByRatingHandler={this.handleSortByRatingClick}
