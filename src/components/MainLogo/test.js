@@ -1,12 +1,11 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import { SearchForm } from 'src/components/Header/SearchForm'
+import {MainLogo} from 'components/MainLogo/index'
 
-test('renders Input properly', () => {
+test('renders MainLogo properly', () => {
     const wrapper = renderer
-        .create(<SearchForm/>)
+        .create(<MainLogo/>)
         .toJSON()
     expect(wrapper).toMatchSnapshot()
-
 })

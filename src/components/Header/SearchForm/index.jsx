@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Input } from 'components/Header/SearchForm/Input'
 import { SearchByPanel } from 'components/Header/SearchByPanel'
+
 import './style.scss'
 
 export const SearchForm = ({className, onChange, onSubmit, value, searchBy, titleChecked, genreChecked, titleLabelClass, genreLabelClass}) => {

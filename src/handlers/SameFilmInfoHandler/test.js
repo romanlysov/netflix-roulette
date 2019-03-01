@@ -8,7 +8,7 @@ MovieInfoHandler.mockImplementation(dispatch => film => {
   dispatch(film)
 })
 
-jest.mock('../../utils/FetchSameFilms')
+jest.mock('../FetchSameFilms')
 fetchSameFilms.mockImplementation(async (dispatch, genre) => {
   return
 })

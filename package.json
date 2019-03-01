@@ -80,6 +80,7 @@
     "build-dev-w": "webpack --config webpack.dev-config.js -w",
     "build-prod": "webpack --config webpack.prod-config.js",
     "dev-server": "webpack-dev-server --config webpack.dev-config.js",
+    "start": "webpack-dev-server --config webpack.dev-config.js",
     "lint": "eslint **/*.js **/*.jsx & stylelint **/*.scss"
   },
   "repository": {

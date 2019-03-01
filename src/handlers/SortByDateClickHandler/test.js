@@ -3,12 +3,12 @@ import { getFilms } from '../../services/getFilms/getFilms'
 import { sortByDateClickHandler } from './index'
 import { actions } from '../../actionNames'
 
-jest.mock('../../utils/FetchFilms')
+jest.mock('../FetchFilms')
 fetchFilms.mockImplementation(async (dispatch, fetch) => {
   return
 })
 
-jest.mock('../../utils/getFilms')
+jest.mock('../../services/getFilms/getFilms')
 getFilms.mockImplementation(() => {
   return []
 })

@@ -1,6 +1,10 @@
-import { getFilms } from '.'
+import { getFilms } from './getFilms'
 
 test('calls axios', async () => {
-    const films = await getFilms({sortBy: 'release_date', value: 'terminator',searchByFilter: 'title'})
-    expect(films.length).toEqual(10)
+  const films = await getFilms({
+    sortBy: 'release_date',
+    value: 'terminator',
+    searchByFilter: 'title'
+  })
+  expect(films.length).toEqual(5)
 })

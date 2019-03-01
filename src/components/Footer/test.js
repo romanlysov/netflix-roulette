@@ -1,7 +1,7 @@
 import React from 'react'
+import renderer from 'react-test-renderer'
 
 import { Footer } from 'components/Footer/index'
-import renderer from 'react-test-renderer'
 
 test('renders footer properly', () => {
     const wrapper = renderer

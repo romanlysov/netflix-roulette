@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SearchByPanel properly 1`] = `
+<div>
+  <span
+    className="undefined__header"
+  >
+    Search by
+  </span>
+  <input
+    className="undefined__title-input"
+    id="title"
+    name="search-by"
+    type="radio"
+    value="title"
+  />
+  <label
+    className="undefined__title-label undefined"
+    htmlFor="title"
+  >
+    Title
+  </label>
+  <input
+    className="undefined__genre-input"
+    id="genre"
+    name="search-by"
+    type="radio"
+    value="genre"
+  />
+  <label
+    className="undefined__genre-label undefined"
+    htmlFor="genre"
+  >
+    Genre
+  </label>
+</div>
+`;
