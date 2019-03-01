@@ -1,5 +1,5 @@
 import { fetchSameFilms } from '../FetchSameFilms'
-import { sameFilmInfoHandler } from './index'
+import { FilmInfoHandler } from './index'
 import { actions } from '../../actionNames'
 import { MovieInfoHandler } from '../MovieInfoHandler'
 
@@ -19,19 +19,19 @@ const dispatchMock = jest.fn(film => {
     dispatched.push(film)
 })
 
-describe('sameFilmInfoHandler test', ()=>{
-  test('sameFilmInfoHandler calls MovieInfoHandler', async() => {
-    await sameFilmInfoHandler(dispatchMock)(film)
+describe('FilmInfoHandler test', ()=>{
+  test('FilmInfoHandler calls MovieInfoHandler', async() => {
+    await FilmInfoHandler(dispatchMock)(film)
     expect(MovieInfoHandler).toHaveBeenCalled()
   })
 
-  test('sameFilmInfoHandler calls fetchSameFilms', async()=> {
-    await sameFilmInfoHandler(dispatchMock)(film)
+  test('FilmInfoHandler calls fetchSameFilms', async()=> {
+    await FilmInfoHandler(dispatchMock)(film)
     expect(fetchSameFilms).toHaveBeenCalledWith(dispatchMock, expect.anything())
   })
 
-  test('sameFilmInfoHandler dispatches zoneClick and transferred payload', async()=> {
-    await sameFilmInfoHandler(dispatchMock)(film)
+  test('FilmInfoHandler dispatches zoneClick and transferred payload', async()=> {
+    await FilmInfoHandler(dispatchMock)(film)
     expect(dispatched[1].type).toEqual(actions.defineZoneClick)
     expect(dispatched[0].data).toEqual(1)
   })

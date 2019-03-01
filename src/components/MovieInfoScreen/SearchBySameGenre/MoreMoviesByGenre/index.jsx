@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { SearchResultLayout } from 'components/MainScreen/SearchResult'
+import { SearchResultLayout } from 'components/MainScreen/SearchResultLayout'
 import { fetchSameFilms } from '../../../../handlers/FetchSameFilms'
-import { sameFilmInfoHandler } from '../../../../handlers/SameFilmInfoHandler'
+import { FilmInfoHandler } from '../../../../handlers/FilmInfoHandler'
 import { actionCreator } from '../../../../actions'
 
 export class MoreMoviesByGenreUnwrapped extends React.Component {
@@ -15,7 +15,7 @@ export class MoreMoviesByGenreUnwrapped extends React.Component {
   onClickHandler = async ({ dataKey }) => {
     const { dispatch, sameGenreFilms } = this.props
     dispatch(actionCreator.getClickedFilmInStore(sameGenreFilms[dataKey]))
-    sameFilmInfoHandler(dispatch)(sameGenreFilms[dataKey])
+    FilmInfoHandler(dispatch)(sameGenreFilms[dataKey])
     dispatch(actionCreator.setClickFromZoneFlag(false))
   }
 
@@ -25,7 +25,7 @@ export class MoreMoviesByGenreUnwrapped extends React.Component {
       return (
         <SearchResultLayout
           films={sameGenreFilms}
-          onClick={this.onClickHandler}
+          onclick={this.onClickHandler}
         />
       )
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import { SearchForm } from 'src/components/Header/SearchForm'
+import { SearchForm } from 'components/Header/SearchForm/index'
 
 test('renders Input properly', () => {
     const wrapper = renderer

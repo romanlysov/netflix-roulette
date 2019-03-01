@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const SearchResultLayoutItem = ({item, onClick, dataKey}) => {
-    const clickHandler  = () => onClick({ dataKey })
+export const SearchResultLayoutItem = ({item, onclick, dataKey}) => {
+    const clickHandler  = () => onclick({ dataKey })
     return (<div className='film-layout__item' onClick={clickHandler}>
         <img className='film-layout__cover' src={item.poster_path} alt=''/>
         <div className='film-layout__title-container'>

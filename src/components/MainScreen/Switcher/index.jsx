@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SearchResultLayout } from 'components/MainScreen/SearchResult'
+import { SearchResultLayout } from 'components/MainScreen/SearchResultLayout'
 import { NoResults } from 'components/MainScreen/NoResults'
 import { filmsArray } from '../../../../assets/data'
 

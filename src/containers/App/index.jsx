@@ -5,7 +5,7 @@ import { SearchSettings} from 'components/SearchSettings'
 import { Footer } from 'components/Footer'
 import { SubHeader } from 'components/MovieInfoScreen/SearchBySameGenre/SubHeader'
 import { MoreMoviesByGenre } from 'components/MovieInfoScreen/SearchBySameGenre/MoreMoviesByGenre'
-import { MainScreen } from '../../components/MainScreen'
+import { MainScreenContainer } from '../MainScreenContainer'
 import { SearchStatus } from '../../constants'
 import { StaticHeader } from '../../components/Header/StaticHeader'
 import { MovieCard } from '../../components/MovieCard'
@@ -90,7 +90,7 @@ class AppUnwrapped extends React.Component {
             sortByDateHandler={this.handleSortByDateClick}
             filter={sortBy === 'release_date'}
           />
-          <MainScreen />
+          <MainScreenContainer />
           <Footer />
         </>
       )

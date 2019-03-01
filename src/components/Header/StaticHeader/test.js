@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import { StaticHeader } from 'src/components/Header/StaticHeader'
+import { StaticHeader } from 'components/Header/StaticHeader/index'
 
 test('renders StaticHeader properly', () => {
   const wrapper = renderer.create(<StaticHeader />).toJSON()
