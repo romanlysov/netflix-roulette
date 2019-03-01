@@ -2,21 +2,21 @@ import { SearchStatus } from '../constants'
 import { actions } from '../actionNames'
 
 export const initialState = {
-    mainViewsSwitch: SearchStatus.noResults,
-    loadedFilmsInfo: {
-        filmsAreLoaded: false,
-        filmsArray: 'NO_DATA',
+    ScreenType: SearchStatus.noResults,
+    FilmsInfo: {
+        AreLoaded: false,
+        Array: 'NO_DATA',
     },
-    searchRequest: {
-        searchByFilter: 'title',
-        sortByFilter: 'vote_average'
+    SearchRequest: {
+        SearchBy: 'title',
+        SortBy: 'vote_average'
     },
-    sameGenreFilms: {
-        sameGenreFilmsData: [],
-        isSameGenreFilmLoaded: false
+    SameGenreFilms: {
+        Array: [],
+        AreLoaded: false
     },
-    chosenFilm: {
-        film: {}
+    ChosenFilm: {
+        Film: {}
     }
 }
 
@@ -25,122 +25,122 @@ export function reducer(state = initialState, action) {
         case actions.mainViewSwitchAction :
             return {
                 ...state,
-                mainViewsSwitch: action.payload
+                ScreenType: action.payload
             }
         case actions.filmsDataAction :
             return {
                 ...state,
-                loadedFilmsInfo: {
-                    ...state.loadedFilmsInfo,
-                    filmsArray: action.payload
+                FilmsInfo: {
+                    ...state.FilmsInfo,
+                    Array: action.payload
                 }
             }
         case actions.loadingStatusUpdate :
             return {
                 ...state,
-                loadedFilmsInfo: {
-                    ...state.loadedFilmsInfo,
-                    filmsAreLoaded: action.payload
+                FilmsInfo: {
+                    ...state.FilmsInfo,
+                    AreLoaded: action.payload
                 }
             }
         case actions.searchDataAction :
             return {
                 ...state,
-                searchRequest:{
-                    ...state.searchRequest,
-                    getSearchRequest: action.payload
+                SearchRequest:{
+                    ...state.SearchRequest,
+                    Text: action.payload
                 }
 
             }
         case actions.searchBySwitchAction :
             return {
                 ...state,
-                searchRequest: {
-                    ...state.searchRequest,
-                    searchByFilter: action.payload
+                SearchRequest: {
+                    ...state.SearchRequest,
+                    SearchBy: action.payload
                 }
             }
         case actions.sortBySwitchAction :
             return {
                 ...state,
-                searchRequest: {
-                    ...state.searchRequest,
-                    sortByFilter: action.payload
+                SearchRequest: {
+                    ...state.SearchRequest,
+                    SortBy: action.payload
                 }
              }
         case actions.moviesFoundQuantityUpdate :
             return {
                 ...state,
-                loadedFilmsInfo: {
-                    ...state.loadedFilmsInfo,
-                    filmsFoundQuantity: action.payload
+                FilmsInfo: {
+                    ...state.FilmsInfo,
+                    Quantity: action.payload
                 }
             }
 
         case actions.showFilmInfoAction :
             return {
                 ...state,
-                sameGenreFilms: {
-                    ...state.sameGenreFilms,
+                SameGenreFilms: {
+                    ...state.SameGenreFilms,
                     filmInfo: action.payload,
-                    sameGenreFilms: [],
-                    isSameGenreFilmLoaded: false
+                    Array: [],
+                    AreLoaded: false
                 }
             }
         case actions.filmKeyAction :
             return {
                 ...state,
-                loadedFilmsInfo: {
-                    ...state.loadedFilmsInfo,
+                FilmsInfo: {
+                    ...state.FilmsInfo,
                     filmKey: action.payload
                 }
             }
         case actions.sameGenreFilmsAction :
             return {
                 ...state,
-                sameGenreFilms: {
-                    ...state.sameGenreFilms,
-                    sameGenreFilmsData: action.payload,
-                    isSameGenreFilmLoaded: true,
+                SameGenreFilms: {
+                    ...state.SameGenreFilms,
+                    Array: action.payload,
+                    AreLoaded: true,
                 }
             }
         case actions.defineZoneClick :
             return {
                 ...state,
-                sameGenreFilms: {
-                    ...state.sameGenreFilms,
-                    isClickFromSameFilms: action.payload
+                SameGenreFilms: {
+                    ...state.SameGenreFilms,
+                    IsTrigger: action.payload
                 }
             }
         case actions.clickedFilm :
             return {
                 ...state,
-                chosenFilm: {
-                    ...state.chosenFilm,
-                    film: action.payload
+                ChosenFilm: {
+                    ...state.ChosenFilm,
+                    Film: action.payload
                 }
             }
         case actions.filmObject :
             return {
                 ...state,
-                mainViewsSwitch: action.status,
-                chosenFilm: {
-                    ...state.chosenFilm,
-                    film: action.film,
-                    title: action.title,
-                    genre: action.genre
+                ScreenType: action.status,
+                ChosenFilm: {
+                    ...state.ChosenFilm,
+                    Film: action.film,
+                    Title: action.title,
+                    Genre: action.genre
 
                 }
             }
         case actions.filmsDataAllInfo :
             return {
                 ...state,
-                mainViewsSwitch: action.mainScreen,
-                loadedFilmsInfo: {
-                    ...state.loadedFilmsInfo,
-                    filmsAreLoaded: true,
-                    filmsArray: action.films,
-                    filmsFoundQuantity: action.quantity
+                ScreenType: action.mainScreen,
+                FilmsInfo: {
+                    ...state.FilmsInfo,
+                    AreLoaded: true,
+                    Array: action.films,
+                    Quantity: action.quantity
 
                 }
             }

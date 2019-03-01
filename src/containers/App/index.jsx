@@ -100,17 +100,17 @@ class AppUnwrapped extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    filmsFoundQuantity: state.loadedFilmsInfo.filmsFoundQuantity,
-    mainViewsSwitch: state.mainViewsSwitch,
-    filmsArray: state.loadedFilmsInfo.filmsArray,
-    filmKey: state.loadedFilmsInfo.filmKey,
-    isClickFromSameFilms: state.sameGenreFilms.isClickFromSameFilms,
-    sameGenreFilmsArray: state.sameGenreFilms.sameGenreFilmsData,
-    film: state.chosenFilm.film,
-    sortBy: state.searchRequest.sortByFilter,
-    searchByFilter: state.searchRequest.searchByFilter,
-    value: state.searchRequest.getSearchRequest,
-    genre: state.chosenFilm.genre
+    filmsFoundQuantity: state.FilmsInfo.Quantity,
+    mainViewsSwitch: state.ScreenType,
+    filmsArray: state.FilmsInfo.Array,
+    filmKey: state.FilmsInfo.filmKey,
+    isClickFromSameFilms: state.SameGenreFilms.IsTrigger,
+    sameGenreFilmsArray: state.SameGenreFilms.Array,
+    film: state.ChosenFilm.Film,
+    sortBy: state.SearchRequest.SortBy,
+    searchByFilter: state.SearchRequest.SearchBy,
+    value: state.SearchRequest.Text,
+    genre: state.ChosenFilm.Genre
   }
 }
 

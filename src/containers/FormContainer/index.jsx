@@ -82,12 +82,12 @@ export class FormContainerUnwrapped extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    getSearchRequest: state.searchRequest.getSearchRequest,
-    main_view_switch: state.mainViewsSwitch,
-    filmsLoadingStatus: state.loadedFilmsInfo.filmsAreLoaded,
-    filmsArray: state.loadedFilmsInfo.filmsArray,
-    searchByFilter: state.searchRequest.searchByFilter,
-    sortBy: state.searchRequest.sortByFilter
+    getSearchRequest: state.SearchRequest.Text,
+    main_view_switch: state.ScreenType,
+    filmsLoadingStatus: state.FilmsInfo.AreLoaded,
+    filmsArray: state.FilmsInfo.Array,
+    searchByFilter: state.SearchRequest.SearchBy,
+    sortBy: state.SearchRequest.SortBy
   }
 }
 

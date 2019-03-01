@@ -32,14 +32,14 @@ class MainScreenUnwrapped extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    mainViewsSwitch: state.mainViewsSwitch,
-    filmsLoadingStatus: state.loadedFilmsInfo.filmsAreLoaded,
-    filmsArray: state.loadedFilmsInfo.filmsArray,
+    mainViewsSwitch: state.ScreenType,
+    filmsLoadingStatus: state.FilmsInfo.AreLoaded,
+    filmsArray: state.FilmsInfo.Array,
     filmInfoChosen: state.filmInfo,
-    filmKey: state.sameGenreFilms.filmKey,
-    isClickFromSameFilms: state.sameGenreFilms.isClickFromSameFilms,
-    sortBy: state.searchRequest.sortByFilter,
-    film: state.chosenFilm.film
+    filmKey: state.SameGenreFilms.filmKey,
+    isClickFromSameFilms: state.SameGenreFilms.IsTrigger,
+    sortBy: state.SearchRequest.SortBy,
+    film: state.ChosenFilm.Film
   }
 }
 

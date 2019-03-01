@@ -17,8 +17,8 @@ test(('filmsDataAction'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        loadedFilmsInfo: {
-            ...initialState.loadedFilmsInfo,
+        FilmsInfo: {
+            ...initialState.FilmsInfo,
             filmsArray: action.payload
         }
     })
@@ -30,9 +30,9 @@ test(('loadingStatusUpdate'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        loadedFilmsInfo: {
-            ...initialState.loadedFilmsInfo,
-            filmsAreLoaded: action.payload
+        FilmsInfo: {
+            ...initialState.FilmsInfo,
+            AreLoaded: action.payload
         }
     })
 })
@@ -82,8 +82,8 @@ test(('moviesFoundQuantityUpdate'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        loadedFilmsInfo: {
-            ...initialState.loadedFilmsInfo,
+        FilmsInfo: {
+            ...initialState.FilmsInfo,
             filmsFoundQuantity: action.payload
         }
     })
@@ -96,7 +96,7 @@ test(('showFilmInfoAction'), () => {
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
         sameGenreFilms: {
-            ...initialState.sameGenreFilms,
+            ...initialstate.SameGenreFilms,
             filmInfo: action.payload,
             sameGenreFilms: [],
             isSameGenreFilmLoaded: false
@@ -110,8 +110,8 @@ test(('filmKeyAction'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
-        loadedFilmsInfo: {
-            ...initialState.loadedFilmsInfo,
+        FilmsInfo: {
+            ...initialState.FilmsInfo,
             filmKey: action.payload
         }
     })
@@ -124,8 +124,8 @@ test(('sameGenreFilmsAction'), () => {
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
         sameGenreFilms: {
-            ...initialState.sameGenreFilms,
-            sameGenreFilmsData: action.payload,
+            ...initialstate.SameGenreFilms,
+            Array: action.payload,
             isSameGenreFilmLoaded: true,
         }
     })
@@ -138,7 +138,7 @@ test(('defineZoneClick'), () => {
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
         sameGenreFilms: {
-            ...initialState.sameGenreFilms,
+            ...initialstate.SameGenreFilms,
             isClickFromSameFilms: action.payload
         }
     })
@@ -151,7 +151,7 @@ test(('clickedFilm'), () => {
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
         chosenFilm: {
-            ...initialState.chosenFilm,
+            ...initialstate.ChosenFilm,
             film: action.payload
         }
     })

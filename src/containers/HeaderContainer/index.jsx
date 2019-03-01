@@ -20,15 +20,15 @@ class HeaderUnwrapped extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const isClickFromSameFilms = state.sameGenreFilms.isClickFromSameFilms
-  const filmsArray = state.loadedFilmsInfo.filmsArray
-  const sameGenreFilmsArray = state.sameGenreFilms.sameGenreFilmsData
-  const filmKey = state.loadedFilmsInfo.filmKey
+  const isClickFromSameFilms = state.SameGenreFilms.IsTrigger
+  const filmsArray = state.FilmsInfo.Array
+  const sameGenreFilmsArray = state.SameGenreFilms.Array
+  const filmKey = state.FilmsInfo.filmKey
   return {
-    mainViewsSwitch: state.mainViewsSwitch,
-    filmInfo: state.sameGenreFilms.filmInfo,
+    mainViewsSwitch: state.ScreenType,
+    filmInfo: state.SameGenreFilms.filmInfo,
     film:
-      state.mainViewsSwitch !== SearchStatus.showMovieInfo
+      state.ScreenType !== SearchStatus.showMovieInfo
         ? undefined
         : isClickFromSameFilms
         ? sameGenreFilmsArray[filmKey]

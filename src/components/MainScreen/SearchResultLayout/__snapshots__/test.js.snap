@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResultLayout 1`] = `
+<ul
+  className="film-layout"
+>
+  <div
+    className="film-layout__item"
+    onClick={[Function]}
+  >
+    <img
+      alt=""
+      className="film-layout__cover"
+    />
+    <div
+      className="film-layout__title-container"
+    >
+      <span
+        className="film-layout__title"
+      />
+      <span
+        className="film-layout__year"
+      />
+    </div>
+    <span
+      className="film-layout__genre"
+    >
+      
+    </span>
+  </div>
+</ul>
+`;

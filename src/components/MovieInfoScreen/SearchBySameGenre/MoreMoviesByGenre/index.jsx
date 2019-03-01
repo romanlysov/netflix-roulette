@@ -15,8 +15,7 @@ export class MoreMoviesByGenreUnwrapped extends React.Component {
   onClickHandler = async ({ dataKey }) => {
     const { dispatch, sameGenreFilms } = this.props
     dispatch(actionCreator.getClickedFilmInStore(sameGenreFilms[dataKey]))
-    FilmInfoHandler(dispatch)(sameGenreFilms[dataKey])
-    dispatch(actionCreator.setClickFromZoneFlag(false))
+    FilmInfoHandler(dispatch)(sameGenreFilms[dataKey], true)
   }
 
   render() {
@@ -35,10 +34,10 @@ export class MoreMoviesByGenreUnwrapped extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    sameGenreFilms: state.sameGenreFilms.sameGenreFilmsData,
-    isSameGenreFilmLoaded: state.sameGenreFilms.isSameGenreFilmLoaded,
-    filmInfo: state.sameGenreFilms.filmInfo,
-    filmKey: state.loadedFilmsInfo.filmKey
+    sameGenreFilms: state.SameGenreFilms.Array,
+    isSameGenreFilmLoaded: state.SameGenreFilms.AreLoaded,
+    filmInfo: state.SameGenreFilms.filmInfo,
+    filmKey: state.FilmsInfo.filmKey
   }
 }
 
