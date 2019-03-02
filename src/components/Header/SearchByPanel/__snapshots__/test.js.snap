@@ -9,26 +9,28 @@ exports[`renders SearchByPanel properly 1`] = `
   </span>
   <input
     className="undefined__title-input"
+    defaultChecked={false}
     id="title"
     name="search-by"
     type="radio"
     value="title"
   />
   <label
-    className="undefined__title-label undefined"
+    className="undefined__title-label"
     htmlFor="title"
   >
     Title
   </label>
   <input
     className="undefined__genre-input"
+    defaultChecked={false}
     id="genre"
     name="search-by"
     type="radio"
     value="genre"
   />
   <label
-    className="undefined__genre-label undefined"
+    className="undefined__title-label"
     htmlFor="genre"
   >
     Genre

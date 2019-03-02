@@ -3,7 +3,10 @@ import { getFilms } from '../../services/getFilms/getFilms'
 import { actionCreator } from '../../actions'
 import { SortByParam } from '../../constants'
 
-export const sortByRatingClickHandler = dispatch => async (searchByFilter, value) => {
+export const sortByRatingClickHandler = dispatch => async (
+  searchByFilter,
+  value
+) => {
   const sortBy = SortByParam.byRating
   dispatch(actionCreator.setSortByFilter(sortBy))
   await fetchFilms(
@@ -11,4 +14,3 @@ export const sortByRatingClickHandler = dispatch => async (searchByFilter, value
     async () => await getFilms({ sortBy, value, searchByFilter })
   )
 }
-

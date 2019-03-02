@@ -46,6 +46,7 @@ export function reducer(state = initialState, action) {
         case actions.searchDataAction :
             return {
                 ...state,
+              ScreenType: SearchStatus.showRequested,
                 SearchRequest:{
                     ...state.SearchRequest,
                     Text: action.payload
@@ -102,14 +103,6 @@ export function reducer(state = initialState, action) {
                     ...state.SameGenreFilms,
                     Array: action.payload,
                     AreLoaded: true,
-                }
-            }
-        case actions.defineZoneClick :
-            return {
-                ...state,
-                SameGenreFilms: {
-                    ...state.SameGenreFilms,
-                    IsTrigger: action.payload
                 }
             }
         case actions.clickedFilm :

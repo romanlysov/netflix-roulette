@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const endPoint = 'http://react-cdp-api.herokuapp.com/movies';
 
-export async function getAllFilms({ sortBy }) {
+export async function getAllFilms(sortBy) {
     const params = {
         sortBy,
         sortOrder: 'desc'

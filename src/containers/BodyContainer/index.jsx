@@ -9,32 +9,28 @@ import { sortByRatingClickHandler } from '../../handlers/SortByRatingClickHandle
 import { sortByDateClickHandler } from '../../handlers/SortByDateClickHandler'
 import { MovieInfoScreenWrapper } from '../../components/MovieInfoScreenWrapper'
 
-class BodyContainerUnwrapped extends React.PureComponent {
-  render() {
-    const {
-      mainScreen,
-      sortByRating,
-      sortByDate,
-      filmsQuantity,
-      sortBy
-    } = this.props
-    return mainScreen === SearchStatus.showMovieInfo ? (
-      <MovieInfoScreenWrapper>
-        <MoreMoviesByGenreContainer genre="" />
-      </MovieInfoScreenWrapper>
-
-    ) : (
-      <>
-        <SearchSettings
-          counter={filmsQuantity}
-          sortByRatingHandler={sortByRating}
-          sortByDateHandler={sortByDate}
-          filter={sortBy === 'release_date'}
-        />
-        <MainScreenContainer />
-      </>
-    )
-  }
+export const BodyContainerUnwrapped = ({
+  mainScreen,
+  sortByRating,
+  sortByDate,
+  filmsQuantity,
+  sortBy
+}) => {
+  return mainScreen === SearchStatus.showMovieInfo ? (
+    <MovieInfoScreenWrapper>
+      <MoreMoviesByGenreContainer genre="" />
+    </MovieInfoScreenWrapper>
+  ) : (
+    <>
+      <SearchSettings
+        counter={filmsQuantity}
+        sortByRatingHandler={sortByRating}
+        sortByDateHandler={sortByDate}
+        filter={sortBy === 'release_date'}
+      />
+      <MainScreenContainer />
+    </>
+  )
 }
 
 const mapStateToProps = state => {

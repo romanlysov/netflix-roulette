@@ -5,9 +5,8 @@ import { SearchResultLayout } from '../../components/MainScreen/SearchResultLayo
 import { YetLoader } from '../../components/YetLoader'
 import { fetchSameFilms } from '../../handlers/FetchSameFilms'
 import { FilmInfoHandler } from '../../handlers/FilmInfoHandler'
-import { actionCreator } from '../../actions'
 
-class MoreMoviesByGenreUnwrapped extends React.Component {
+export class MoreMoviesByGenreUnwrapped extends React.Component {
   async componentDidMount() {
     const { genre, dispatch } = this.props
     await fetchSameFilms(dispatch, genre)
@@ -15,8 +14,7 @@ class MoreMoviesByGenreUnwrapped extends React.Component {
 
   onClickHandler = async ({ dataKey }) => {
     const { dispatch, sameGenreFilms } = this.props
-    dispatch(actionCreator.setFilmKey(dataKey))
-    FilmInfoHandler(dispatch)(sameGenreFilms[dataKey], true)
+    FilmInfoHandler(dispatch)(sameGenreFilms[dataKey])
   }
 
   render() {

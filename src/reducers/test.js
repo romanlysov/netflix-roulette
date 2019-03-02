@@ -1,5 +1,6 @@
 import { actions } from '../actionNames'
 import { reducer, initialState } from './index'
+import { SearchStatus } from '../constants'
 
 test(('mainViewSwitchAction'), () => {
     const action = {
@@ -43,6 +44,7 @@ test(('searchDataAction'), () => {
     }
     expect(reducer(initialState, action)).toEqual({
         ...initialState,
+      ScreenType: SearchStatus.showRequested,
         SearchRequest:{
             ...initialState.SearchRequest,
             Text: action.payload
@@ -127,19 +129,6 @@ test(('sameGenreFilmsAction'), () => {
             ...initialState.SameGenreFilms,
             Array: action.payload,
             AreLoaded: true,
-        }
-    })
-})
-
-test(('defineZoneClick'), () => {
-    const action = {
-        type: actions.defineZoneClick
-    }
-    expect(reducer(initialState, action)).toEqual({
-        ...initialState,
-        SameGenreFilms: {
-            ...initialState.SameGenreFilms,
-            IsTrigger: action.payload
         }
     })
 })

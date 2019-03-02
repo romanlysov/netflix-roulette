@@ -4,14 +4,12 @@ import './style.scss'
 
 export const SearchByPanel = ({
   className,
-  searchBy,
-  titleChecked,
-  genreChecked,
-  titleLabelClass,
-  genreLabelClass
+  sortByTitle,
+  sortByGenre,
+  filter
 }) => {
   return (
-    <div className={className} onClick={searchBy}>
+    <div className={className}>
       <span className={`${className}__header`}>Search by</span>
       <input
         className={`${className}__title-input`}
@@ -19,11 +17,12 @@ export const SearchByPanel = ({
         name="search-by"
         value="title"
         id="title"
-        defaultChecked={titleChecked}
+        defaultChecked={filter==='title'}
       />
       <label
-        className={`${className}__title-label ${titleLabelClass}`}
+        className={(filter==='title') ? `${className}__title-label label-chosen` : `${className}__title-label`}
         htmlFor="title"
+        onClick={sortByTitle}
       >
         Title
       </label>
@@ -33,11 +32,12 @@ export const SearchByPanel = ({
         name="search-by"
         value="genre"
         id="genre"
-        defaultChecked={genreChecked}
+        defaultChecked={filter==='genres'}
       />
       <label
-        className={`${className}__genre-label ${genreLabelClass}`}
+        className={(filter==='genres') ? `${className}__title-label label-chosen` : `${className}__title-label`}
         htmlFor="genre"
+        onClick={sortByGenre}
       >
         Genre
       </label>

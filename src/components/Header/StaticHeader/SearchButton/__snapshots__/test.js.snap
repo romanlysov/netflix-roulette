@@ -27,26 +27,28 @@ exports[`SearchButton renders SearchButton properly 1`] = `
       </span>
       <input
         className="search-by__title-input"
+        defaultChecked={false}
         id="title"
         name="search-by"
         type="radio"
         value="title"
       />
       <label
-        className="search-by__title-label undefined"
+        className="search-by__title-label"
         htmlFor="title"
       >
         Title
       </label>
       <input
         className="search-by__genre-input"
+        defaultChecked={false}
         id="genre"
         name="search-by"
         type="radio"
         value="genre"
       />
       <label
-        className="search-by__genre-label undefined"
+        className="search-by__title-label"
         htmlFor="genre"
       >
         Genre

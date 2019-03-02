@@ -8,3 +8,8 @@ export const SortByParam = {
     byRating: 'vote_average',
     byDate: 'release_date'
 }
+
+export const HeaderClass = {
+    movieCard: 'header movie-card',
+    searchResult: 'header search-result'
+}

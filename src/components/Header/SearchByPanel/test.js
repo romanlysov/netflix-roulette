@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import { SearchByPanel } from 'components/Header/SearchByPanel/index'
+import { SearchByPanel } from './index'
 
 test('renders SearchByPanel properly', () => {
   const wrapper = renderer.create(<SearchByPanel />).toJSON()

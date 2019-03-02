@@ -6,29 +6,29 @@ import { MainScreen } from '../../components/MainScreen'
 import { fetchFilms } from '../../handlers/FetchFilms'
 import { getAllFilms } from '../../services/getFilms/getAllFilms'
 import { FilmInfoHandler } from '../../handlers/FilmInfoHandler'
+import { SearchStatus } from '../../constants'
 
 import '../../components/MainScreen/style.scss'
-import { actionCreator } from '../../actions'
 
-class MainScreenUnwrapped extends React.Component {
 
+export class MainScreenUnwrapped extends React.Component {
   async componentDidMount() {
     const { sortBy, dispatch } = this.props
     await fetchFilms(dispatch, async () => await getAllFilms(sortBy))
   }
 
-  onClickHandle = ({dataKey}) => {
+  onClickHandle = ({ dataKey }) => {
     const { dispatch, filmsArray } = this.props
-    dispatch(actionCreator.setFilmKey(dataKey))
-    FilmInfoHandler(dispatch)(filmsArray[dataKey], false)
+    FilmInfoHandler(dispatch)(filmsArray[dataKey])
   }
 
   render() {
     const { filmsLoadingStatus, mainViewsSwitch, filmsArray } = this.props
-    return (
-    filmsLoadingStatus && mainViewsSwitch === 'showRequested'
-        ?  <MainScreen films={filmsArray} onclick={this.onClickHandle}/>
-        :  <NoResults />
+    return filmsLoadingStatus &&
+      mainViewsSwitch === SearchStatus.showRequested ? (
+      <MainScreen films={filmsArray} onclick={this.onClickHandle} />
+    ) : (
+      <NoResults />
     )
   }
 }

@@ -5,6 +5,6 @@ import { MainScreen } from './index'
 
 test('MainScreen renders correctly', ()=> {
     const wrapper = renderer
-    renderer.create(<MainScreen/>).toJSON()
+    renderer.create(<MainScreen films={{}} onclick={()=>{}}/>).toJSON()
     expect(wrapper).toMatchSnapshot()
 } )
