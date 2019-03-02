@@ -5,6 +5,7 @@ import { getFilms } from '../../services/getFilms/getFilms'
 import { SearchForm } from '../../components/Header/SearchForm'
 import { actionCreator } from '../../actions'
 import { fetchFilms } from '../../handlers/FetchFilms'
+import { SearchStatus } from '../../constants'
 
 export class FormContainerUnwrapped extends React.Component {
   state = {
@@ -24,6 +25,7 @@ export class FormContainerUnwrapped extends React.Component {
     const { searchByFilter, dispatch, sortBy } = this.props
     event.preventDefault()
     dispatch(actionCreator.getSearchData(value))
+    dispatch(actionCreator.setMainView(SearchStatus.showRequested))
     await fetchFilms(
       dispatch,
       async () => await getFilms({ sortBy, value, searchByFilter })

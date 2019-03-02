@@ -117,7 +117,7 @@ export function reducer(state = initialState, action) {
                 ...state,
                 ChosenFilm: {
                     ...state.ChosenFilm,
-                    Film: action.payload
+                    Film: action.payload,
                 }
             }
         case actions.filmObject :
