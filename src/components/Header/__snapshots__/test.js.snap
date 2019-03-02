@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders Header for searchResults properly 1`] = `
-<header
-  className="header [object Object]"
->
+<header>
   <nav
     className="header__static navigation"
   >
@@ -18,47 +16,11 @@ exports[`Header renders Header for searchResults properly 1`] = `
       search
     </button>
   </nav>
-  film && 
-  <div
-    className="header__movie-info info-block"
-  >
-    <img
-      alt=""
-      className="info-block__cover"
-    />
-    <div
-      className="info-block__description"
-    >
-      <h1
-        className="info-block__title"
-      />
-      <span
-        className="info-block__genre"
-      />
-      <div
-        className="info-block__sub-info"
-      >
-        <span
-          className="info-block__year"
-        />
-        <span
-          className="info-block__length"
-        >
-           min
-        </span>
-      </div>
-      <p
-        className="info-block__annotation"
-      />
-    </div>
-  </div>
 </header>
 `;
 
 exports[`Header renders header for MovieCard properly 1`] = `
-<header
-  className="header [object Object]"
->
+<header>
   <nav
     className="header__static navigation"
   >
@@ -73,7 +35,6 @@ exports[`Header renders header for MovieCard properly 1`] = `
       search
     </button>
   </nav>
-  film && 
   <div
     className="header__movie-info info-block"
   >

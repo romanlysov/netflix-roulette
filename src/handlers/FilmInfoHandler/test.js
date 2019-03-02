@@ -21,8 +21,8 @@ describe('FilmInfoHandler test', ()=>{
 
   test('FilmInfoHandler dispatches filmObject and transferred payload', async()=> {
     await FilmInfoHandler(dispatchMock)(filmMock)
-    expect(dispatched[0].type).toEqual(actions.filmObject)
-    expect(dispatched[0].film.data).toEqual(1)
+    expect(dispatched[1].type).toEqual(actions.filmObject)
+    expect(dispatched[1].film.data).toEqual(1)
   })
 })
 

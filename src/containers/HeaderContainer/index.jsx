@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Header } from '../../components/Header'
 import { actionCreator } from '../../actions'
 import { SearchStatus } from '../../constants'
-import { SubHeader } from '../../components/MovieInfoScreen/SearchBySameGenre/SubHeader'
+import { SubHeader } from '../../components/SubHeader'
 
 class HeaderUnwrapped extends React.Component {
   handleClick = () => {

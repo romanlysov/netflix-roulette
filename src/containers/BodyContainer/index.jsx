@@ -7,6 +7,7 @@ import { MainScreenContainer } from '../MainScreenContainer'
 import { SearchStatus } from '../../constants'
 import { sortByRatingClickHandler } from '../../handlers/SortByRatingClickHandler'
 import { sortByDateClickHandler } from '../../handlers/SortByDateClickHandler'
+import { MovieInfoScreenWrapper } from '../../components/MovieInfoScreenWrapper'
 
 class BodyContainerUnwrapped extends React.PureComponent {
   render() {
@@ -18,9 +19,10 @@ class BodyContainerUnwrapped extends React.PureComponent {
       sortBy
     } = this.props
     return mainScreen === SearchStatus.showMovieInfo ? (
-      <div className="main-screen">
+      <MovieInfoScreenWrapper>
         <MoreMoviesByGenreContainer genre="" />
-      </div>
+      </MovieInfoScreenWrapper>
+
     ) : (
       <>
         <SearchSettings
