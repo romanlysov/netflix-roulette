@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainScreen renders correctly 1`] = `
+Object {
+  "act": [Function],
+  "create": [Function],
+  "unstable_batchedUpdates": [Function],
+  "unstable_clearYields": [Function],
+  "unstable_setNowImplementation": [Function],
+  "unstable_yield": [Function],
+}
+`;

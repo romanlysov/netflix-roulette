@@ -1,0 +1,44 @@
+%info-block-child-shared {
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.info-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 3.125rem;
+
+  &__description {
+    @extend %info-block-child-shared;
+    width: 50%;
+    margin-left: 6.25rem;
+    margin-right: auto;
+  }
+
+  &__title {
+    font-family: Arial, sans-serif;
+    color: #f00;
+  }
+
+  &__sub-info {
+    @extend %info-block-child-shared;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 1.25rem;
+    width: 10.56rem;
+    font-weight: 600;
+  }
+
+  &__year {
+    width: 6.25rem;
+  }
+
+  &__length {
+    width: 4.25rem;
+  }
+
+}
