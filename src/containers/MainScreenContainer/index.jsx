@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { NoResults } from '../../components/MainScreen/NoResults'
 import { MainScreen } from '../../components/MainScreen'
-import { fetchFilms } from '../../handlers/FetchFilms'
-import { getAllFilms } from '../../services/getFilms/getAllFilms'
+// import { fetchFilms } from '../../handlers/FetchFilms'
+// import { getAllFilms } from '../../services/getFilms/getAllFilms'
 import { FilmInfoHandler } from '../../handlers/FilmInfoHandler'
 import { SearchStatus } from '../../constants'
 
@@ -12,10 +13,13 @@ import '../../components/MainScreen/style.scss'
 
 
 export class MainScreenUnwrapped extends React.Component {
-  async componentDidMount() {
-    const { sortBy, dispatch } = this.props
-    await fetchFilms(dispatch, async () => await getAllFilms(sortBy))
-  }
+  // async componentDidMount() {
+  //   const { IsInitialized } = this.props
+  //   if(!IsInitialized) {
+  //   const { sortBy, dispatch } = this.props
+  //   await fetchFilms(dispatch, async () => await getAllFilms(sortBy))
+  //   }
+  // }
 
   onClickHandle = ({ dataKey }) => {
     const { dispatch, filmsArray } = this.props
@@ -34,6 +38,7 @@ export class MainScreenUnwrapped extends React.Component {
 }
 const mapStateToProps = state => {
   return {
+    IsInitialized: state.IsInitialized,
     mainViewsSwitch: state.ScreenType,
     filmsLoadingStatus: state.FilmsInfo.AreLoaded,
     filmsArray: state.FilmsInfo.Array,
@@ -45,4 +50,4 @@ const mapStateToProps = state => {
   }
 }
 
-export const MainScreenContainer = connect(mapStateToProps)(MainScreenUnwrapped)
+export const MainScreenContainer = withRouter(connect(mapStateToProps)(MainScreenUnwrapped))

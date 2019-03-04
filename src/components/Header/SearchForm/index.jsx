@@ -32,7 +32,7 @@ export const SearchForm = ({
           sortByGenre={sortByGenre}
           filter={filter}
         />
-        <input type="submit" className="main-search__button" />
+          <input type="submit" className="main-search__button" />
       </div>
     </form>
   )

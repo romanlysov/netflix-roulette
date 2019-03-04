@@ -2,7 +2,6 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 
 import { Header } from 'components/Header/index'
-import { FormContainer } from '../../containers/FormContainer'
 
 jest.mock('../../containers/FormContainer')
 

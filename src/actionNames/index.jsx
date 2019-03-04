@@ -13,4 +13,5 @@ export const actions = {
     clickedFilm: 'clickedFilm',
     filmObject: 'filmObject',
     filmsDataAllInfo: 'filmsDataAllInfo',
+    moreFilmsByIdAction: 'moreFilmsByIdAction'
 }

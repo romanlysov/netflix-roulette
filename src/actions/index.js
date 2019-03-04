@@ -90,6 +90,20 @@ const setAllFilmsInfo = films => {
   }
 }
 
+const setMoreFilmsByIdInfo = films=> {
+  return {
+    type: actions.moreFilmsByIdAction,
+    payload: films
+  }
+}
+
+const setInitialized = data => {
+  return {
+    type: 'isInitialized',
+    payload: data
+  }
+}
+
 export const actionCreator = {
   setMainView,
   setFilmsLoadingStatus,
@@ -102,5 +116,7 @@ export const actionCreator = {
   getSameGenreFilms,
   setSortByFilter,
   setMainFilmInfo,
-  setAllFilmsInfo
+  setAllFilmsInfo,
+  setMoreFilmsByIdInfo,
+  setInitialized
 }

@@ -23,6 +23,10 @@ module.exports = {
         filename: 'main.js',
         path: distPath
     },
+    devServer: {
+        historyApiFallback: true,
+        // content: srcPath
+    },
     module: {
         rules: [
             {

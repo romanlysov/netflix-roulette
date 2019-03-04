@@ -2,6 +2,7 @@ import { SearchStatus } from '../constants'
 import { actions } from '../actionNames'
 
 export const initialState = {
+    IsInitialized: false,
     ScreenType: SearchStatus.noResults,
     FilmsInfo: {
         AreLoaded: false,
@@ -116,6 +117,7 @@ export function reducer(state = initialState, action) {
         case actions.filmObject :
             return {
                 ...state,
+                IsInitialized: true,
                 ScreenType: action.status,
                 ChosenFilm: {
                     ...state.ChosenFilm,
@@ -136,6 +138,21 @@ export function reducer(state = initialState, action) {
                     Quantity: action.quantity
 
                 }
+            }
+        case actions.moreFilmsByIdAction :
+            return {
+                ...state,
+                SameGenreFilms: {
+                    ...state.SameGenreFilms,
+                    Array: action.payload,
+                    AreLoaded: true,
+                }
+
+            }
+        case 'isInitialized' :
+            return {
+                ...state,
+                IsInitialized: action.payload
             }
         default:
             return state
