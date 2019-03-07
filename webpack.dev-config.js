@@ -21,7 +21,8 @@ module.exports = {
     entry: './index.jsx',
     output: {
         filename: 'main.js',
-        path: distPath
+        path: distPath,
+        publicPath: '/'
     },
     devServer: {
         historyApiFallback: true,

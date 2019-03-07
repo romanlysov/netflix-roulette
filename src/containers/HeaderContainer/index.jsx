@@ -10,6 +10,7 @@ export const HeaderUnwrapped = props => {
   const handleClick = () => {
     const { dispatch } = props
     dispatch(actionCreator.setMainView(SearchStatus.showRequested))
+    dispatch(actionCreator.getSearchData(''))
   }
   const { className, film, mainViewsSwitch, genre } = props
   return mainViewsSwitch === SearchStatus.showMovieInfo ? (

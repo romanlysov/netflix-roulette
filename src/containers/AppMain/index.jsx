@@ -1,8 +1,25 @@
 import React from 'react'
-import { App } from '../App'
+import { connect } from 'react-redux'
 
-export class AppMain extends React.Component {
+import { App } from '../App'
+import { fetchFilms } from '../../handlers/FetchFilms'
+import { getAllFilms } from '../../services/getFilms/getAllFilms'
+
+class AppMainUnwrapped extends React.Component {
+    async componentDidMount() {
+      const { sortBy, dispatch } = this.props
+      await fetchFilms(dispatch, async () => await getAllFilms(sortBy))
+    }
+
     render() {
         return <App/>
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        sortBy: state.SearchRequest.SortBy,
+    }
+}
+
+export const AppMain = connect(mapStateToProps)(AppMainUnwrapped)

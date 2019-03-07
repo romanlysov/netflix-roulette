@@ -90,16 +90,24 @@ const setAllFilmsInfo = films => {
   }
 }
 
-const setMoreFilmsByIdInfo = films=> {
+const setMoreFilmsByIdInfo = films => {
   return {
     type: actions.moreFilmsByIdAction,
     payload: films
   }
 }
 
-const setInitialized = data => {
+const getDataFromQueryUrl = (value, searchBy) => {
   return {
-    type: 'isInitialized',
+    type: actions.dataFromQueryUrlAction,
+    value,
+    searchBy
+  }
+}
+
+const setRouting = data => {
+  return {
+    type: actions.routing,
     payload: data
   }
 }
@@ -118,5 +126,6 @@ export const actionCreator = {
   setMainFilmInfo,
   setAllFilmsInfo,
   setMoreFilmsByIdInfo,
-  setInitialized
+  setRouting,
+  getDataFromQueryUrl
 }

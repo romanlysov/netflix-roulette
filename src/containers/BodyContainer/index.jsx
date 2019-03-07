@@ -14,13 +14,14 @@ export const BodyContainerUnwrapped = ({
   sortByRating,
   sortByDate,
   filmsQuantity,
-  sortBy
+  sortBy,
+  quantity
 }) => {
   return mainScreen === SearchStatus.showMovieInfo ? (
     <MovieInfoScreenWrapper>
       <MoreMoviesByGenreContainer genre="" />
     </MovieInfoScreenWrapper>
-  ) : (
+  ) : quantity > 0 ? (
     <>
       <SearchSettings
         counter={filmsQuantity}
@@ -30,6 +31,8 @@ export const BodyContainerUnwrapped = ({
       />
       <MainScreenContainer />
     </>
+  ) : (
+    <MainScreenContainer />
   )
 }
 
@@ -39,7 +42,8 @@ const mapStateToProps = state => {
     filmsQuantity: state.FilmsInfo.Quantity,
     searchByFilter: state.SearchRequest.SearchBy,
     value: state.SearchRequest.Text,
-    sortBy: state.SearchRequest.SortBy
+    sortBy: state.SearchRequest.SortBy,
+    quantity: state.FilmsInfo.Quantity
   }
 }
 
