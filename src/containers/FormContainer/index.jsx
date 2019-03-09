@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { SearchForm } from '../../components/Header/SearchForm'
 import { actionCreator } from '../../actions'
@@ -16,8 +17,10 @@ export class FormContainerUnwrapped extends React.Component {
 
   handleSubmit = async event => {
     const { value } = this.state
-    const { searchByFilter, dispatch, sortBy } = this.props
-    FormSubmitHandler(event)(value, searchByFilter, dispatch, sortBy)
+    const { searchByFilter, dispatch, sortBy, history } = this.props
+    await FormSubmitHandler(event)(value, searchByFilter, dispatch, sortBy)
+    const valueEncoded = encodeURI(value)
+    history.push(`/filter/?search=${valueEncoded}&searchBy=${searchByFilter}`)
   }
 
   render() {
@@ -64,7 +67,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export const FormContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FormContainerUnwrapped)
+export const FormContainer = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(FormContainerUnwrapped)
+)

@@ -90,6 +90,28 @@ const setAllFilmsInfo = films => {
   }
 }
 
+const setMoreFilmsByIdInfo = films => {
+  return {
+    type: actions.moreFilmsByIdAction,
+    payload: films
+  }
+}
+
+const getDataFromQueryUrl = (value, searchBy) => {
+  return {
+    type: actions.dataFromQueryUrlAction,
+    value,
+    searchBy
+  }
+}
+
+const setRouting = data => {
+  return {
+    type: actions.routing,
+    payload: data
+  }
+}
+
 export const actionCreator = {
   setMainView,
   setFilmsLoadingStatus,
@@ -102,5 +124,8 @@ export const actionCreator = {
   getSameGenreFilms,
   setSortByFilter,
   setMainFilmInfo,
-  setAllFilmsInfo
+  setAllFilmsInfo,
+  setMoreFilmsByIdInfo,
+  setRouting,
+  getDataFromQueryUrl
 }

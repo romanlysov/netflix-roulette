@@ -6,20 +6,24 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { reducer } from './reducers'
-import { App } from './containers/App'
 import { Test } from './components/Test'
-import { SearchResultLayoutItem } from './components/MainScreen/SearchResultLayout/SearchResultLayoutItem'
+import { AppFilm } from './containers/AppFilm'
+import { AppMain } from './containers/AppMain'
+import { AppFilter } from './containers/AppFilter'
+import { NotFound } from './components/NotFound'
 
 export const store = createStore(reducer, composeWithDevTools())
 render(
   <BrowserRouter>
     <Provider store={store}>
-      <App>
-        <Switch>
-          <Route path="/test" component={Test} />
-          <Route path="/:id" component={SearchResultLayoutItem} />
-        </Switch>
-      </App>
+      <Switch>
+        <Route path="/test" component={Test} />
+        {/*<Route path="/:id" exact component={AppFilm} />*/}
+        <Route path="/films/:id" exact component={AppFilm} />
+        <Route path="/filter" component={AppFilter} />
+        <Route path="/" exact component={AppMain} />
+        <Route path="*" component={NotFound} />
+      </Switch>
     </Provider>
   </BrowserRouter>,
   document.getElementById('root')

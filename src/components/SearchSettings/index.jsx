@@ -17,3 +17,4 @@ export const SearchSettings = ({counter, sortByRatingHandler, sortByDateHandler,
         </div>
     )
 }
+// sorter как children

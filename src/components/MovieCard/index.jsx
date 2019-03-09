@@ -10,7 +10,7 @@ export const MovieCard = ({film}) => {
             <span className='info-block__genre'>{film.genre}</span>
               <div className='info-block__sub-info'>
                   <span className='info-block__year'>{film.release_date}</span>
-                  <span className='info-block__length'>{film.runtime} min</span>
+                  <span className='info-block__length'>{film.runtime}</span>
               </div>
             <p className='info-block__annotation'>{film.overview}</p>
         </div>
