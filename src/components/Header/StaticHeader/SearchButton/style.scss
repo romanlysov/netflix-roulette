@@ -1,5 +1,7 @@
 .navigation {
   &__search {
+    display: block;
+
     height: 1.5625rem;
     width: 6.25rem;
     margin: auto 0;
@@ -8,8 +10,12 @@
     border: 0;
     border-radius: .125rem;
 
+    text-decoration: none;
     text-transform: uppercase;
+    text-align: center;
     color: #f00;
+    font-family: Arial, sans-serif;
+    line-height: 1.5625rem;
     font-weight: 700;
   }
 }

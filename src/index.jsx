@@ -12,6 +12,8 @@ import { AppMain } from './containers/AppMain'
 import { AppFilter } from './containers/AppFilter'
 import { NotFound } from './components/NotFound'
 
+import './style.scss'
+
 export const store = createStore(reducer, composeWithDevTools())
 render(
   <BrowserRouter>

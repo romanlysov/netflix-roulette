@@ -105,10 +105,17 @@ const getDataFromQueryUrl = (value, searchBy) => {
   }
 }
 
-const setRouting = data => {
+const setSkipRouting = data => {
   return {
     type: actions.routing,
     payload: data
+  }
+}
+
+const clearFilmInfo = action => {
+  return {
+    type: actions.clearFilmInfoAction,
+    payload: action
   }
 }
 
@@ -126,6 +133,7 @@ export const actionCreator = {
   setMainFilmInfo,
   setAllFilmsInfo,
   setMoreFilmsByIdInfo,
-  setRouting,
-  getDataFromQueryUrl
+  setSkipRouting,
+  getDataFromQueryUrl,
+  clearFilmInfo
 }

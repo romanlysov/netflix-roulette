@@ -3,23 +3,34 @@ import { connect } from 'react-redux'
 
 import { Header } from '../../components/Header'
 import { actionCreator } from '../../actions'
-import { SearchStatus, HeaderClass } from '../../constants'
+import { SearchStatus, HeaderClass, SearchButtonClass } from '../../constants'
 import { SubHeader } from '../../components/SubHeader'
 
 export const HeaderUnwrapped = props => {
   const handleClick = () => {
     const { dispatch } = props
-    dispatch(actionCreator.setMainView(SearchStatus.showRequested))
-    dispatch(actionCreator.getSearchData(''))
+    dispatch(actionCreator.clearFilmInfo())
   }
-  const { className, film, mainViewsSwitch, genre } = props
+  const { className, film, mainViewsSwitch, genre, searchButtonClass, isMovieInfo } = props
   return mainViewsSwitch === SearchStatus.showMovieInfo ? (
     <>
-      <Header film={film} className={className} onclick={handleClick} />
+      <Header
+        film={film}
+        className={className}
+        onclick={handleClick}
+        searchButtonClass={searchButtonClass}
+        isMovieInfo = {isMovieInfo}
+      />
       <SubHeader genre={genre} />
     </>
   ) : (
-    <Header film={film} className={className} onclick={handleClick} />
+    <Header
+      film={film}
+      className={className}
+      onclick={handleClick}
+      searchButtonClass={searchButtonClass}
+      isMovieInfo={isMovieInfo}
+    />
   )
 }
 
@@ -32,7 +43,12 @@ const mapStateToProps = state => {
     className:
       state.ScreenType === SearchStatus.showMovieInfo
         ? HeaderClass.movieCard
-        : HeaderClass.searchResult
+        : HeaderClass.searchResult,
+    searchButtonClass:
+      state.ScreenType === SearchStatus.showMovieInfo
+        ? SearchButtonClass.default
+        : SearchButtonClass.hidden,
+    isMovieInfo: state.ScreenType === SearchStatus.showMovieInfo
   }
 }
 

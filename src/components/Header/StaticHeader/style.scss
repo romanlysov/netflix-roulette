@@ -5,18 +5,4 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 0 6.25rem;
-
-  &__search {
-    height: 1.563rem;
-    width: 6.25rem;
-    margin: auto 0;
-
-    background-color: #fff;
-    border: 0;
-    border-radius: .125rem;
-
-    text-transform: uppercase;
-    color: #f00;
-    font-weight: 700;
-  }
 }

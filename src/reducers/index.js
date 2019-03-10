@@ -3,7 +3,7 @@ import { actions } from '../actionNames'
 
 export const initialState = {
   SkipRouting: false,
-  ScreenType: SearchStatus.noResults,
+  ScreenType: SearchStatus.notFound,
   FilmsInfo: {
     AreLoaded: false,
     Array: 'NO_DATA'
@@ -17,7 +17,6 @@ export const initialState = {
     AreLoaded: false
   },
   ChosenFilm: {
-    Film: {}
   }
 }
 
@@ -157,6 +156,17 @@ export function reducer(state = initialState, action) {
           ...state.SearchRequest,
           Text: action.value,
           SearchBy: action.searchBy
+        }
+      }
+    case actions.clearFilmInfoAction :
+      return {
+        ...state,
+        ScreenType: SearchStatus.showRequested,
+        SearchRequest: {
+          ...state.SearchRequest,
+          Text: action.payload
+        },
+        ChosenFilm: {
         }
       }
     default:

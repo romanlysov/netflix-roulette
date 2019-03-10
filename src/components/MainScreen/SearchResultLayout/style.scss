@@ -25,9 +25,13 @@
     font-weight: 600;
     text-transform: uppercase;
     margin-left: .625rem;
-
     max-width: 60%;
 
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
   }
 
   &__title-container {

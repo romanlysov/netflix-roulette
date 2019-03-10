@@ -14,18 +14,12 @@ export class MainScreenUnwrapped extends React.Component {
   onClickHandle = ({ dataKey }) => {
     const { dispatch, filmsArray } = this.props
     FilmInfoHandler(dispatch)(filmsArray[dataKey])
-    dispatch(actionCreator.setRouting(true))
+    dispatch(actionCreator.setSkipRouting(true))
   }
 
   render() {
     const { filmsLoadingStatus, mainViewsSwitch, filmsArray, filmQuantity } = this.props
 
-    // filmsLoadingStatus &&
-    //   mainViewsSwitch === SearchStatus.showRequested ? (
-    //   <MainScreen films={filmsArray} onclick={this.onClickHandle} />
-    // ) : (
-    //   <NoResults />
-    // )
     if (filmQuantity > 0 &&
         mainViewsSwitch === SearchStatus.showRequested) {
        return <MainScreen films={filmsArray} onclick={this.onClickHandle} />

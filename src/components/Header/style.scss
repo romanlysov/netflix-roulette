@@ -7,16 +7,12 @@
   background-size: cover;
 }
 
-.movie-card > form {
-  display: none;
-}
-
 .info-block {
   &__cover {
     width: 22.7rem;
   }
 }
 
-.search-result > .info-block {
-  display: none;
-}
+//.search-result > .info-block {
+//  display: none;
+//}

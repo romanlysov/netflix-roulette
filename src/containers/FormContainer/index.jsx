@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { SearchForm } from '../../components/Header/SearchForm'
 import { actionCreator } from '../../actions'
 import { FormSubmitHandler } from '../../handlers/FormSubmitHandler'
+import { SearchStatus, FormClass } from '../../constants'
 
 export class FormContainerUnwrapped extends React.Component {
   state = {
@@ -28,11 +29,12 @@ export class FormContainerUnwrapped extends React.Component {
     const {
       searchByTitleHandle,
       searchByGenreHandle,
-      searchByFilter
+      searchByFilter,
+      formClass
     } = this.props
     return (
       <SearchForm
-        className="header__form"
+        className={formClass}
         onChange={this.handleChange}
         sortByTitle={searchByTitleHandle}
         sortByGenre={searchByGenreHandle}
@@ -51,7 +53,11 @@ const mapStateToProps = state => {
     filmsLoadingStatus: state.FilmsInfo.AreLoaded,
     filmsArray: state.FilmsInfo.Array,
     searchByFilter: state.SearchRequest.SearchBy,
-    sortBy: state.SearchRequest.SortBy
+    sortBy: state.SearchRequest.SortBy,
+    formClass:
+      state.ScreenType === SearchStatus.showMovieInfo || state.ScreenType === SearchStatus.notFound
+        ? FormClass.hidden
+        : FormClass.default
   }
 }
 

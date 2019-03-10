@@ -11,7 +11,7 @@ class AppFilmUnwrapped extends React.Component {
     const {SkipRouting} = this.props
     if (SkipRouting) {
       const {dispatch} = this.props
-      dispatch(actionCreator.setRouting(false))
+      dispatch(actionCreator.setSkipRouting(false))
     } else {
       const {dispatch, sortBy, match} = this.props
       await mountMoreFilmsById({dispatch, sortBy, match})
@@ -24,7 +24,7 @@ class AppFilmUnwrapped extends React.Component {
       const {SkipRouting} = this.props
       if (SkipRouting) {
         const {dispatch} = this.props
-        dispatch(actionCreator.setRouting(false))
+        dispatch(actionCreator.setSkipRouting(false))
       } else {
         const {dispatch, sortBy, match} = this.props
         await mountMoreFilmsById({dispatch, sortBy, match})
