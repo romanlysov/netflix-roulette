@@ -1,9 +1,12 @@
 export const actions = {
+  search: {
+    BySwitchAction: 'searchBySwitchAction',
+    DataAction: 'searchDataAction'
+  },
+
   loadingStatusUpdate: 'loadingStatusUpdate',
   filmsDataAction: 'filmsDataAction',
-  searchDataAction: 'searchDataAction',
   mainViewSwitchAction: 'mainViewSwitchAction',
-  searchBySwitchAction: 'searchBySwitchAction',
   sortBySwitchAction: 'sortBySwitchAction',
   showFilmInfoAction: 'showFilmInfoAction',
   moviesFoundQuantityUpdate: 'moviesFoundQuantityUpdate',

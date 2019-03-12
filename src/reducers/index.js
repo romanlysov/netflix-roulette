@@ -45,7 +45,7 @@ export function reducer(state = initialState, action) {
           AreLoaded: action.payload
         }
       }
-    case actions.searchDataAction:
+    case actions.search.DataAction:
       return {
         ...state,
         ScreenType: SearchStatus.showRequested,
@@ -54,7 +54,7 @@ export function reducer(state = initialState, action) {
           Text: action.payload
         }
       }
-    case actions.searchBySwitchAction:
+    case actions.search.BySwitchAction:
       return {
         ...state,
         SearchRequest: {
