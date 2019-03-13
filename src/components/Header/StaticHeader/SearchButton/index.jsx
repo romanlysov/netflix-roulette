@@ -1,34 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import injectSheet from 'react-jss'
+import withStyles from 'react-jss'
 
 import './style.scss'
 
 const styles = {
-  navigation__search: {
+navigation__search: {
     display: 'block',
     height: '1.5625rem',
     width: '6.25rem',
     margin: 'auto 0',
-    'background-color': '#fff',
+    backgroundColor: '#fff',
     border: '0',
-    'border-radius': '.125rem',
-    'text-decoration': 'none',
-    'text-transform': 'uppercase',
-    'text-align': 'center',
+    borderRadius: '.125rem',
+    textDecoration: 'none',
+    textTransform: 'uppercase',
+    textAlign: 'center',
     color: '#f00',
-    'font-family': 'Arial, sans-serif',
-    'line-height': '1.5625rem',
-    'font-weight': '700'
-  }
+    fontFamily: 'Arial, sans-serif',
+    lineHeight: '1.5625rem',
+    fontWeight: '700'
+}
 }
 
-const SearchButtonUnwrapped = ({ classAttribute, value, action }) => {
+const SearchButtonUnwrapped = ({ classes, value, action }) => {
   return (
-    <Link to="/" className={classAttribute} onClick={action}>
+    <Link to="/" className={classes.navigation__search} onClick={action}>
       {value}
     </Link>
   )
 }
 
-export const SearchButton = injectSheet(styles)(SearchButtonUnwrapped)
+export const SearchButton = withStyles(styles)(SearchButtonUnwrapped)
