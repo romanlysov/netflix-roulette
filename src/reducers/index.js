@@ -1,5 +1,3 @@
-import { List } from 'immutable'
-
 import { SearchStatus } from '../constants'
 import { actions } from '../actionNames'
 
@@ -27,7 +25,7 @@ export function reducer(state = initialState, action) {
     case actions.mainViewSwitchAction:
       return {
         ...state,
-        ScreenType: List(action.payload)
+        ScreenType: action.payload
       }
     case actions.filmsDataAction:
       return {
