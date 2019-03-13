@@ -11,8 +11,7 @@ import { MovieInfoScreenWrapper } from '../../components/MovieInfoScreenWrapper'
 
 export const BodyContainerUnwrapped = ({
   mainScreen,
-  sortByRating,
-  sortByDate,
+  sortActions,
   filmsQuantity,
   sortBy,
   quantity
@@ -25,9 +24,8 @@ export const BodyContainerUnwrapped = ({
     <>
       <SearchSettings
         counter={filmsQuantity}
-        sortByRatingHandler={sortByRating}
-        sortByDateHandler={sortByDate}
-        filter={sortBy === 'release_date'}
+        sortActions={sortActions}
+        filter={sortBy}
       />
       <MainScreenContainer />
     </>
@@ -61,11 +59,11 @@ const mergeProps = (stateProps, dispatchProps) => {
 
   return {
     ...stateProps,
-    sortByRating: () => {
-      handleSortByRatingClick()
-    },
-    sortByDate: () => {
-      handleSortByDateClick()
+    sortActions: {
+      sortByRating:
+        handleSortByRatingClick,
+      sortByDate:
+        handleSortByDateClick
     }
   }
 }

@@ -1,42 +1,44 @@
 import React from 'react'
+import withStyles from 'react-jss'
 
 import './style.scss'
+import { SortByParam } from '../../../constants'
 
-export const Sorter = ({ sortByRatingHandler, sortByDateHandler, filter }) => {
+const styles = {
+  chosen: {
+    color: '#f00;'
+  }
+}
+
+const SortButtonUnwrapped = ({ active, caption, handler, classes }) => {
+  return (
+    <button
+      onClick={handler}
+      className={active ? classes.chosen : 'search-settings__sort-by'}
+    >
+      {caption}
+    </button>
+  )
+}
+
+export const Sorter = ({ sortActions, filter, classes }) => {
   return (
     <>
       <span className="search-settings__sort-by">Sort by</span>
-      {filter ? (
-        <button
-          onClick={sortByDateHandler}
-          className="search-settings__release-button active"
-        >
-          release date
-        </button>
-      ) : (
-        <button
-          onClick={sortByDateHandler}
-          className="search-settings__release-button"
-        >
-          {' '}
-          release date
-        </button>
-      )}
-      {filter ? (
-        <button
-          className="search-settings__rating-button"
-          onClick={sortByRatingHandler}
-        >
-          rating
-        </button>
-      ) : (
-        <button
-          className="search-settings__rating-button active"
-          onClick={sortByRatingHandler}
-        >
-          rating
-        </button>
-      )}
+      (
+      <SortButton
+        active={filter === SortByParam.byDate}
+        caption="rating"
+        handler={sortActions.sortByDate}
+        classes={classes}
+      />
+      <SortButton
+        active={filter === SortByParam.byRating}
+        caption="release date"
+        handler={sortActions.sortByRating}
+      />
     </>
   )
 }
+
+export const SortButton = withStyles(styles)(SortButtonUnwrapped)

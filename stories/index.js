@@ -1,6 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Button } from '@storybook/react/demo'
+import { action, configureActions } from '@storybook/addon-actions';
+
 import { SearchByPanel } from '../src/components/Header/SearchByPanel'
 
 storiesOf('Button', module)
@@ -24,6 +26,9 @@ storiesOf('SearchByPanel', module)
     return (
       <SearchByPanel
         className="search-by"
+        sortByTitle = {()=>{
+          debugger
+        }}
         searchBy="title"
         filter="title"
       />
