@@ -48,14 +48,14 @@ export class FormContainerUnwrapped extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    getSearchRequest: state.SearchRequest.Text,
-    main_view_switch: state.ScreenType,
-    filmsLoadingStatus: state.FilmsInfo.AreLoaded,
-    filmsArray: state.FilmsInfo.Array,
-    searchByFilter: state.SearchRequest.SearchBy,
-    sortBy: state.SearchRequest.SortBy,
+    getSearchRequest: state.get('SearchRequest').Text,
+    main_view_switch: state.get('ScreenType'),
+    filmsLoadingStatus: state.get('FilmsInfo').AreLoaded,
+    filmsArray: state.get('FilmsInfo').Array,
+    searchByFilter: state.get('SearchRequest').SearchBy,
+    sortBy: state.get('SearchRequest').SortBy,
     formClass:
-      state.ScreenType === SearchStatus.showMovieInfo || state.ScreenType === SearchStatus.notFound
+      state.get('ScreenType') === SearchStatus.showMovieInfo || state.ScreenType === SearchStatus.notFound
         ? FormClass.hidden
         : FormClass.default
   }

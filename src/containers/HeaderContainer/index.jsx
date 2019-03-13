@@ -36,19 +36,21 @@ export const HeaderUnwrapped = props => {
 
 const mapStateToProps = state => {
   return {
-    mainViewsSwitch: state.ScreenType,
-    filmInfo: state.SameGenreFilms.filmInfo,
-    film: state.ChosenFilm.Film,
-    genre: state.ChosenFilm.Genre,
+    mainViewsSwitch: state.get('ScreenType'),
+    filmInfo: state.get('SameGenreFilms').filmInfo,
+    film: state.get('ChosenFilm').Film
+    ? state.get('ChosenFilm').Film.toJS()
+    : state.get('ChosenFilm').Film,
+    genre: state.get('ChosenFilm').Genre,
     className:
-      state.ScreenType === SearchStatus.showMovieInfo
+      state.get('ScreenType') === SearchStatus.showMovieInfo
         ? HeaderClass.movieCard
         : HeaderClass.searchResult,
     searchButtonClass:
-      state.ScreenType === SearchStatus.showMovieInfo
+        state.get('ScreenType') === SearchStatus.showMovieInfo
         ? SearchButtonClass.default
         : SearchButtonClass.hidden,
-    isMovieInfo: state.ScreenType === SearchStatus.showMovieInfo
+    isMovieInfo: state.get('ScreenType') === SearchStatus.showMovieInfo
   }
 }
 

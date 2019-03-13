@@ -1,3 +1,4 @@
+import { Map, fromJS } from 'immutable'
 import { SearchStatus } from '../constants'
 import { actions } from '../actionNames'
 
@@ -16,159 +17,85 @@ export const initialState = {
     Array: [],
     AreLoaded: false
   },
-  ChosenFilm: {
-  }
+  ChosenFilm: {}
 }
 
 export function reducer(state = initialState, action) {
+  state = Map(state)
   switch (action.type) {
     case actions.mainViewSwitchAction:
-      return {
-        ...state,
-        ScreenType: action.payload
-      }
+      return state.setIn(['ScreenType'], fromJS(action.payload))
+
     case actions.filmsDataAction:
-      return {
-        ...state,
-        FilmsInfo: {
-          ...state.FilmsInfo,
-          Array: action.payload
-        }
-      }
+      return state.get('FilmsInfo').setIn(['Array'], fromJS(action.payload))
+
     case actions.loadingStatusUpdate:
-      return {
-        ...state,
-        FilmsInfo: {
-          ...state.FilmsInfo,
-          AreLoaded: action.payload
-        }
-      }
+      return state.setIn(['FilmsInfo', 'AreLoaded'], fromJS(action.payload))
+
     case actions.search.DataAction:
-      return {
-        ...state,
-        ScreenType: SearchStatus.showRequested,
-        SearchRequest: {
-          ...state.SearchRequest,
-          Text: action.payload
-        }
-      }
+      return state
+        .setIn(['ScreenType'], SearchStatus.showRequested)
+        .setIn(['SearchRequest', 'Text'], fromJS(action.payload))
+
     case actions.search.BySwitchAction:
-      return {
-        ...state,
-        SearchRequest: {
-          ...state.SearchRequest,
-          SearchBy: action.payload
-        }
-      }
+      return state.setIn(['SearchRequest', 'SearchBy'], fromJS(action.payload))
+
     case actions.sortBySwitchAction:
-      return {
-        ...state,
-        SearchRequest: {
-          ...state.SearchRequest,
-          SortBy: action.payload
-        }
-      }
+      return state.setIn(['SearchRequest', 'SortBy'], fromJS(action.payload))
+
     case actions.moviesFoundQuantityUpdate:
-      return {
-        ...state,
-        FilmsInfo: {
-          ...state.FilmsInfo,
-          Quantity: action.payload
-        }
-      }
+      return state.setIn(['FilmsInfo', 'Quantity'], fromJS(action.payload))
 
     case actions.showFilmInfoAction:
-      return {
-        ...state,
-        SameGenreFilms: {
-          ...state.SameGenreFilms,
-          filmInfo: action.payload,
-          Array: [],
-          AreLoaded: false
-        }
-      }
+      return state
+        .setIn(['SameGenreFilms', 'filmInfo'], fromJS(action.payload))
+        .setIn(['SameGenreFilms', 'Array'], [])
+        .setIn(['SameGenreFilms', 'AreLoaded'], false)
+
     case actions.filmKeyAction:
-      return {
-        ...state,
-        FilmsInfo: {
-          ...state.FilmsInfo,
-          filmKey: action.payload
-        }
-      }
+      return state.setIn(['FilmsInfo', 'filmKey'], fromJS(action.payload))
+
     case actions.sameGenreFilmsAction:
-      return {
-        ...state,
-        SameGenreFilms: {
-          ...state.SameGenreFilms,
-          Array: action.payload,
-          AreLoaded: true
-        }
-      }
+      return state
+        .setIn(['SameGenreFilms', 'Array'], fromJS(action.payload))
+        .setIn(['SameGenreFilms', 'AreLoaded'], true)
+
     case actions.clickedFilm:
-      return {
-        ...state,
-        ChosenFilm: {
-          ...state.ChosenFilm,
-          Film: action.payload
-        }
-      }
+      return state.setIn(['ChosenFilm', 'Film'], fromJS(action.payload))
+
     case actions.filmObject:
-      return {
-        ...state,
-        IsInitialized: true,
-        ScreenType: action.status,
-        ChosenFilm: {
-          ...state.ChosenFilm,
-          Film: action.film,
-          Title: action.title,
-          Genre: action.genre
-        }
-      }
+      return state
+        .setIn(['IsInitialized'], true)
+        .setIn(['ScreenType'], fromJS(action.status))
+        .setIn(['ChosenFilm', 'Film'], fromJS(action.film))
+        .setIn(['ChosenFilm', 'Title'], fromJS(action.title))
+        .setIn(['ChosenFilm', 'Genre'], fromJS(action.genre))
+
     case actions.filmsDataAllInfo:
-      return {
-        ...state,
-        ScreenType: action.mainScreen,
-        FilmsInfo: {
-          ...state.FilmsInfo,
-          AreLoaded: true,
-          Array: action.films,
-          Quantity: action.quantity
-        }
-      }
+      return state
+        .setIn(['ScreenType'], fromJS(action.mainScreen))
+        .setIn(['FilmsInfo', 'AreLoaded'], true)
+        .setIn(['FilmsInfo', 'Array'], fromJS(action.films))
+        .setIn(['FilmsInfo', 'Quantity'], fromJS(action.quantity))
+
     case actions.moreFilmsByIdAction:
-      return {
-        ...state,
-        SameGenreFilms: {
-          ...state.SameGenreFilms,
-          Array: action.payload,
-          AreLoaded: true
-        }
-      }
+      return state
+        .setIn(['SameGenreFilms', 'Array'], fromJS(action.payload))
+        .setIn(['SameGenreFilms', 'AreLoaded'], true)
+
     case actions.routing:
-      return {
-        ...state,
-        SkipRouting: action.payload
-      }
+      return state.setIn(['SkipRouting'], fromJS(action.payload))
+
     case actions.dataFromQueryUrlAction:
-      return {
-        ...state,
-        SearchRequest: {
-          ...state.SearchRequest,
-          Text: action.value,
-          SearchBy: action.searchBy
-        }
-      }
-    case actions.clearFilmInfoAction :
-      return {
-        ...state,
-        ScreenType: SearchStatus.showRequested,
-        SearchRequest: {
-          ...state.SearchRequest,
-          Text: action.payload
-        },
-        ChosenFilm: {
-        }
-      }
+      return state
+        .setIn(['SearchRequest', 'Text'], fromJS(action.value))
+        .setIn(['SearchRequest', 'SearchBy'], fromJS(action.searchBy))
+
+    case actions.clearFilmInfoAction:
+      return state
+        .setIn(['ScreenType'], SearchStatus.showRequested)
+        .setIn(['SearchRequest', 'Text'], fromJS(action.payload))
+
     default:
       return state
   }

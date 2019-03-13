@@ -16,8 +16,8 @@ export class AppFilterUnwrapped extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    sortBy: state.SearchRequest.SortBy,
-    searchByFilter: state.SearchRequest.SearchBy
+    sortBy: state.get('SearchRequest').SortBy,
+    searchByFilter: state.get('SearchRequest').SearchBy
   }
 }
 

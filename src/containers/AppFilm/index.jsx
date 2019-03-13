@@ -38,11 +38,11 @@ class AppFilmUnwrapped extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    SkipRouting: state.SkipRouting,
-    film: state.ChosenFilm.Film,
-    genre: state.ChosenFilm.Genre,
-    sortBy: state.SearchRequest.SortBy,
-    searchBy: state.SearchRequest.SearchBy
+    SkipRouting: state.get('SkipRouting'),
+    film: state.get('ChosenFilm').Film,
+    genre: state.get('ChosenFilm').Genre,
+    sortBy: state.get('SearchRequest').SortBy,
+    searchBy: state.get('SearchRequest').SearchBy
   }
 }
 

@@ -13,16 +13,17 @@ import '../../components/MainScreen/style.scss'
 export class MainScreenUnwrapped extends React.Component {
   onClickHandle = ({ dataKey }) => {
     const { dispatch, filmsArray } = this.props
-    FilmInfoHandler(dispatch)(filmsArray[dataKey])
+    const array = filmsArray.toJS()
+    FilmInfoHandler(dispatch)(array[dataKey])
     dispatch(actionCreator.setSkipRouting(true))
   }
 
   render() {
     const { filmsLoadingStatus, mainViewsSwitch, filmsArray, filmQuantity } = this.props
-
     if (filmQuantity > 0 &&
         mainViewsSwitch === SearchStatus.showRequested) {
-       return <MainScreen films={filmsArray} onclick={this.onClickHandle} />
+      const array = filmsArray.toJS()
+       return <MainScreen films={array} onclick={this.onClickHandle} />
     } else if (filmsLoadingStatus && filmQuantity === 0 ) {
       return <NoResults />
     } else {
@@ -32,15 +33,15 @@ export class MainScreenUnwrapped extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    IsInitialized: state.IsInitialized,
-    mainViewsSwitch: state.ScreenType,
-    filmsLoadingStatus: state.FilmsInfo.AreLoaded,
-    filmsArray: state.FilmsInfo.Array,
-    filmInfoChosen: state.filmInfo,
-    filmKey: state.SameGenreFilms.filmKey,
-    sortBy: state.SearchRequest.SortBy,
-    film: state.ChosenFilm.Film,
-    filmQuantity: state.FilmsInfo.Quantity
+    IsInitialized: state.get('IsInitialized'),
+    mainViewsSwitch: state.get('ScreenType'),
+    filmsLoadingStatus: state.get('FilmsInfo').AreLoaded,
+    filmsArray: state.get('FilmsInfo').Array,
+    filmInfoChosen: state.get('filmInfo'),
+    filmKey: state.get('SameGenreFilms').filmKey,
+    sortBy: state.get('SearchRequest').SortBy,
+    film: state.get('ChosenFilm').Film,
+    filmQuantity: state.get('FilmsInfo').Quantity
   }
 }
 

@@ -38,12 +38,12 @@ export const BodyContainerUnwrapped = ({
 
 const mapStateToProps = state => {
   return {
-    mainScreen: state.ScreenType,
-    filmsQuantity: state.FilmsInfo.Quantity,
-    searchByFilter: state.SearchRequest.SearchBy,
-    value: state.SearchRequest.Text,
-    sortBy: state.SearchRequest.SortBy,
-    quantity: state.FilmsInfo.Quantity
+    mainScreen: state.get('ScreenType'),
+    filmsQuantity: state.get('FilmsInfo').Quantity,
+    searchByFilter: state.get('SearchRequest').SearchBy,
+    value: state.get('SearchRequest').Text,
+    sortBy: state.get('SearchRequest').SortBy,
+    quantity: state.get('FilmsInfo').Quantity
   }
 }
 

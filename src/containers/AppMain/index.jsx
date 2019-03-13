@@ -18,7 +18,7 @@ class AppMainUnwrapped extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        sortBy: state.SearchRequest.SortBy,
+        sortBy: state.get('SearchRequest').sortBy
     }
 }
 
