@@ -63,10 +63,8 @@ const mergeProps = (stateProps, dispatchProps) => {
   return {
     ...stateProps,
     sortActions: {
-      sortByRating:
-        handleSortByRatingClick,
-      sortByDate:
-        handleSortByDateClick
+      sortByRating: handleSortByRatingClick,
+      sortByDate: handleSortByDateClick
     }
   }
 }
