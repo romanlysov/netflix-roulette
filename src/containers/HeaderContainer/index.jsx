@@ -1,18 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { createSelector } from 'reselect'
 import { Header } from '../../components/Header'
 import { actionCreator } from '../../actions'
-import { SearchStatus, HeaderClass, SearchButtonClass } from '../../constants'
+import { SearchStatus } from '../../constants'
 import { SubHeader } from '../../components/SubHeader'
+import {
+  filmInfoSelector,
+  headerClassSelector,
+  movieInfoFlagSelector,
+  screenSelector,
+  searchButtonSelector
+} from '../../selectors'
 
 export const HeaderUnwrapped = props => {
   const handleClick = () => {
     const { dispatch } = props
     dispatch(actionCreator.clearFilmInfo())
   }
-  const { className, film, mainViewsSwitch, genre, searchButtonClass, isMovieInfo } = props
-  return mainViewsSwitch === SearchStatus.showMovieInfo ? (
+  const { className, film, mainScreen, genre, searchButtonClass, isMovieInfo } = props
+  return mainScreen === SearchStatus.showMovieInfo ? (
     <>
       <Header
         film={film}
@@ -34,22 +42,15 @@ export const HeaderUnwrapped = props => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    mainViewsSwitch: state.ScreenType,
-    filmInfo: state.SameGenreFilms.filmInfo,
-    film: state.ChosenFilm.Film,
-    genre: state.ChosenFilm.Genre,
-    className:
-      state.ScreenType === SearchStatus.showMovieInfo
-        ? HeaderClass.movieCard
-        : HeaderClass.searchResult,
-    searchButtonClass:
-      state.ScreenType === SearchStatus.showMovieInfo
-        ? SearchButtonClass.default
-        : SearchButtonClass.hidden,
-    isMovieInfo: state.ScreenType === SearchStatus.showMovieInfo
-  }
-}
+const mapStateToProps = createSelector(
+    [screenSelector, filmInfoSelector, headerClassSelector,searchButtonSelector, movieInfoFlagSelector],
+    (screen, film, headerClass, searchButtonClass, movieInfoClass) => ({
+      ...screen,
+      ...film,
+      ...headerClass,
+      ...searchButtonClass,
+      ...movieInfoClass
+    })
+)
 
 export const HeaderContainer = connect(mapStateToProps)(HeaderUnwrapped)

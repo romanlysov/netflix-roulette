@@ -8,13 +8,13 @@ import { SubHeader } from '../../components/SubHeader'
 describe('HeaderUnwrapped renders Header depending on props', () => {
   test('HeaderUnwrapped renders Header for movie info', () => {
     const wrapper = shallow(<HeaderUnwrapped />)
-    wrapper.setProps({ mainViewsSwitch: SearchStatus.showMovieInfo })
+    wrapper.setProps({ mainScreen: SearchStatus.showMovieInfo })
     expect(wrapper.containsMatchingElement(<SubHeader />)).toEqual(true)
   })
 
   test('HeaderUnwrapped renders Header for search request', () => {
     const wrapper = shallow(<HeaderUnwrapped />)
-    wrapper.setProps({ mainViewsSwitch: SearchStatus.showRequested })
+    wrapper.setProps({ mainScreen: SearchStatus.showRequested })
     expect(wrapper.containsMatchingElement(<SubHeader />)).toEqual(false)
   })
 })

@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { createSelector } from 'reselect'
 
 import { SearchResultLayout } from '../../components/MainScreen/SearchResultLayout'
 import { YetLoader } from '../../components/YetLoader'
 import { fetchSameFilms } from '../../handlers/FetchSameFilms'
-// import { FilmInfoHandler } from '../../handlers/FilmInfoHandler'
+import { isInitializedSelector, sameGenreInfoSelector } from '../../selectors'
 
 export class MoreMoviesByGenreUnwrapped extends React.Component {
   async componentDidMount() {
@@ -17,14 +18,10 @@ export class MoreMoviesByGenreUnwrapped extends React.Component {
 
   }
 
-  // onClickHandler = async ({ dataKey }) => {
-  //   const { dispatch, sameGenreFilms } = this.props
-  //   FilmInfoHandler(dispatch)(sameGenreFilms[dataKey])
-  // }
-
   render() {
-    const { filmsAreLoaded, sameGenreFilms } = this.props
-    return filmsAreLoaded ? (
+    const { sameGenreFilms } = this.props
+
+    return sameGenreFilms.length > 0 ? (
       <SearchResultLayout
         films={sameGenreFilms}
         onclick={()=>{}}
@@ -35,15 +32,13 @@ export class MoreMoviesByGenreUnwrapped extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    sameGenreFilms: state.SameGenreFilms.Array,
-    filmsAreLoaded: state.SameGenreFilms.AreLoaded,
-    filmInfo: state.SameGenreFilms.filmInfo,
-    filmKey: state.FilmsInfo.filmKey,
-    isInitialized: state.IsInitialized
-  }
-}
+const mapStateToProps = createSelector(
+    [sameGenreInfoSelector, isInitializedSelector],
+    (sameFilms, film) => ({
+      ...sameFilms,
+      ...film
+    })
+)
 
 export const MoreMoviesByGenreContainer = withRouter(connect(mapStateToProps)(
   MoreMoviesByGenreUnwrapped

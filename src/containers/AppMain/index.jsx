@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { createSelector } from 'reselect'
 
 import { App } from '../App'
 import { fetchFilms } from '../../handlers/FetchFilms'
 import { getAllFilms } from '../../services/getFilms/getAllFilms'
+import { sortBySelector } from '../../selectors'
 
 class AppMainUnwrapped extends React.Component {
     async componentDidMount() {
@@ -16,10 +18,11 @@ class AppMainUnwrapped extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        sortBy: state.SearchRequest.SortBy,
-    }
-}
+const mapStateToProps = createSelector(
+    sortBySelector,
+    (sortBy) => ({
+        ...sortBy
+    })
+)
 
 export const AppMain = connect(mapStateToProps)(AppMainUnwrapped)
