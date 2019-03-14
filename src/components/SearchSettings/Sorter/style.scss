@@ -28,10 +28,10 @@
     padding-right: 6.25rem;
   }
 
-  &__release-button,
-  &__rating-button {
-    @extend %search-settings-button-shared;
-  }
+  //&__release-button,
+  //&__rating-button {
+  //  @extend %search-settings-button-shared;
+  //}
 
   &__sort-by {
     margin-right: 3.75rem;

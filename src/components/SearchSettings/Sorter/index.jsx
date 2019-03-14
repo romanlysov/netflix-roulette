@@ -6,15 +6,21 @@ import { SortByParam } from '../../../constants'
 
 const styles = {
   chosen: {
-    color: '#f00;'
+    fontFamily: 'Arial, sans-serif',
+    fontSize: '1rem',
+    lineHeight: '3.125rem',
+    fontWeight: '500',
+    backgroundColor: 'transparent',
+    border: '0',
+    color: props => (props.active ? '#f00' : '#000')
   }
 }
 
-const SortButtonUnwrapped = ({ active, caption, handler, classes }) => {
+const SortButtonUnwrapped = ({ caption, handler, classes }) => {
   return (
     <button
       onClick={handler}
-      className={active ? classes.chosen : 'search-settings__sort-by'}
+      className={classes.chosen }
     >
       {caption}
     </button>
@@ -25,7 +31,6 @@ export const Sorter = ({ sortActions, filter, classes }) => {
   return (
     <>
       <span className="search-settings__sort-by">Sort by</span>
-      (
       <SortButton
         active={filter === SortByParam.byDate}
         caption="rating"
@@ -41,4 +46,6 @@ export const Sorter = ({ sortActions, filter, classes }) => {
   )
 }
 
-export const SortButton = withStyles(styles)(SortButtonUnwrapped)
+const SortButton = withStyles(styles)(SortButtonUnwrapped)
+
+
