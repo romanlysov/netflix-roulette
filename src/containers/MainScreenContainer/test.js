@@ -10,7 +10,7 @@ describe('MainScreenUnwrapped renders MainScreen depending on props', () => {
   test('MainScreenUnwrapped renders MainScreen', () => {
     const wrapper = shallow(<MainScreenUnwrapped sortBy="vote_average" />)
     wrapper.setProps({
-      mainViewsSwitch: SearchStatus.showRequested,
+      mainScreen: SearchStatus.showRequested,
       filmsLoadingStatus: true
     })
     expect(wrapper.containsMatchingElement(<MainScreen />)).toEqual(true)
@@ -19,7 +19,7 @@ describe('MainScreenUnwrapped renders MainScreen depending on props', () => {
   test('MainScreenUnwrapped should render NoResults', () => {
     const wrapper = shallow(<MainScreenUnwrapped sortBy="vote_average" />)
     wrapper.setProps({
-      mainViewsSwitch: SearchStatus.showRequested,
+      mainScreen: SearchStatus.showRequested,
       filmsLoadingStatus: false
     })
     expect(wrapper.containsMatchingElement(<NoResults />)).toEqual(true)

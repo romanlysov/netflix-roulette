@@ -2,35 +2,21 @@ import { Map, fromJS } from 'immutable'
 import { SearchStatus } from '../constants'
 import { actions } from '../actionNames'
 
-export const initialState = {
+const initialState = Map({
   SkipRouting: false,
   ScreenType: SearchStatus.notFound,
-  FilmsInfo: {
-    AreLoaded: false,
-    Array: 'NO_DATA'
-  },
-  SearchRequest: {
-    SearchBy: 'title',
-    SortBy: 'vote_average'
-  },
-  SameGenreFilms: {
-    Array: [],
-    AreLoaded: false
-  },
-  ChosenFilm: {}
-}
+  FilmsInfo: [],
+  SearchRequest: Map({ SearchBy: 'title', SortBy: 'vote_average' }),
+  SameGenreFilms: []
+})
 
 export function reducer(state = initialState, action) {
-  state = Map(state)
   switch (action.type) {
     case actions.mainViewSwitchAction:
       return state.setIn(['ScreenType'], fromJS(action.payload))
 
     case actions.filmsDataAction:
-      return state.get('FilmsInfo').setIn(['Array'], fromJS(action.payload))
-
-    case actions.loadingStatusUpdate:
-      return state.setIn(['FilmsInfo', 'AreLoaded'], fromJS(action.payload))
+      return state.setIn(['FilmsInfo'], action.payload)
 
     case actions.search.DataAction:
       return state
@@ -43,45 +29,30 @@ export function reducer(state = initialState, action) {
     case actions.sortBySwitchAction:
       return state.setIn(['SearchRequest', 'SortBy'], fromJS(action.payload))
 
-    case actions.moviesFoundQuantityUpdate:
-      return state.setIn(['FilmsInfo', 'Quantity'], fromJS(action.payload))
-
     case actions.showFilmInfoAction:
-      return state
-        .setIn(['SameGenreFilms', 'filmInfo'], fromJS(action.payload))
-        .setIn(['SameGenreFilms', 'Array'], [])
-        .setIn(['SameGenreFilms', 'AreLoaded'], false)
+      return state.setIn(['SameGenreFilms'], action.payload)
 
     case actions.filmKeyAction:
       return state.setIn(['FilmsInfo', 'filmKey'], fromJS(action.payload))
 
     case actions.sameGenreFilmsAction:
-      return state
-        .setIn(['SameGenreFilms', 'Array'], fromJS(action.payload))
-        .setIn(['SameGenreFilms', 'AreLoaded'], true)
+      return state.setIn(['SameGenreFilms'], action.payload)
 
     case actions.clickedFilm:
-      return state.setIn(['ChosenFilm', 'Film'], fromJS(action.payload))
+      return state.setIn(['ChosenFilm'], action.payload)
 
     case actions.filmObject:
       return state
-        .setIn(['IsInitialized'], true)
-        .setIn(['ScreenType'], fromJS(action.status))
-        .setIn(['ChosenFilm', 'Film'], fromJS(action.film))
-        .setIn(['ChosenFilm', 'Title'], fromJS(action.title))
-        .setIn(['ChosenFilm', 'Genre'], fromJS(action.genre))
+        .setIn(['ScreenType'], action.status)
+        .setIn(['ChosenFilm'], action.film)
 
     case actions.filmsDataAllInfo:
       return state
         .setIn(['ScreenType'], fromJS(action.mainScreen))
-        .setIn(['FilmsInfo', 'AreLoaded'], true)
-        .setIn(['FilmsInfo', 'Array'], fromJS(action.films))
-        .setIn(['FilmsInfo', 'Quantity'], fromJS(action.quantity))
+        .setIn(['FilmsInfo'], action.films)
 
     case actions.moreFilmsByIdAction:
-      return state
-        .setIn(['SameGenreFilms', 'Array'], fromJS(action.payload))
-        .setIn(['SameGenreFilms', 'AreLoaded'], true)
+      return state.setIn(['SameGenreFilms'], action.payload)
 
     case actions.routing:
       return state.setIn(['SkipRouting'], fromJS(action.payload))

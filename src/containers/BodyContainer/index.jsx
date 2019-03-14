@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { createSelector } from 'reselect'
 
 import { MoreMoviesByGenreContainer } from '../MoreMoviesByGenreContainer'
 import { SearchSettings } from '../../components/SearchSettings'
@@ -8,20 +9,24 @@ import { SearchStatus } from '../../constants'
 import { sortByRatingClickHandler } from '../../handlers/SortByRatingClickHandler'
 import { sortByDateClickHandler } from '../../handlers/SortByDateClickHandler'
 import { MovieInfoScreenWrapper } from '../../components/MovieInfoScreenWrapper'
+import {
+  fullRequestSelector,
+  filmsQuantitySelector,
+  screenSelector
+} from '../../selectors'
 
 export const BodyContainerUnwrapped = ({
   mainScreen,
   sortByRating,
   sortByDate,
   filmsQuantity,
-  sortBy,
-  quantity
+  sortBy
 }) => {
   return mainScreen === SearchStatus.showMovieInfo ? (
     <MovieInfoScreenWrapper>
       <MoreMoviesByGenreContainer genre="" />
     </MovieInfoScreenWrapper>
-  ) : quantity > 0 ? (
+  ) : filmsQuantity > 0 ? (
     <>
       <SearchSettings
         counter={filmsQuantity}
@@ -36,16 +41,14 @@ export const BodyContainerUnwrapped = ({
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    mainScreen: state.get('ScreenType'),
-    filmsQuantity: state.get('FilmsInfo').Quantity,
-    searchByFilter: state.get('SearchRequest').SearchBy,
-    value: state.get('SearchRequest').Text,
-    sortBy: state.get('SearchRequest').SortBy,
-    quantity: state.get('FilmsInfo').Quantity
-  }
-}
+const mapStateToProps = createSelector(
+  [filmsQuantitySelector, fullRequestSelector, screenSelector],
+  (filmsInfo, searchParams, screen) => ({
+    ...filmsInfo,
+    ...searchParams,
+    ...screen
+  })
+)
 
 const mergeProps = (stateProps, dispatchProps) => {
   const { searchByFilter, value } = stateProps

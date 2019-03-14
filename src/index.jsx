@@ -20,7 +20,6 @@ render(
     <Provider store={store}>
       <Switch>
         <Route path="/test" component={Test} />
-        {/*<Route path="/:id" exact component={AppFilm} />*/}
         <Route path="/films/:id" exact component={AppFilm} />
         <Route path="/filter" component={AppFilter} />
         <Route path="/" exact component={AppMain} />

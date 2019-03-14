@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { createSelector } from 'reselect'
+
 import { App } from '../App'
 import { fetchDataFromQueryUrl } from '../../handlers/FetchDataFromQueryUrl'
+import { sortBySelector } from '../../selectors'
 
 export class AppFilterUnwrapped extends React.Component {
   async componentDidMount() {
@@ -14,11 +17,11 @@ export class AppFilterUnwrapped extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    sortBy: state.get('SearchRequest').SortBy,
-    searchByFilter: state.get('SearchRequest').SearchBy
-  }
-}
+const mapStateToProps = createSelector(
+    sortBySelector,
+    (sortBy) => ({
+      ...sortBy
+    })
+)
 
 export const AppFilter = connect(mapStateToProps)(AppFilterUnwrapped)
