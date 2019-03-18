@@ -17,7 +17,7 @@ const client = new ApolloClient({
 export async function getFilmById(id) {
   const query = gql`
   query movie {
-    data @rest(type: "Movie", path: "/${id}",) {
+    data(id: ${id}) @rest(type: "Movie", path: "/${id}",) {
         genres
         id
         title
