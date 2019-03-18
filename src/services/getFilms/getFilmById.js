@@ -11,13 +11,18 @@ const restLink = new RestLink({
 
 const client = new ApolloClient({
   link: restLink,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  onError: (({ response, operation }) => {
+  if (operation.operationName === "IgnoreErrorsQuery") {
+    response.errors = null;
+  }
+})
 })
 
 export async function getFilmById(id) {
   const query = gql`
   query movie {
-    data @rest(type: "Movie", path: "/${id}",) {
+    data(id: ${id}) @rest(type: "Movie", path: "/${id}",) {
         genres
         id
         title

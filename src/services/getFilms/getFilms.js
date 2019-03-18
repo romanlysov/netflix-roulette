@@ -1,17 +1,19 @@
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { RestLink } from 'apollo-link-rest'
+// import { onError } from "apollo-link-error";
 import gql from 'graphql-tag'
 
 import { endPoint } from '../../constants'
 
 const restLink = new RestLink({
-  uri: endPoint
+  uri: endPoint,
 })
 
 const client = new ApolloClient({
   link: restLink,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+
 })
 
 export async function getFilms({ sortBy, value, searchByFilter }) {
@@ -23,6 +25,7 @@ export async function getFilms({ sortBy, value, searchByFilter }) {
   }
 `
   const response = await client.query({ query })
+  response.errors = null
   if (!response.data.data) {
     return []
   }

@@ -23,6 +23,7 @@ export async function getAllFilms(sortBy) {
   }
 `
   const response = await client.query({ query })
+  response.errors = null
   if (!response.data.data) {
     return []
   }

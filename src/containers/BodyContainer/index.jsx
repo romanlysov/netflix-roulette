@@ -19,7 +19,7 @@ export const BodyContainerUnwrapped = ({
   mainScreen,
   sortActions,
   filmsQuantity,
-  sortBy
+  sortBy, text
 }) => {
   return mainScreen === SearchStatus.showMovieInfo ? (
     <MovieInfoScreenWrapper>
@@ -31,6 +31,7 @@ export const BodyContainerUnwrapped = ({
         counter={filmsQuantity}
         sortActions={sortActions}
         filter={sortBy}
+        request={text}
       />
       <MainScreenContainer />
     </>
