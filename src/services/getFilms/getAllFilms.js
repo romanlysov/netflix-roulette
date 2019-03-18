@@ -1,15 +1,31 @@
-import axios from 'axios';
+import { ApolloClient } from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { RestLink } from 'apollo-link-rest'
+import gql from 'graphql-tag'
 
-const endPoint = 'http://react-cdp-api.herokuapp.com/movies';
+import { endPoint } from '../../constants'
+
+const restLink = new RestLink({
+  uri: endPoint
+})
+
+const client = new ApolloClient({
+  link: restLink,
+  cache: new InMemoryCache()
+})
 
 export async function getAllFilms(sortBy) {
-    const params = {
-        sortBy,
-        sortOrder: 'desc'
-    };
-    const response = await axios.get(endPoint, { params });
-    if (!response.data) {
-        return [];
+  const query = gql`
+  query movies {
+    data(sortBy:${sortBy}, sortOrder: "desc") @rest(type: "Movies", path: "/?{args}",) {
+      data
     }
-    return response.data.data || [];
+  }
+`
+  const response = await client.query({ query })
+  if (!response.data.data) {
+    return []
+  }
+
+  return response.data.data.data || []
 }

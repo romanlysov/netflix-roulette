@@ -1,9 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Button } from '@storybook/react/demo'
-import { action, configureActions } from '@storybook/addon-actions';
-
-import { SearchByPanel } from '../src/components/Header/SearchByPanel'
+import { SearchByPanel } from '../src/components/SearchByPanel'
 
 storiesOf('Button', module)
   .add('with text', () => <Button>Hello Button</Button>)
@@ -27,7 +25,6 @@ storiesOf('SearchByPanel', module)
       <SearchByPanel
         className="search-by"
         sortByTitle = {()=>{
-          debugger
         }}
         searchBy="title"
         filter="title"

@@ -24,3 +24,5 @@ export const FormClass = {
   default: 'header__form',
   hidden: 'hidden'
 }
+
+export const endPoint = 'http://react-cdp-api.herokuapp.com/movies'

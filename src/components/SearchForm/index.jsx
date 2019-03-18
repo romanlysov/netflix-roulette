@@ -11,8 +11,7 @@ export const SearchForm = ({
   onSubmit,
   value,
   searchBy,
-  sortByTitle,
-  sortByGenre,
+  searchByActions,
   filter
 }) => {
   return (
@@ -28,11 +27,10 @@ export const SearchForm = ({
         <SearchByPanel
           className="search-by"
           searchBy={searchBy}
-          sortByTitle={sortByTitle}
-          sortByGenre={sortByGenre}
+          searchByActions={searchByActions}
           filter={filter}
         />
-          <input type="submit" className="main-search__button" />
+        <input type="submit" className="main-search__button" />
       </div>
     </form>
   )

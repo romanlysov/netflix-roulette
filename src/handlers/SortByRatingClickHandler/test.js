@@ -9,7 +9,7 @@ getFilms.mockImplementation(async () => {
 })
 
 jest.mock('../FetchFilms')
-fetchFilms.mockImplementation((dispatch, fetch) => {
+fetchFilms.mockImplementation(() => {
   return
 })
 

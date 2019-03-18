@@ -3,11 +3,15 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { createSelector } from 'reselect'
 
-import { SearchForm } from '../../components/Header/SearchForm'
+import { SearchForm } from '../../components/SearchForm'
 import { actionCreator } from '../../actions'
 import { FormSubmitHandler } from '../../handlers/FormSubmitHandler'
-import {fullRequestSelector, screenSelector, formFilmsInfoSelector, formClassSelector} from '../../selectors'
-
+import {
+  fullRequestSelector,
+  screenSelector,
+  formFilmsInfoSelector,
+  formClassSelector
+} from '../../selectors'
 
 export class FormContainerUnwrapped extends React.Component {
   state = {
@@ -29,8 +33,7 @@ export class FormContainerUnwrapped extends React.Component {
   render() {
     const { value } = this.state
     const {
-      searchByTitleHandle,
-      searchByGenreHandle,
+      searchByActions,
       searchBy,
       formClass
     } = this.props
@@ -38,8 +41,7 @@ export class FormContainerUnwrapped extends React.Component {
       <SearchForm
         className={formClass}
         onChange={this.handleChange}
-        sortByTitle={searchByTitleHandle}
-        sortByGenre={searchByGenreHandle}
+        searchByActions={searchByActions}
         filter={searchBy}
         onSubmit={this.handleSubmit}
         value={value}
@@ -49,23 +51,30 @@ export class FormContainerUnwrapped extends React.Component {
 }
 
 const mapStateToProps = createSelector(
-    [fullRequestSelector, screenSelector, formFilmsInfoSelector, formClassSelector],
-    (searchParams, screenType, filmsInfo, formClass ) => ({
-      ...searchParams,
-      ...screenType,
-      ...filmsInfo,
-      ...formClass
-    })
+  [
+    fullRequestSelector,
+    screenSelector,
+    formFilmsInfoSelector,
+    formClassSelector
+  ],
+  (searchParams, screenType, filmsInfo, formClass) => ({
+    ...searchParams,
+    ...screenType,
+    ...filmsInfo,
+    ...formClass
+  })
 )
 
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
-    searchByTitleHandle: () => {
-      dispatch(actionCreator.setSearchByFilter('title'))
-    },
-    searchByGenreHandle: () => {
-      dispatch(actionCreator.setSearchByFilter('genres'))
+    searchByActions: {
+      searchByTitleHandle: () => {
+        dispatch(actionCreator.setSearchByFilter('title'))
+      },
+      searchByGenreHandle: () => {
+        dispatch(actionCreator.setSearchByFilter('genres'))
+      }
     }
   }
 }

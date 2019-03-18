@@ -2,7 +2,7 @@ import { Map, fromJS } from 'immutable'
 import { SearchStatus } from '../constants'
 import { actions } from '../actionNames'
 
-const initialState = Map({
+export const initialState = Map({
   SkipRouting: false,
   ScreenType: SearchStatus.notFound,
   FilmsInfo: [],

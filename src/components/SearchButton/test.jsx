@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 
-import { SearchForm } from 'components/Header/SearchForm'
+import { SearchForm } from '../SearchForm'
 import { SearchButton } from '.'
 
 describe('SearchButton', () => {

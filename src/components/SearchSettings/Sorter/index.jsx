@@ -1,8 +1,9 @@
 import React from 'react'
 import withStyles from 'react-jss'
 
-import './style.scss'
 import { SortByParam } from '../../../constants'
+import './style.scss'
+
 
 const styles = {
   chosen: {

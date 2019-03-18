@@ -3,7 +3,7 @@ import { actions } from '../../actionNames'
 import { fetchFilms } from '../FetchFilms'
 
 jest.mock('../FetchFilms')
-fetchFilms.mockImplementation(async (dispatch, fetch) => {
+fetchFilms.mockImplementation(async () => {
   return
 })
 

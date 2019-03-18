@@ -3,7 +3,7 @@ import { FilmInfoHandler } from './index'
 import { actions } from '../../actionNames'
 
 jest.mock('../FetchSameFilms')
-fetchSameFilms.mockImplementation(async (dispatch, genre) => {
+fetchSameFilms.mockImplementation(async () => {
   return
 })
 

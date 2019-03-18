@@ -4,7 +4,7 @@ import { sortByDateClickHandler } from './index'
 import { actions } from '../../actionNames'
 
 jest.mock('../FetchFilms')
-fetchFilms.mockImplementation(async (dispatch, fetch) => {
+fetchFilms.mockImplementation(async () => {
   return
 })
 
