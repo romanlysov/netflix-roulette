@@ -1,10 +1,10 @@
 import { takeEvery } from 'redux-saga/effects'
 
-function logAction(action) {
+function logSaga(action) {
     console.log(action.type)
 }
 
 export function* watchAllActions(){
-    yield takeEvery('*', logAction)
+    yield takeEvery('*', logSaga)
 
 }

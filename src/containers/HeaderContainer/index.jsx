@@ -17,7 +17,7 @@ import {
 export const HeaderUnwrapped = props => {
   const handleClick = () => {
     const { dispatch } = props
-    dispatch(actionCreator.clearFilmInfo())
+    dispatch(actionCreator.clearFilmInfo(''))
   }
   const { className, film, mainScreen, genre, searchButtonClass, isMovieInfo } = props
   return mainScreen === SearchStatus.showMovieInfo ? (

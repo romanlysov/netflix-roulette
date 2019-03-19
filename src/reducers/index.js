@@ -6,7 +6,7 @@ export const initialState = Map({
   SkipRouting: false,
   ScreenType: SearchStatus.notFound,
   FilmsInfo: [],
-  SearchRequest: Map({ SearchBy: 'title', SortBy: 'vote_average' }),
+  SearchRequest: Map({ SearchBy: 'title', SortBy: 'vote_average', Text: ''}),
   SameGenreFilms: []
 })
 

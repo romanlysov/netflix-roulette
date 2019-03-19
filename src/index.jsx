@@ -18,7 +18,7 @@ import './style.scss'
 
 const sagaMiddleware = createSagaMiddleware()
 
-export const store = createStore(reducer,composeWithDevTools(applyMiddleware(sagaMiddleware)))
+export const store = createStore(reducer, composeWithDevTools(applyMiddleware(sagaMiddleware)))
 sagaMiddleware.run(watchAllActions)
 
 render(
