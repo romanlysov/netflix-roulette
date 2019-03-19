@@ -1,9 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import createSagaMiddleware from 'redux-saga'
 
 import { reducer } from './reducers'
 import { Test } from './components/Test'
@@ -11,10 +12,15 @@ import { AppFilm } from './containers/AppFilm'
 import { AppMain } from './containers/AppMain'
 import { AppFilter } from './containers/AppFilter'
 import { NotFound } from './components/NotFound'
+import { watchAllActions } from '../sagas/saga'
 
 import './style.scss'
 
-export const store = createStore(reducer, composeWithDevTools())
+const sagaMiddleware = createSagaMiddleware()
+
+export const store = createStore(reducer,composeWithDevTools(applyMiddleware(sagaMiddleware)))
+sagaMiddleware.run(watchAllActions)
+
 render(
   <BrowserRouter>
     <Provider store={store}>
