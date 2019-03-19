@@ -8,7 +8,6 @@ import { YetLoader } from '../../components/YetLoader'
 import { fetchSameFilms } from '../../handlers/FetchSameFilms'
 import { isInitializedSelector, sameGenreInfoSelector } from '../../selectors'
 import {FilmInfoHandler} from '../../handlers/FilmInfoHandler'
-import { actionCreator } from '../../actions'
 
 export class MoreMoviesByGenreUnwrapped extends React.Component {
 
@@ -24,7 +23,6 @@ export class MoreMoviesByGenreUnwrapped extends React.Component {
     const { dispatch, sameGenreFilms} = this.props
     const array = sameGenreFilms
     FilmInfoHandler(dispatch)(array[dataKey])
-    dispatch(actionCreator.setSkipRouting(true))
   }
 
 

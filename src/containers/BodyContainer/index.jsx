@@ -19,7 +19,7 @@ export const BodyContainerUnwrapped = ({
   mainScreen,
   sortActions,
   filmsQuantity,
-  sortBy
+  sortBy, text
 }) => {
   return mainScreen === SearchStatus.showMovieInfo ? (
     <MovieInfoScreenWrapper>
@@ -31,6 +31,7 @@ export const BodyContainerUnwrapped = ({
         counter={filmsQuantity}
         sortActions={sortActions}
         filter={sortBy}
+        request={text}
       />
       <MainScreenContainer />
     </>
@@ -49,15 +50,15 @@ const mapStateToProps = createSelector(
 )
 
 const mergeProps = (stateProps, dispatchProps) => {
-  const { searchByFilter, value } = stateProps
+  const { searchBy, text } = stateProps
   const { dispatch } = dispatchProps
 
   const handleSortByRatingClick = () => {
-    sortByRatingClickHandler(dispatch)(searchByFilter, value)
+    sortByRatingClickHandler(dispatch)(searchBy, text)
   }
 
   const handleSortByDateClick = () => {
-    sortByDateClickHandler(dispatch)(searchByFilter, value)
+    sortByDateClickHandler(dispatch)(searchBy, text)
   }
 
   return {

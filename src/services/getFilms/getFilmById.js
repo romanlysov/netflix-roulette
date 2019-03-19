@@ -11,7 +11,12 @@ const restLink = new RestLink({
 
 const client = new ApolloClient({
   link: restLink,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  onError: (({ response, operation }) => {
+  if (operation.operationName === "IgnoreErrorsQuery") {
+    response.errors = null;
+  }
+})
 })
 
 export async function getFilmById(id) {

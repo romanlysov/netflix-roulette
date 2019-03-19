@@ -34,13 +34,13 @@ export const Sorter = ({ sortActions, filter, classes }) => {
       <span className="search-settings__sort-by">Sort by</span>
       <SortButton
         active={filter === SortByParam.byDate}
-        caption="rating"
+        caption="release date"
         handler={sortActions.sortByDate}
         classes={classes}
       />
       <SortButton
         active={filter === SortByParam.byRating}
-        caption="release date"
+        caption="rating"
         handler={sortActions.sortByRating}
       />
     </>
