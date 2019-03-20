@@ -5,7 +5,7 @@ import { createSelector } from 'reselect'
 
 import { NoResults } from '../../components/MainScreen/NoResults'
 import { MainScreen } from '../../components/MainScreen'
-import { FilmInfoHandler } from '../../handlers/FilmInfoHandler'
+// import { FilmInfoHandler } from '../../handlers/FilmInfoHandler'
 import { SearchStatus } from '../../constants'
 import {
   chosenFilmInfoSelector,
@@ -16,12 +16,16 @@ import {
 
 import '../../components/MainScreen/style.scss'
 import { actionCreator } from '../../actions'
+import { sagaActions } from '../../actionNames'
 
 export class MainScreenUnwrapped extends React.Component {
   onClickHandle = ({ dataKey }) => {
     const { dispatch, filmsArray } = this.props
     const array = filmsArray
-    FilmInfoHandler(dispatch)(array[dataKey])
+    const film = array[dataKey]
+    const genre = film.genres[0]
+    // FilmInfoHandler(dispatch)(array[dataKey])
+    dispatch({type: sagaActions.sagaFilmObject, film: film, status: SearchStatus.showMovieInfo, title: array[dataKey].title, genre: genre})
     dispatch(actionCreator.setSkipRouting(true))
   }
 

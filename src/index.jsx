@@ -12,14 +12,15 @@ import { AppFilm } from './containers/AppFilm'
 import { AppMain } from './containers/AppMain'
 import { AppFilter } from './containers/AppFilter'
 import { NotFound } from './components/NotFound'
-import { watchAllActions } from '../sagas/saga'
+import rootSaga from '../sagas/saga'
 
 import './style.scss'
 
 const sagaMiddleware = createSagaMiddleware()
+const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
 
-export const store = createStore(reducer, composeWithDevTools(applyMiddleware(sagaMiddleware)))
-sagaMiddleware.run(watchAllActions)
+export const store = createStore(reducer, composeEnhancers(applyMiddleware(sagaMiddleware)))
+sagaMiddleware.run(rootSaga)
 
 render(
   <BrowserRouter>

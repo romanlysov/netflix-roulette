@@ -69,7 +69,7 @@ async componentDidMount() {
 
 async componentDidUpdate(prevProps) {
   const { SkipRouting } = this.props
-  if (SkipRouting && prevProps.SkipRouting) {
+  if (!SkipRouting && prevProps.SkipRouting) {
     return
   }
   const { dispatch } = this.props
@@ -77,6 +77,8 @@ async componentDidUpdate(prevProps) {
     dispatch(actionCreator.setSkipRouting(false))
     return
   }
+
+  // if (SkipRouting === false && prevProps.SkipRouting === false)
   const { sortBy, match } = this.props
   await mountMoreFilmsById({dispatch, sortBy, match})
 }
@@ -87,9 +89,8 @@ async componentDidUpdate(prevProps) {
 
 const mapStateToProps = createSelector(
   [routingSelector, filmInfoSelector, searchParamsSelector],
-  (routing, film, searchParams) => ({
+  (routing, searchParams) => ({
     ...routing,
-    ...film,
     ...searchParams
   })
 )
