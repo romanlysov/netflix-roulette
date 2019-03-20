@@ -38,24 +38,48 @@ class AppFilmUnwrapped extends React.Component {
   //     }
   //   }
   // }
-  async componentDidMount() {
-    const { SkipRouting, dispatch, sortBy, match } = this.props
-    switch (SkipRouting) {
-      case true:
-        dispatch(actionCreator.setSkipRouting(false))
-        break
-      case false:
-        await mountMoreFilmsById({ dispatch, sortBy, match })
-    }
-
+  // -------------------------------------------------------------------
+  // async componentDidMount() {
+  //   const { SkipRouting, dispatch, sortBy, match } = this.props
+  //   switch (SkipRouting) {
+  //     case true:
+  //       dispatch(actionCreator.setSkipRouting(false))
+  //       break
+  //     case false:
+  //       await mountMoreFilmsById({ dispatch, sortBy, match })
+  //   }
+  //
+  // }
+  // async componentDidUpdate(prevProps) {
+  //   const { SkipRouting, dispatch, sortBy, match } = this.props
+  //   if (prevProps.SkipRouting === false && SkipRouting === false) {
+  //     await mountMoreFilmsById({ dispatch, sortBy, match })
+  //   }
+  //     }
+async componentDidMount() {
+  const { SkipRouting } = this.props
+  if (SkipRouting) {
+    const { dispatch } = this.props
+    dispatch(actionCreator.setSkipRouting(false))
+    return
   }
-  async componentDidUpdate(prevProps) {
-    const { SkipRouting, dispatch, sortBy, match } = this.props
-    if (prevProps.SkipRouting === false && SkipRouting === false) {
-      await mountMoreFilmsById({ dispatch, sortBy, match })
-    }
-      }
+  const { dispatch, sortBy, match } = this.props
+  await mountMoreFilmsById({dispatch, sortBy, match})
+}
 
+async componentDidUpdate(prevProps) {
+  const { SkipRouting } = this.props
+  if (SkipRouting && prevProps.SkipRouting) {
+    return
+  }
+  const { dispatch } = this.props
+  if (SkipRouting) {
+    dispatch(actionCreator.setSkipRouting(false))
+    return
+  }
+  const { sortBy, match } = this.props
+  await mountMoreFilmsById({dispatch, sortBy, match})
+}
   render() {
     return <App />
   }

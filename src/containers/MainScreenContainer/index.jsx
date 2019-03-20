@@ -7,7 +7,6 @@ import { NoResults } from '../../components/MainScreen/NoResults'
 import { MainScreen } from '../../components/MainScreen'
 import { FilmInfoHandler } from '../../handlers/FilmInfoHandler'
 import { SearchStatus } from '../../constants'
-import { actionCreator } from '../../actions'
 import {
   chosenFilmInfoSelector,
   filmsQuantityFullSelector,
@@ -16,6 +15,7 @@ import {
 } from '../../selectors'
 
 import '../../components/MainScreen/style.scss'
+import { actionCreator } from '../../actions'
 
 export class MainScreenUnwrapped extends React.Component {
   onClickHandle = ({ dataKey }) => {
