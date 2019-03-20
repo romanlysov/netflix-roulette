@@ -6,8 +6,14 @@ import { MoreMoviesByGenreContainer } from '../MoreMoviesByGenreContainer'
 import { SearchSettings } from '../../components/SearchSettings'
 import { MainScreenContainer } from '../MainScreenContainer'
 import { SearchStatus } from '../../constants'
-import { sortByRatingClickHandler, sortByRatingDefaultHandler } from '../../handlers/SortByRatingClickHandler'
-import { sortByDateClickHandler, sortByDateDefaultHandler } from '../../handlers/SortByDateClickHandler'
+import {
+  sortByRatingClickHandler,
+  sortByRatingDefaultHandler
+} from '../../handlers/SortByRatingClickHandler'
+import {
+  sortByDateClickHandler,
+  sortByDateDefaultHandler
+} from '../../handlers/SortByDateClickHandler'
 import { MovieInfoScreenWrapper } from '../../components/MovieInfoScreenWrapper'
 import {
   fullRequestSelector,
@@ -31,7 +37,7 @@ export const BodyContainerUnwrapped = ({
     <>
       <SearchSettings
         counter={filmsQuantity}
-        sortActions={ text === '' ? defaultSortActions : sortActions}
+        sortActions={text === '' ? defaultSortActions : sortActions}
         filter={sortBy}
         request={text}
       />
@@ -74,12 +80,20 @@ const mergeProps = (stateProps, dispatchProps) => {
   return {
     ...stateProps,
     sortActions: {
-      sortByRating: handleSortByRatingClick,
-      sortByDate: handleSortByDateClick
+      sortByRating: () => {
+        handleSortByRatingClick()
+      },
+      sortByDate: () => {
+        handleSortByDateClick()
+      }
     },
     defaultSortActions: {
-      sortByRating: handleDefaultSortByRating,
-      sortByDate: handleDefaultSortByDate
+      sortByRating: () => {
+        handleDefaultSortByRating()
+      },
+      sortByDate: () => {
+        handleDefaultSortByDate()
+      }
     }
   }
 }

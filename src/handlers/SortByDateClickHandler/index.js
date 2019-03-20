@@ -4,23 +4,20 @@ import { SortByParam } from '../../constants'
 import { getFilms } from '../../services/getFilms/getFilms'
 import { getAllFilms } from '../../services/getFilms/getAllFilms'
 
-export const sortByDateClickHandler = dispatch => async (searchByFilter,
-                                                           value
+export const sortByDateClickHandler = dispatch => async (
+  searchByFilter,
+  value
 ) => {
   const sortBy = SortByParam.byDate
   dispatch(actionCreator.setSortByFilter(sortBy))
   await fetchFilms(
     dispatch,
-    async () => await getFilms({sortBy, value, searchByFilter})
+    async () => await getFilms({ sortBy, value, searchByFilter })
   )
 }
 
-export const sortByDateDefaultHandler = dispatch => async (
-) => {
+export const sortByDateDefaultHandler = async dispatch => {
   const sortBy = SortByParam.byDate
   dispatch(actionCreator.setSortByFilter(sortBy))
-  await fetchFilms(
-      dispatch,
-      async () => await getAllFilms({sortBy})
-  )
+  await fetchFilms(dispatch, async () => await getAllFilms(sortBy))
 }

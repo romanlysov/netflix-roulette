@@ -16,12 +16,8 @@ export const sortByRatingClickHandler = dispatch => async (
   )
 }
 
-export const sortByRatingDefaultHandler = dispatch => async (
-) => {
+export const sortByRatingDefaultHandler = async dispatch => {
   const sortBy = SortByParam.byRating
   dispatch(actionCreator.setSortByFilter(sortBy))
-  await fetchFilms(
-      dispatch,
-      async () => await getAllFilms({ sortBy })
-  )
+  await fetchFilms(dispatch, async () => await getAllFilms(sortBy))
 }

@@ -35,7 +35,7 @@ export const Sorter = ({ sortActions, filter, classes }) => {
       <SortButton
         active={filter === SortByParam.byDate}
         caption="release date"
-        handler={()=>{sortActions.sortByDate}}
+        handler={sortActions.sortByDate}
         classes={classes}
       />
       <SortButton
