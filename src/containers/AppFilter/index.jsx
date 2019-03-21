@@ -3,14 +3,17 @@ import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 
 import { App } from '../App'
-import { fetchDataFromQueryUrl } from '../../handlers/FetchDataFromQueryUrl'
-import { sortBySelector } from '../../selectors'
+import { actionCreator } from '../../actions'
+import { fullRequestSelector, sortBySelector } from '../../selectors'
 
 export class AppFilterUnwrapped extends React.Component {
   async componentDidMount() {
-    const { dispatch, sortBy } = this.props
+    const { dispatch, sortBy, text } = this.props
+    if (text !== '') {
+      return
+    }
     const params = new URLSearchParams(location.search)
-      await fetchDataFromQueryUrl(dispatch, params, sortBy)
+    dispatch(actionCreator.initiate.getInfoFromUrl(params, sortBy))
   }
   render() {
     return <App />
@@ -18,10 +21,11 @@ export class AppFilterUnwrapped extends React.Component {
 }
 
 const mapStateToProps = createSelector(
-    sortBySelector,
-    (sortBy) => ({
-      ...sortBy
-    })
+  [sortBySelector, fullRequestSelector],
+  (sortBy, searchParams) => ({
+    ...sortBy,
+    ...searchParams
+  })
 )
 
 export const AppFilter = connect(mapStateToProps)(AppFilterUnwrapped)

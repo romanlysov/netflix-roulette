@@ -27,21 +27,11 @@ export const sagaActions = {
     BySwitchAction: 'sagaSearchBySwitchAction',
     DataAction: 'sagaSearchDataAction'
   },
-
-  sagaLoadingStatusUpdate: 'sagaLoadingStatusUpdate',
-  sagaFilmsDataAction: 'sagaFilmsDataAction',
-  sagaMainViewSwitchAction: 'sagaMainViewSwitchAction',
-  sagaSortBySwitchAction: 'sagaSortBySwitchAction',
-  sagaShowFilmInfoAction: 'sagaShowFilmInfoAction',
-  sagaMoviesFoundQuantityUpdate: 'sagaMoviesFoundQuantityUpdate',
-  sagaFilmKeyAction: 'sagaFilmKeyAction',
-  sagaSameGenreFilmsAction: 'sagaSameGenreFilmsAction',
-  sagaDefineZoneClick: 'sagaDefineZoneClick',
-  sagaClickedFilm: 'sagaClickedFilm',
-  sagaFilmObject: 'sagaFilmObject',
-  sagaFilmsDataAllInfo: 'sagaFilmsDataAllInfo',
-  sagaMoreFilmsByIdAction: 'sagaMoreFilmsByIdAction',
-  sagaRouting: 'sagaRouting',
-  sagaDataFromQueryUrlAction: 'sagaDataFromQueryUrlAction',
-  sagaClearFilmInfoAction: 'sagaClearFilmInfoAction'
+  sagaAppFilmAction: 'sagaAppFilmAction',
+  sagaAppFilterAction: 'sagaAppFilterAction',
+  sagaSortByAction: 'sagaSortByAction',
+  sagaSortByDefaultAction: 'sagaSortByDefaultAction',
+  sagaFormSubmitAction: 'sagaFormSubmitAction',
+  sagaFetchAllFilmsAction: 'sagaFetchAllFilmsAction',
+  sagaFilmObject: 'sagaFilmObject'
 }

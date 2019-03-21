@@ -7,7 +7,10 @@ export const initialState = Map({
   ScreenType: SearchStatus.notFound,
   FilmsInfo: [],
   SearchRequest: Map({ SearchBy: 'title', SortBy: 'vote_average', Text: ''}),
-  SameGenreFilms: []
+  SameGenre: {
+    films: [],
+    genre: ''
+  }
 })
 
 export function reducer(state = initialState, action) {
@@ -36,7 +39,9 @@ export function reducer(state = initialState, action) {
       return state.setIn(['FilmsInfo', 'filmKey'], fromJS(action.payload))
 
     case actions.sameGenreFilmsAction:
-      return state.setIn(['SameGenreFilms'], action.payload)
+      return state
+          .setIn(['SameGenre', 'films'], action.payload)
+          .setIn(['SameGenre', 'genre'], action.genre)
 
     case actions.clickedFilm:
       return state.setIn(['ChosenFilm'], action.payload)

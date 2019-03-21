@@ -5,7 +5,6 @@ import { createSelector } from 'reselect'
 
 import { SearchForm } from '../../components/SearchForm'
 import { actionCreator } from '../../actions'
-import { FormSubmitHandler } from '../../handlers/FormSubmitHandler'
 import {
   fullRequestSelector,
   screenSelector,
@@ -25,7 +24,8 @@ export class FormContainerUnwrapped extends React.Component {
   handleSubmit = async event => {
     const { value } = this.state
     const { searchBy, dispatch, sortBy, history } = this.props
-    await FormSubmitHandler(event)(value, searchBy, dispatch, sortBy)
+    event.preventDefault()
+    dispatch(actionCreator.initiate.triggerFormSubmit(value, searchBy, sortBy))
     const valueEncoded = encodeURI(value)
     history.push(`/filter/?search=${valueEncoded}&searchBy=${searchBy}`)
   }
@@ -70,10 +70,10 @@ const mapDispatchToProps = dispatch => {
     dispatch,
     searchByActions: {
       searchByTitleHandle: () => {
-        dispatch(actionCreator.setSearchByFilter('title'))
+        dispatch(actionCreator.search.searchFilter('title'))
       },
       searchByGenreHandle: () => {
-        dispatch(actionCreator.setSearchByFilter('genres'))
+        dispatch(actionCreator.search.searchFilter('genres'))
       }
     }
   }

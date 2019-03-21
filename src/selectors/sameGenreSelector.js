@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect'
 
-export const sameGenreSelector = state => state.get('SameGenreFilms')
+export const sameGenreSelector = state => state.get('SameGenre')
 export const sameGenreInfoSelector = createSelector(
     sameGenreSelector,
     sameFilms => ({
-        sameGenreFilms: sameFilms,
-        filmsAreLoaded: sameFilms.length > 0
+        sameGenreFilms: sameFilms.films,
+        filmsAreLoaded: sameFilms.films.length > 0
     })
 )

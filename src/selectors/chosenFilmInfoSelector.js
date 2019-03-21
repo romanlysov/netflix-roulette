@@ -6,6 +6,6 @@ import { filmSelector } from './filmInfoSelector'
 export const chosenFilmInfoSelector = createSelector (
     filmSelector,
     film => ({
-        film: film ? film : null
+        film: film ? film : {}
     })
 )

@@ -11,10 +11,10 @@ class SkipRouterUnwrapped extends React.Component {
         switch (SkipRouting) {
             case true:
                 noop()
-                dispatch(actionCreator.setSkipRouting(false))
+                dispatch(actionCreator.routing.setSkipRouting(false))
                 break
             case false:
-                dispatch(actionCreator.setSkipRouting(true))
+                dispatch(actionCreator.routing.setSkipRouting(true))
                 noop()
         }
         // if (SkipRouting) {

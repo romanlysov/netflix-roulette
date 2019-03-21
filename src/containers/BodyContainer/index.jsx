@@ -5,21 +5,14 @@ import { createSelector } from 'reselect'
 import { MoreMoviesByGenreContainer } from '../MoreMoviesByGenreContainer'
 import { SearchSettings } from '../../components/SearchSettings'
 import { MainScreenContainer } from '../MainScreenContainer'
-import { SearchStatus } from '../../constants'
-import {
-  sortByRatingClickHandler,
-  sortByRatingDefaultHandler
-} from '../../handlers/SortByRatingClickHandler'
-import {
-  sortByDateClickHandler,
-  sortByDateDefaultHandler
-} from '../../handlers/SortByDateClickHandler'
+import { SearchStatus, SortByParam } from '../../constants'
 import { MovieInfoScreenWrapper } from '../../components/MovieInfoScreenWrapper'
 import {
   fullRequestSelector,
   filmsQuantitySelector,
   screenSelector
 } from '../../selectors'
+import { actionCreator } from '../../actions'
 
 export const BodyContainerUnwrapped = ({
   mainScreen,
@@ -62,19 +55,19 @@ const mergeProps = (stateProps, dispatchProps) => {
   const { dispatch } = dispatchProps
 
   const handleSortByRatingClick = () => {
-    sortByRatingClickHandler(dispatch)(searchBy, text)
+    dispatch(actionCreator.initiate.triggerSortBy(SortByParam.byRating, searchBy, text))
   }
 
   const handleSortByDateClick = () => {
-    sortByDateClickHandler(dispatch)(searchBy, text)
+    dispatch(actionCreator.initiate.triggerSortBy(SortByParam.byDate, searchBy, text))
   }
 
   const handleDefaultSortByRating = () => {
-    sortByRatingDefaultHandler(dispatch)
+    dispatch(actionCreator.initiate.triggerSortByDefault(SortByParam.byRating))
   }
 
   const handleDefaultSortByDate = () => {
-    sortByDateDefaultHandler(dispatch)
+    dispatch(actionCreator.initiate.triggerSortByDefault(SortByParam.byDate, searchBy, text))
   }
 
   return {
