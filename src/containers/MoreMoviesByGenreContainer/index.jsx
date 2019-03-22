@@ -28,7 +28,7 @@ export class MoreMoviesByGenreUnwrapped extends React.Component {
 
 const mapStateToProps = createSelector(
   [sameGenreInfoSelector, isInitializedSelector],
-  (sameFilms, film) => ({
+  (sameFilms, film =() =>{}) => ({
     ...sameFilms,
     ...film
   })
