@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 
-export const searchRequestSelector = state => state.get('SearchRequest')
+export const searchRequestSelector = state => state.main.get('SearchRequest')
 export const searchParamsSelector = createSelector(
     searchRequestSelector,
     searchParams => ({

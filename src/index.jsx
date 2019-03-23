@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import createSagaMiddleware from 'redux-saga'
 
-import { reducer } from './reducers'
+import { reducer } from './reducers/index'
 import { Test } from './components/Test'
 import { AppFilm } from './containers/AppFilm'
 import { AppMain } from './containers/AppMain'
