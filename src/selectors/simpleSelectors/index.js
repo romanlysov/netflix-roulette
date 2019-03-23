@@ -1,39 +1,39 @@
 import { FormClass, HeaderClass, SearchButtonClass, SearchStatus } from '../../constants'
 
 export const screenSelector = state => ({
-    mainScreen: state.get('ScreenType')
+    mainScreen: state.main.get('ScreenType')
 })
 
 export const routingSelector = state => ({
-    SkipRouting: state.get('SkipRouting')
+    SkipRouting: state.routing.get('SkipRouting')
 })
 
 export const sortBySelector = state => ({
-    sortBy: state.get('SearchRequest').get('SortBy')
+    sortBy: state.main.get('SearchRequest').get('SortBy')
 })
 
 export const formClassSelector = state => ({
     formClass:
-        state.get('ScreenType') === SearchStatus.showMovieInfo ||
-        state.ScreenType === SearchStatus.notFound
+        state.main.get('ScreenType') === SearchStatus.showMovieInfo ||
+        state.main.ScreenType === SearchStatus.notFound
             ? FormClass.hidden
             : FormClass.default
 })
 
 export const headerClassSelector = state => ({
     className:
-        state.get('ScreenType') === SearchStatus.showMovieInfo
+        state.main.get('ScreenType') === SearchStatus.showMovieInfo
             ? HeaderClass.movieCard
             : HeaderClass.searchResult
 })
 
 export const searchButtonSelector = state => ({
     searchButtonClass:
-        state.get('ScreenType') === SearchStatus.showMovieInfo
+        state.main.get('ScreenType') === SearchStatus.showMovieInfo
             ? SearchButtonClass.default
             : SearchButtonClass.hidden
 })
 
 export const movieInfoFlagSelector = state => ({
-    isMovieInfo: state.get('ScreenType') === SearchStatus.showMovieInfo
+    isMovieInfo: state.main.get('ScreenType') === SearchStatus.showMovieInfo
 })
