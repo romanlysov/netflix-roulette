@@ -18,6 +18,7 @@ export const HeaderUnwrapped = props => {
   const handleClick = () => {
     const { dispatch } = props
     dispatch(actionCreator.chosenFilm.clearInfo(''))
+
   }
   const {
     className,
