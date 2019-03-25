@@ -23,6 +23,7 @@
     "jss-preset-default": "^10.0.0-alpha.7",
     "lodash-es": "^4.17.11",
     "prop-types": "^15.7.1",
+    "puppeteer": "^1.13.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-jss": "^8.6.1",
@@ -93,8 +94,9 @@
     "webpack-dev-server": "^3.1.14"
   },
   "scripts": {
-    "test": "jest --testPathPattern=test\\.js$",
+    "test": "jest --testPathPattern=test\\.jsx$",
     "spec": "jest --testPathPattern=spec\\.js$",
+    "e2e": "jest '**/__e2e__/**/*.js?(x)'",
     "test-coverage": "jest --coverage",
     "test-watch": "jest --watch",
     "test-update-snapshots": "jest --testPathPattern=test\\.js$ --updateSnapshot",
@@ -104,7 +106,9 @@
     "dev-server": "webpack-dev-server --config webpack.dev-config.js",
     "start": "webpack-dev-server --config webpack.dev-config.js",
     "lint": "eslint **/*.js **/*.jsx & stylelint **/*.scss",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "e2e-search": "node puppeteer/search.js",
+    "e2e-chose": "node puppeteer/openFilm.js"
   },
   "repository": {
     "type": "git",

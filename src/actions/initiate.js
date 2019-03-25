@@ -37,7 +37,7 @@ export const triggerSortBy = (sortBy, searchBy, value) => {
     }
 }
 
-export const triggerSortByDefault = (sortBy) => {
+export const triggerSortByDefault = sortBy => {
     return {
         type: sagaActions.sagaSortByDefaultAction,
         sortBy

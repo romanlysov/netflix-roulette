@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Input properly 1`] = `
+<input
+  data-input="main__search"
+  type="text"
+/>
+`;

@@ -30,7 +30,7 @@ export const SearchForm = ({
           searchByActions={searchByActions}
           filter={filter}
         />
-        <input type="submit" className="main-search__button" />
+        <input type="submit" className="main-search__button" data-button="main__submit"/>
       </div>
     </form>
   )

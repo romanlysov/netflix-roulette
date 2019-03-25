@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders footer properly 1`] = `
+<footer
+  className="footer"
+>
+  <img
+    alt=""
+    className="footer__logo"
+    src="test-file-stub"
+  />
+  <p>
+    All rights reserved, 2021
+  </p>
+</footer>
+`;
