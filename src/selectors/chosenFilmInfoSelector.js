@@ -1,11 +1,9 @@
 import { createSelector } from 'reselect'
 import { filmSelector } from './filmInfoSelector'
 
-
-
-export const chosenFilmInfoSelector = createSelector (
-    filmSelector,
-    film => ({
-        film: film ? film : {}
-    })
+export const chosenFilmInfoSelector = createSelector(
+  filmSelector,
+  film => ({
+    film: film ? film : {}
+  })
 )

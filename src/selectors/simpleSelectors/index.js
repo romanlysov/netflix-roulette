@@ -1,39 +1,69 @@
-import { FormClass, HeaderClass, SearchButtonClass, SearchStatus } from '../../constants'
+import { createSelector } from 'reselect'
+import {
+  FormClass,
+  HeaderClass,
+  SearchButtonClass,
+  SearchStatus
+} from '../../constants'
 
-export const screenSelector = state => ({
-    mainScreen: state.main.get('ScreenType')
-})
+export const mainSelector = state => state.main
 
-export const routingSelector = state => ({
-    SkipRouting: state.routing.get('SkipRouting')
-})
+export const routSelector = state => state.routing
 
-export const sortBySelector = state => ({
-    sortBy: state.main.get('SearchRequest').get('SortBy')
-})
+export const screenSelector = createSelector(
+  mainSelector,
+  main => ({
+    mainScreen: main.get('screenType')
+  })
+)
 
-export const formClassSelector = state => ({
+export const routingSelector = createSelector(
+  routSelector,
+  routing => ({
+    skipRouting: routing.get('skipRouting')
+  })
+)
+
+export const sortBySelector = createSelector(
+  mainSelector,
+  main => ({
+    sortBy: main.get('searchRequest').get('sortBy')
+  })
+)
+
+export const formClassSelector = createSelector(
+  mainSelector,
+  main => ({
     formClass:
-        state.main.get('ScreenType') === SearchStatus.showMovieInfo ||
-        state.main.ScreenType === SearchStatus.notFound
-            ? FormClass.hidden
-            : FormClass.default
-})
+      main.get('screenType') === SearchStatus.showMovieInfo ||
+      main.screenType === SearchStatus.notFound
+        ? FormClass.hidden
+        : FormClass.default
+  })
+)
 
-export const headerClassSelector = state => ({
+export const headerClassSelector = createSelector(
+  mainSelector,
+  main => ({
     className:
-        state.main.get('ScreenType') === SearchStatus.showMovieInfo
-            ? HeaderClass.movieCard
-            : HeaderClass.searchResult
-})
+      main.get('screenType') === SearchStatus.showMovieInfo
+        ? HeaderClass.movieCard
+        : HeaderClass.searchResult
+  })
+)
 
-export const searchButtonSelector = state => ({
+export const searchButtonSelector = createSelector(
+  mainSelector,
+  main => ({
     searchButtonClass:
-        state.main.get('ScreenType') === SearchStatus.showMovieInfo
-            ? SearchButtonClass.default
-            : SearchButtonClass.hidden
-})
-
-export const movieInfoFlagSelector = state => ({
-    isMovieInfo: state.main.get('ScreenType') === SearchStatus.showMovieInfo
-})
+      main.get('screenType') === SearchStatus.showMovieInfo
+        ? SearchButtonClass.default
+        : SearchButtonClass.hidden
+  })
+)
+export const movieInfoFlagSelector = createSelector(
+  mainSelector,
+  main => ({
+    isMovieInfo: main.get('screenType') === SearchStatus.showMovieInfo
+  })
+)
