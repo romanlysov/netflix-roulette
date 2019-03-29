@@ -26,9 +26,8 @@ export const routingSelector = createSelector(
 
 export const sortBySelector = createSelector(
   mainSelector,
-  main => ({
-    sortBy: main.get('searchRequest').get('sortBy')
-  })
+  main => main.get('searchRequest').get('sortBy')
+
 )
 
 export const formClassSelector = createSelector(

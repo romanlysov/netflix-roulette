@@ -18,8 +18,8 @@ class AppFilmUnwrapped extends React.Component {
       dispatch(actionCreator.routing.setSkipRouting(false))
       return
     }
-    const { dispatch, sortBy, match } = this.props
-    dispatch(actionCreator.initiate.setInfoFromRouting(sortBy, match))
+    const { dispatch, match } = this.props
+    dispatch(actionCreator.initiate.setInfoFromRouting(match))
   }
 
   async componentDidUpdate(prevProps) {
@@ -32,8 +32,8 @@ class AppFilmUnwrapped extends React.Component {
       dispatch(actionCreator.routing.setSkipRouting(false))
       return
     }
-    const { sortBy, match } = this.props
-    dispatch(actionCreator.initiate.setInfoFromRouting(sortBy, match))
+    const {  match } = this.props
+    dispatch(actionCreator.initiate.setInfoFromRouting(match))
   }
   render() {
     return <App />

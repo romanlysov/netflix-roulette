@@ -16,25 +16,21 @@ import {
 import '../../components/MainScreen/style.scss'
 import { actionCreator } from '../../actions'
 
-export class MainScreenUnwrapped extends React.Component {
-  onClickHandle = ({ dataKey }) => {
-    const { dispatch, filmsArray, film } = this.props
+export const MainScreenUnwrapped = ({
+  dispatch,
+  filmsArray,
+  film,
+  mainScreen,
+  filmsQuantity
+}) => {
+  const onClickHandle = ({ dataKey }) => {
     dispatch(actionCreator.initiate.setChosenFilm(filmsArray, film, dataKey))
   }
-
-  render() {
-    const {
-      mainScreen,
-      filmsArray,
-      filmsQuantity
-    } = this.props
-    if (filmsQuantity > 0 && mainScreen === SearchStatus.showRequested) {
-      const array = filmsArray
-      return <MainScreen films={array} onclick={this.onClickHandle} />
-    } return <NoResults />
+  if (filmsQuantity > 0 && mainScreen === SearchStatus.showRequested) {
+    return <MainScreen films={filmsArray} onclick={onClickHandle} />
   }
+  return <NoResults />
 }
-
 export const mapStateToProps = createSelector(
   [
     screenSelector,

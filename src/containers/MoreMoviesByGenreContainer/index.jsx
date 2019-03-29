@@ -8,27 +8,26 @@ import { YetLoader } from '../../components/YetLoader'
 import { isInitializedSelector, sameGenreInfoSelector } from '../../selectors'
 import { actionCreator } from '../../actions'
 
-export class MoreMoviesByGenreUnwrapped extends React.Component {
-  onClickHandle = ({ dataKey }) => {
-    const { dispatch, sameGenreFilms, film } = this.props
+export const MoreMoviesByGenreUnwrapped = ({
+  dispatch,
+  sameGenreFilms,
+  film
+}) => {
+  const onClickHandle = ({ dataKey }) => {
     dispatch(
       actionCreator.initiate.setChosenFilm(sameGenreFilms, film, dataKey)
     )
   }
-
-  render() {
-    const { sameGenreFilms } = this.props
-    return sameGenreFilms.length > 0 ? (
-      <SearchResultLayout films={sameGenreFilms} onclick={this.onClickHandle} />
-    ) : (
-      <YetLoader />
-    )
-  }
+  return sameGenreFilms.length > 0 ? (
+    <SearchResultLayout films={sameGenreFilms} onclick={onClickHandle} />
+  ) : (
+    <YetLoader />
+  )
 }
 
 const mapStateToProps = createSelector(
   [sameGenreInfoSelector, isInitializedSelector],
-  (sameFilms, film =() =>{}) => ({
+  (sameFilms, film = () => {}) => ({
     ...sameFilms,
     ...film
   })

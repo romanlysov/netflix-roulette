@@ -5,17 +5,16 @@ import { MainScreenContainer } from '../../containers/MainScreenContainer'
 export const MainBody = ({
   filmsQuantity,
   text,
-  defaultSortActions,
-  sortActions,
-  sortBy
+  handleSortClick,
+    filter
 }) => {
   return (
     <>
       {filmsQuantity > 0 && (
         <SearchSettings
           counter={filmsQuantity}
-          sortActions={text === '' ? defaultSortActions : sortActions}
-          filter={sortBy}
+          handleSortClick={handleSortClick}
+          filter={filter}
           request={text}
         />
       )}

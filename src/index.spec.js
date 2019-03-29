@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer')
+import puppeteer from 'puppeteer'
 
 describe('e2e tests', () => {
   test('correct results follow the search request', async () => {
