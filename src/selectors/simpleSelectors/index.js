@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect'
+import { formValueSelector } from 'redux-form'
 import {
   FormClass,
   HeaderClass,
@@ -27,7 +28,6 @@ export const routingSelector = createSelector(
 export const sortBySelector = createSelector(
   mainSelector,
   main => main.get('searchRequest').get('sortBy')
-
 )
 
 export const formClassSelector = createSelector(
@@ -66,3 +66,9 @@ export const movieInfoFlagSelector = createSelector(
     isMovieInfo: main.get('screenType') === SearchStatus.showMovieInfo
   })
 )
+
+export const formSelector = formValueSelector('searchForm')
+
+export const searchSelector = state => ({
+  value: formSelector(state, 'search')
+})
