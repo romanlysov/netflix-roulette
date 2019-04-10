@@ -6,6 +6,6 @@ export const fullRequestSelector = createSelector(
     searchParams => ({
         sortBy: searchParams.get('sortBy'),
         searchBy: searchParams.get('searchBy'),
-        // text: searchParams.get('text')
+        text: searchParams.get('text')
     })
 )

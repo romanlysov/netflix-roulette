@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -10,7 +12,19 @@ import {
   routingSelector
 } from '../../selectors'
 
-class AppFilmUnwrapped extends React.Component {
+
+type Props = {
+  skipRouting?: boolean,
+  dispatch: any,
+  match: any
+
+}
+
+class AppFilmUnwrapped extends React.Component<Props> {
+  static defaultProps = {
+    skipRouting: false
+  }
+
   async componentDidMount() {
     const { skipRouting } = this.props
     if (skipRouting) {
