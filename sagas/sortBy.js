@@ -1,8 +1,8 @@
 import { takeEvery, put, call } from 'redux-saga/effects'
 import { actionCreator } from '../src/actions'
-import { getFilms } from '../src/services/getFilms/getFilms'
 import { fetchAllFilms } from './fetchAllFilms'
 import { sagaActions } from '../src/actionNames'
+import { getFilms } from '../src/services/getFilms/getFilms'
 
 function* sortBy(action) {
   const sortBy = yield action.sortBy

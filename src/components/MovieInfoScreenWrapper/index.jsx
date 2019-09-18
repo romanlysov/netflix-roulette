@@ -1,9 +1,5 @@
 import React from 'react'
 
-export const MovieInfoScreenWrapper = ({children}) => {
-    return (
-  <div className="main-screen">
-    {children}
-  </div>
-    )
-}
+export const MovieInfoScreenWrapper = ({ children }) => (
+  <div className="main-screen">{children}</div>
+)

@@ -1,10 +1,10 @@
-//{
-//  "compilerOptions": {
-//    "baseUrl": ".",
-//    "jsx": "react",
-//    "paths": {
-//      "*": ["./src/*"],
-//      "components/*": ["./src/components/*"]
-//    }
-//  }
-//}
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react",
+    "paths": {
+      "*": ["./src/*"],
+      "components/*": ["./src/components/*"]
+    }
+  }
+}

@@ -8,7 +8,7 @@ function* formSubmit(action) {
     const value = yield action.value
     const searchByFilter = yield action.searchByFilter
     yield put(actionCreator.search.getData(action.value))
-    const films = yield call(getFilms,{ sortBy, value, searchByFilter})
+    const films = yield call(getFilms, { sortBy, value, searchByFilter})
     yield put(actionCreator.mainFilms.setFilmsInfo(films))
 }
 

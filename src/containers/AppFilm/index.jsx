@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -10,30 +12,42 @@ import {
   routingSelector
 } from '../../selectors'
 
-class AppFilmUnwrapped extends React.Component {
+
+type Props = {
+  skipRouting?: boolean,
+  dispatch: any,
+  match: any
+
+}
+
+class AppFilmUnwrapped extends React.Component<Props> {
+  static defaultProps = {
+    skipRouting: false
+  }
+
   async componentDidMount() {
-    const { SkipRouting } = this.props
-    if (SkipRouting) {
+    const { skipRouting } = this.props
+    if (skipRouting) {
       const { dispatch } = this.props
       dispatch(actionCreator.routing.setSkipRouting(false))
       return
     }
-    const { dispatch, sortBy, match } = this.props
-    dispatch(actionCreator.initiate.setInfoFromRouting(sortBy, match))
+    const { dispatch, match } = this.props
+    dispatch(actionCreator.initiate.setInfoFromRouting(match))
   }
 
   async componentDidUpdate(prevProps) {
-    const { SkipRouting } = this.props
-    if (!SkipRouting && prevProps.SkipRouting) {
+    const { skipRouting } = this.props
+    if (!skipRouting && prevProps.skipRouting) {
       return
     }
     const { dispatch } = this.props
-    if (SkipRouting) {
+    if (skipRouting) {
       dispatch(actionCreator.routing.setSkipRouting(false))
       return
     }
-    const { sortBy, match } = this.props
-    dispatch(actionCreator.initiate.setInfoFromRouting(sortBy, match))
+    const {  match } = this.props
+    dispatch(actionCreator.initiate.setInfoFromRouting(match))
   }
   render() {
     return <App />

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoResult renders properly 1`] = `
+<div
+  className="no-result-wrapper"
+>
+  <h2
+    className="no-results__h2"
+  >
+    No films found
+  </h2>
+</div>
+`;

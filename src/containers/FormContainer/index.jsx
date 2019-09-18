@@ -11,32 +11,58 @@ import {
   formFilmsInfoSelector,
   formClassSelector
 } from '../../selectors'
+import { searchSelector } from '../../selectors/simpleSelectors'
+
+// export class FormContainerUnwrapped extends React.Component {
+//   state = {
+//     value: ''
+//   }
+//
+//   handleChange = event => {
+//     this.setState({ value: event.target.value })
+//   }
+//
+//   handleSubmit = async event => {
+//     const { value } = this.state
+//     const { searchBy, dispatch, sortBy, history } = this.props
+//     event.preventDefault()
+//     dispatch(actionCreator.initiate.triggerFormSubmit(value, searchBy, sortBy))
+//     const valueEncoded = encodeURI(value)
+//     history.push(`/filter/?search=${valueEncoded}&searchBy=${searchBy}`)
+//   }
+//
+//   render() {
+//     const { value } = this.state
+//     const {
+//       searchByActions,
+//       searchBy,
+//       formClass
+//     } = this.props
+//     return (
+//       <SearchForm
+//         className={formClass}
+//         onChange={this.handleChange}
+//         searchByActions={searchByActions}
+//         filter={searchBy}
+//         onSubmit={this.handleSubmit}
+//         value={value}
+//       />
+//     )
+//   }
+// }
 
 export class FormContainerUnwrapped extends React.Component {
-  state = {
-    value: ''
-  }
-
-  handleChange = event => {
-    this.setState({ value: event.target.value })
-  }
-
-  handleSubmit = async event => {
-    const { value } = this.state
-    const { searchBy, dispatch, sortBy, history } = this.props
-    event.preventDefault()
+  handleSubmit = () => {
+    // event.preventDefault()
+    const { value, dispatch, searchBy, sortBy, history  } = this.props
     dispatch(actionCreator.initiate.triggerFormSubmit(value, searchBy, sortBy))
     const valueEncoded = encodeURI(value)
     history.push(`/filter/?search=${valueEncoded}&searchBy=${searchBy}`)
+
   }
 
   render() {
-    const { value } = this.state
-    const {
-      searchByActions,
-      searchBy,
-      formClass
-    } = this.props
+    const { searchByActions, searchBy, formClass } = this.props
     return (
       <SearchForm
         className={formClass}
@@ -44,7 +70,6 @@ export class FormContainerUnwrapped extends React.Component {
         searchByActions={searchByActions}
         filter={searchBy}
         onSubmit={this.handleSubmit}
-        value={value}
       />
     )
   }
@@ -55,13 +80,15 @@ const mapStateToProps = createSelector(
     fullRequestSelector,
     screenSelector,
     formFilmsInfoSelector,
-    formClassSelector
+    formClassSelector,
+    searchSelector
   ],
-  (searchParams, screenType, filmsInfo, formClass) => ({
+  (searchParams, screenType, filmsInfo, formClass, value) => ({
     ...searchParams,
     ...screenType,
     ...filmsInfo,
-    ...formClass
+    ...formClass,
+    ...value
   })
 )
 
@@ -75,7 +102,7 @@ const mapDispatchToProps = dispatch => {
       searchByGenreHandle: () => {
         dispatch(actionCreator.search.searchFilter('genres'))
       }
-    }
+    },
   }
 }
 
