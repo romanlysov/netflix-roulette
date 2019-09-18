@@ -1,25 +1,7 @@
-import { ApolloClient } from 'apollo-client'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { RestLink } from 'apollo-link-rest'
 import gql from 'graphql-tag'
+import { makeRequest } from './makeRequest'
 
-import { endPoint } from '../../constants'
-
-const restLink = new RestLink({
-  uri: endPoint
-})
-
-const client = new ApolloClient({
-  link: restLink,
-  cache: new InMemoryCache(),
-  onError: (({ response, operation }) => {
-  if (operation.operationName === "IgnoreErrorsQuery") {
-    response.errors = null;
-  }
-})
-})
-
-export async function getFilmById(id) {
+export async function getFilmsById(id) {
   const query = gql`
   query movie {
     data(id: ${id}) @rest(type: "Movie", path: "/${id}",) {
@@ -35,10 +17,6 @@ export async function getFilmById(id) {
     }
   }
 `
-  const response = await client.query({ query })
-  if (!response.data) {
-    return []
-  }
+  return await makeRequest(query)
 
-  return response.data.data || {}
 }

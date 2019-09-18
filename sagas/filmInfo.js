@@ -5,10 +5,10 @@ import { sagaActions } from '../src/actionNames'
 import { sameFilmsGenreSelector } from '../src/selectors/sameFilmsGenreSelector'
 
 function* filmInfo(action) {
-  const newFilm = yield action.array[action.key]
+  const newFilm = action.array[action.key]
   const state = yield select()
-  const oldGenre = yield sameFilmsGenreSelector(state).genre
-  const isGenreTheSame = yield oldGenre === newFilm.genres[0]
+  const oldGenre = sameFilmsGenreSelector(state).genre
+  const isGenreTheSame = oldGenre === newFilm.genres[0]
   yield put(actionCreator.routing.setSkipRouting(true))
   yield put(actionCreator.chosenFilm.setInfo(newFilm))
 
