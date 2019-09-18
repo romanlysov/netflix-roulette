@@ -99,8 +99,7 @@
   },
   "scripts": {
     "test": "jest --testPathPattern=test\\.jsx$",
-    "spec": "jest --testPathPattern=spec\\.js$",
-    "e2e": "jest '**/__e2e__/**/*.js?(x)'",
+    "e2e": "jest --testPathPattern=spec\\.js$",
     "test-coverage": "jest --coverage",
     "test-watch": "jest --watch",
     "test-update-snapshots": "jest --testPathPattern=test\\.js$ --updateSnapshot",
@@ -110,10 +109,7 @@
     "dev-server": "webpack-dev-server --config webpack.dev-config.js",
     "start": "webpack-dev-server --config webpack.dev-config.js",
     "lint": "eslint **/*.js **/*.jsx & stylelint **/*.scss",
-    "storybook": "start-storybook",
-    "e2e-search": "node puppeteer/search.js",
-    "e2e-chose": "node puppeteer/openFilm.js",
-    "flow": "flow"
+    "storybook": "start-storybook"
   },
   "repository": {
     "type": "git",
